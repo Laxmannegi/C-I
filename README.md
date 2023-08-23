@@ -124,10 +124,37 @@ class Test
   Implicit constructors of a class will initialize variables of a class with the same value even if we create multiple 
   instance of that class.
 
-  - If we define constructors explicitly with parameters then we get 
+  - If we define constructors explicitly with parameters then we get a chance of initializing the fields or variables of        the class with a new value every time we are going to create instance of that class.
+  - Whenever we define a class first identify whether if the class variables requires some values to execute and if they        are required then define a constructor explicitly and pass values thru that constructor, so that every time the         
+    instance of class is created we get a chance of passing new values.
+
+Note : Generally every class requires some values for execution and the values that are required for a class to execute are        always send to that class by using the constructor only. 
 
 
+**Static Constructors vs Non-Static Constructors:**
+- If a constructor is explicitly declared by using a static modifier we call that constructor as static constructor whereas 
+  rest of other are non-static constructors only.
 
+- Constructors are responsile for initializing fields/variables of a class, static fields are initialized by static 
+  constructors and non-static fields are initialized by non-static constructors.
+  
+- Static Constructors are implicitly called whereas non-static constructors must be explicitly(We are create instance of a    class) called.
+- Static constructors executes immediately once the execution of a class starts and more over it's the first block of code    to run under a class whereas non-static constructor executes only after create the instance of class as well as each and
+  every time the instance of class is created.
+- In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for
+  zero of no instances are created and "n" times if "n" instances are created.
+- Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors   are impliclity called and more over it's the first block of code to run under the class.
+- Non-static constructors can be overloaded where as static constructor can't be overloaded.
+  
+- Every class constains an implicit constructor if not defined explicilty and those implicit constructor are defined based    on the following criteria:
+  - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
+    constructor.
+  - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will      not be present at all.
+ 
+ ---------------------------------------------------------------------------------------------------------------------------
 
+Variable of a class
+Instance of a class
+Reference of a class
 
-
+Class: 
