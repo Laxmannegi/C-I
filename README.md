@@ -87,11 +87,7 @@ class CopyConDemo
   //CopyConDemo cd2 = new CopyConDemo(20);
   CopyConDemo cd2 = new CopyConDemo(cd1);
   cd2.Display();
-
-  
   }
-  
-
 }
 
 **Static Constructor:**
@@ -120,13 +116,14 @@ class Test
 - Every class contain an implicit constructor if not defined explicitly and with the help of implicit constructor instance 
   of class can be created.
   
-  What is the need of defining a constructor explicitly again?
+**What is the need of defining a constructor explicitly again?**
   Implicit constructors of a class will initialize variables of a class with the same value even if we create multiple 
   instance of that class.
 
-  - If we define constructors explicitly with parameters then we get a chance of initializing the fields or variables of        the class with a new value every time we are going to create instance of that class.
-  - Whenever we define a class first identify whether if the class variables requires some values to execute and if they        are required then define a constructor explicitly and pass values thru that constructor, so that every time the         
-    instance of class is created we get a chance of passing new values.
+  - If we define constructors explicitly with parameters then we get a chance of initializing the fields or variables of the class with a new value every time we are going 
+    to create instance of that class.
+  - Whenever we define a class first identify whether if the class variables requires some values to execute and if they are required then define a constructor explicitly 
+    and pass values thru that constructor, so that every time the instance of class is created we get a chance of passing new values.
 
 Note : Generally every class requires some values for execution and the values that are required for a class to execute are        always send to that class by using the constructor only. 
 
@@ -138,18 +135,20 @@ Note : Generally every class requires some values for execution and the values t
 - Constructors are responsile for initializing fields/variables of a class, static fields are initialized by static 
   constructors and non-static fields are initialized by non-static constructors.
   
-- Static Constructors are implicitly called whereas non-static constructors must be explicitly(We are create instance of a    class) called.
-- Static constructors executes immediately once the execution of a class starts and more over it's the first block of code    to run under a class whereas non-static constructor executes only after create the instance of class as well as each and
+- Static Constructors are implicitly called whereas non-static constructors must be explicitly(We are create instance of a class) called.
+- Static constructors executes immediately once the execution of a class starts and more over it's the first block of code to run under a class whereas non-static 
+  constructor executes only after create the instance of class as well as each and
   every time the instance of class is created.
 - In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for
   zero of no instances are created and "n" times if "n" instances are created.
-- Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors   are impliclity called and more over it's the first block of code to run under the class.
+- Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors   are impliclity called and more over it's the 
+  first block of code to run under the class.
 - Non-static constructors can be overloaded where as static constructor can't be overloaded.
   
-- Every class constains an implicit constructor if not defined explicilty and those implicit constructor are defined based    on the following criteria:
+- Every class constains an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
   - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
     constructor.
-  - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will      not be present at all.
+  - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will not be present at all.
  
  ---------------------------------------------------------------------------------------------------------------------------
 
@@ -157,4 +156,37 @@ Variable of a class
 Instance of a class
 Reference of a class
 
-Class: 
+Variable of a class:  a copy of the class that is not initialized.
+
+Instance of a class: a copy of the class that is initialized by using the new keyword.
+
+Class: It's is user-defined type / data type. / Class is collection object
+If you want to consume of a class, we need to create a copy of it.
+
+int = 100; // int is only a buleprint for your particular data, it doesn't have any memory location.
+int i = 100;
+
+string = "Hello";
+string s = "Hello";
+
+Instance of a class only when we use new keyword.
+
+First f = new First(); //f is instance of class
+    or
+First f;               //f is variable of class
+f = new First();       //f is instance of class
+
+Memory allocation is done only  after creating instance , untill and unless you create an instance memory allocation is not done.  
+Every instance unique itself.  
+The changes made on one instance never relfect on another instance.  
+
+**Reference of a class:**
+References is copy of the class that is initialized by using an existing instance and references of class will not have any memory allocation they will be sharing the same
+memory of the instance that assigned for initializing the variable.
+
+- Reference of class can be called as a pointer to the instance and every modification we perform on the members using instance reflects when access those members thru refernce and vice-versa.
+
+First f1 = new First(); // f1 is instance of class
+First f2 = f1; // f2 is reference of the class;  f2 is pointer to f1; f2 doesn't have any separate memory location. f1 and f2 will be consuming the same memory in this context.
+
+
