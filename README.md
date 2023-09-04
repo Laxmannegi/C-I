@@ -189,4 +189,147 @@ memory of the instance that assigned for initializing the variable.
 First f1 = new First(); // f1 is instance of class
 First f2 = f1; // f2 is reference of the class;  f2 is pointer to f1; f2 doesn't have any separate memory location. f1 and f2 will be consuming the same memory in this context.
 
+###  Access Specifiers:
 
+It's a special kind of modifiers using which we can define the scope of a type and it's members.
+
+- Private
+- Internal
+- Protected
+- Protected Internal
+- Public
+
+**//Consuming members of a class from same class**
+namespace AccessDemo1
+{
+  public class Program 
+  {
+     private void Test1()
+     {
+        Console.WriteLine("Private Method");
+     }
+     
+     internal void Test2()
+     {
+        Console.WriteLine("Internal Method");
+     }
+     
+     protected void Test3()
+     {
+        Console.WriteLine("Protected Method");
+     }
+
+     protected internal void Test4()
+     {
+        Console.WriteLine("Protected Internal Method");
+     }
+     
+     public void Test5()
+     {
+        Console.WriteLine("Public Method");
+     }
+     
+     static void main(string[] args)
+     {
+        Program p = new Program();
+        p.Test1(); p.Test2();p.Test3();
+        p.Test4(); p.Test5();
+        Console.ReadLine();
+     }
+  }
+}
+
+Private Method.
+Internal Method.
+Protected Method.
+Protected Internal Method.
+Public Method.
+
+**Note: A member of a class that is defined with any scope is always access within a class. If there are any ristriction, the ristrict will start when go outside the class.**
+
+//Consuming members of a class from child class of same project
+namespace AccessDemo1
+{
+  class Two:Program
+  {
+    static void Main()
+    {
+      Two t = new Two();
+      t.Test2(); t.Test3(); t.Test4(); t.Test5();
+    }
+  }
+}
+ -- 
+- Private // Member can't be access in child access
+- Internal Method
+- Protected Method
+- Protected Internal
+- Public Method
+
+### Important
+-- Private : The method is accessable only within the class in which it was defined. 
+-- The Default scope of every method of a class is private. / Every member of class is by default private.
+-- We can't declare types as private; so we can't declare private class. 
+-- Elements defined in a namespace cannot be explicitly declared as private, protected or protected internal
+-- What can use on a class is public and internal by default is internal.
+--
+
+//Consuming members of a class from non-child class of same project
+namespace AccessDemo1
+{
+  class Three
+  {
+    static void Main()
+    {
+      Program t = new Program();
+      t.Test2(); t.Test4(); t.Test5();
+    }
+  }
+}
+--
+--Internal
+--Protected Internal
+--Public
+--
+
+**Note : Members declare as a protected in a class are accessable only within the child. Not access from non-child class**
+
+
+//Case 4: Consuming members of a class from child class of different Project
+namespace AccessDemo1
+{
+  class Four:Program
+  {
+    static void Main()
+    {
+      Program t = new Program();
+      t.Test3(); t.Test4(); t.Test5();
+    }
+  }
+}
+--
+--Protected
+--Protected Internal
+--Public
+--
+
+Internal : If you declared a member or classs as **internal** it is accessable only within the project from child and as non-child also.
+
+
+//Case 5: Consuming members of a class from non-child class of different Project
+namespace AccessDemo1
+{
+  class Five
+  {
+    static void Main()
+    {
+      Program t = new Program();
+      t.Test5();
+    }
+  }
+}
+--
+--Public
+--
+
+-- If Pro
