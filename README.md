@@ -331,5 +331,16 @@ namespace AccessDemo1
 --
 --Public
 --
+//
+Can I call private Method? No, Why - not in the same Class  
+Can I call internal Method? No, Why - not in the same Project  
+Can I call protected Method? No, Why - Not a child Class  
+Can I call protected Internal? No, Why - if internal , protected are not accessible , then protected Internal also will not be accessible
 
--- If Pro
+-------------------------------
+Private : Within the class
+Internal : Within the Project both from child and non-child class
+Protected: Within the class and Within the child class
+Protected Internal : Either Within the Project or Within the child class of other projects
+Public: Global can access from anywhere
+-------------------------------
