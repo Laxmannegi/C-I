@@ -344,3 +344,67 @@ Protected: Within the class and Within the child class
 Protected Internal : Either Within the Project or Within the child class of other projects
 Public: Global can access from anywhere
 -------------------------------
+
+### Different kind of Variable
+
+1. Non-static
+2. Static
+3. Constants
+4. Readonly
+
+## Non-static and Static
+
+- If a variable is explicitly declared by using the static modifer or else if a variable is declared under any static block then those varibles are static where as rest of 
+ the other are non-static.
+
+Note: Static members of a class doesn't require the instance of class for initailization or execution also, 
+where as non-static members of a class require the instance of class both for initialization and execution.
+
+- Static variables of a class are initialized immediately once the execution of class start, where as instance variables are initialized only after the creating the class instance as well as each and every time the instance of class is created.
+- In the life cycle of a class a static varible is initialized one and only one time,
+  whereas instance variables are initialized for 0 times if no instance are created and n times if n instances are created.
+  
+- Initialization of instance/non-static variables is associated with instance creation & constructor calling,
+  so instance variables can be initialized thru the constructor also.
+[Image]
+
+class Program
+{
+  int x = 100;          //Non-static
+  static int y= 200;    //static
+  const float pi;  //**Error: A Const field requires a value to be provided**
+  const float pi = 3.14; // **Error: Literal(mean value) of type double cannot be implicity converted to type 'float'; use an 'F' suffix to create a literal of this type**
+  const float pi = 3.14f;
+  static void Main(string[] args)
+  {
+      int z;  //static
+      Console.WriteLine(y); // A Static is initialize immediately once the execution of class start.
+      Console.WriteLine(x); // giving error; Why? -> The reason is - the memory of x is going to be allocated only if we created the instance of the class.
+      Console.WriteLine(pi); // Const and static doesn't required instance of a class.
+      Program p1 = new Program();
+      Console.WriteLine(p1.x);
+
+      Program p2 = new Program();
+      Console.WriteLine(p2.x);
+  }
+}
+
+## Constant
+If a variable is declared by using the keyword "const" we call it as a constant variable 
+and these contant variables can't be modified once after their declaration,
+so it's must to initialize constant variables at the time of declaration only
+
+const float pi = 3.14f;
+
+- The behaviour of constant variables will be similar to the behaviour of static variables.
+   i.e. initialized one and only one time in the life cycle of a class and doesn't require the instance of class for accessing or initializing.
+Note : (If it create of multiple copy of value , it's a wastage of memory creating a same value of every instance)
+
+- The only difference between static and constant variable is static variables can be modified where as constant variable can't be modified.
+
+## Readonly
+ If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants   
+ but after initialization.   
+ It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
+
+ 
