@@ -261,12 +261,13 @@ namespace AccessDemo1
     }
   }
 }
- -- 
-- Private // Member can't be access in child access
-- Internal Method
-- Protected Method
-- Protected Internal
-- Public Method
+
+**Output** 
+> Private // Member can't be access in child access
+> Internal Method
+> Protected Method
+> Protected Internal
+> Public Method
 ```
 ### Important
 - Private : The method is accessable only within the class in which it was defined. 
@@ -288,11 +289,10 @@ namespace AccessDemo1
     }
   }
 }
---
---Internal
---Protected Internal
---Public
---
+**Output**
+> Internal
+> Protected Internal
+> Public
 ```
 **Note : Members declare as a protected in a class are accessable only within the child. Not access from non-child class**
 
@@ -309,11 +309,11 @@ namespace AccessDemo1
     }
   }
 }
---
---Protected
---Protected Internal
---Public
---
+**Output:**
+> Protected
+> Protected Internal
+> Public
+
 ```
 Internal : If you declared a member or classs as **internal** it is accessable only within the project from child and as non-child also.
 
@@ -330,15 +330,16 @@ namespace AccessDemo1
     }
   }
 }
---
---Public
---
-```
 
-Can I call private Method? No, Why - not in the same Class  
-Can I call internal Method? No, Why - not in the same Project  
-Can I call protected Method? No, Why - Not a child Class  
-Can I call protected Internal? No, Why - if internal , protected are not accessible , then protected Internal also will not be accessible
+**Output**
+> Public
+
+```
+> [!IMPORTANT]  
+> Can I call private Method? No, Why - not in the same Class  
+> Can I call internal Method? No, Why - not in the same Project  
+> Can I call protected Method? No, Why - Not a child Class  
+> Can I call protected Internal? No, Why - if internal , protected are not accessible , then protected Internal also will not be accessible
 
 > [!NOTE]  
 > **Private** : Within the class  
@@ -347,16 +348,15 @@ Can I call protected Internal? No, Why - if internal , protected are not accessi
 > **Protected Internal**: Either Within the Project or Within the child class of other projects  
 > **Public**: Global can access from anywhere
 
--------------------------------
 
-### Different kind of Variable
+**_Different kind of Variable_**  
 
 1. Non-static
 2. Static
 3. Constants
 4. Readonly
 
-## Non-static and Static
+**_Non-static and Static_**  
 
 - If a variable is explicitly declared by using the static modifer or else if a variable is declared under any static block then those varibles are static where as rest of 
  the other are non-static.
@@ -371,6 +371,7 @@ where as non-static members of a class require the instance of class both for in
 - Initialization of instance/non-static variables is associated with instance creation & constructor calling,
   so instance variables can be initialized thru the constructor also.
 [Image]
+
 ```c#
 class Program
 {
@@ -393,7 +394,7 @@ class Program
   }
 }
 ```
-## Constant
+**_Constant_**  
 If a variable is declared by using the keyword "const" we call it as a constant variable 
 and these contant variables can't be modified once after their declaration,
 so it's must to initialize constant variables at the time of declaration only
@@ -406,7 +407,7 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 
 - The only difference between static and constant variable is static variables can be modified where as constant variable can't be modified.
 
-## Readonly
+**_Readonly_**  
  If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants   
  but after initialization.   
  It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
