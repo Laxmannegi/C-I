@@ -10,17 +10,18 @@ It is used for developing console, Windows, web application
 1. It's a special method present under a class responsible for initializing the variables of that class.
 2. The name of a constructor method is exactly the same name of the class in which it was present and more over it's a non-value returning method.
 3. Each and every class required this constructor if we want to create the intance of the that class.
-
+```c#
 class Test
 {
   int i;
 }
 
 Test obj = new Test(); // Valid
-
+```
 4. It's the reponsibility of a programmer to define a constructor under his class and if he fails to do so, on behalf of the programmer an **implicit constructor** gets defined in that class by the compiler.
-
-Class Test{
+```c#
+class Test
+{
   int i; string s; bool b;
 
   public Test(){
@@ -29,18 +30,18 @@ Class Test{
   b = false;
   }
 }
-
+```
 5. Implicitly defined constructors are also know as default constructors.
 6. Implicitly defined constructors are parameters less and these constructors are also know as default constructors.
 7. Implicitly defined constructors are public.
 8. We can also define a constructors under the class if we defined it we can call it as explicit constructor
    and explicit constructor can be parameter less or parameterized also.
-
+```c#
    [<modifiers>] <name>( [<parameter list>] )
    {
       -Stmts
    }
-
+```
    **Defining** : Implicit or Explicit
    Calling : Explicit
 
@@ -65,7 +66,7 @@ If a constructor method is defined with any parameters we call that as parameter
 If we want to create multiple instances with the same values then we use these copy constructors, in a copy constructor   the constructor takes the same class as a parameter to it.
 
 let me demostrate it.
-
+```c#
 class CopyConDemo
 {
   int x;
@@ -89,10 +90,10 @@ class CopyConDemo
   cd2.Display();
   }
 }
-
+```
 **Static Constructor:**
 If a constructor is explicitly declared by using the static modifier we call that as Static Constructor. All the constructors we have defined till now are non-static or instance constructors.
-
+```c#
 class Test
 {
   static Test()  //Static constructor defined explicitly
@@ -102,7 +103,7 @@ class Test
   {
   }
 }
-
+```
 1. If a class contains any static variables then only implicit static contructure will be present
    or else we need to define them explicit whereas non-static constructor will be implicitly defined as in every class 
    (except static class) provided we did not define them explicitly.
@@ -162,7 +163,7 @@ Instance of a class: a copy of the class that is initialized by using the new ke
 
 Class: It's is user-defined type / data type. / Class is collection object
 If you want to consume of a class, we need to create a copy of it.
-
+```c#
 int = 100; // int is only a buleprint for your particular data, it doesn't have any memory location.
 int i = 100;
 
@@ -175,7 +176,7 @@ First f = new First(); //f is instance of class
     or
 First f;               //f is variable of class
 f = new First();       //f is instance of class
-
+```
 Memory allocation is done only  after creating instance , untill and unless you create an instance memory allocation is not done.  
 Every instance unique itself.  
 The changes made on one instance never relfect on another instance.  
@@ -185,10 +186,10 @@ References is copy of the class that is initialized by using an existing instanc
 memory of the instance that assigned for initializing the variable.
 
 - Reference of class can be called as a pointer to the instance and every modification we perform on the members using instance reflects when access those members thru refernce and vice-versa.
-
+```c#
 First f1 = new First(); // f1 is instance of class
 First f2 = f1; // f2 is reference of the class;  f2 is pointer to f1; f2 doesn't have any separate memory location. f1 and f2 will be consuming the same memory in this context.
-
+```
 ###  Access Specifiers:
 
 It's a special kind of modifiers using which we can define the scope of a type and it's members.
@@ -199,6 +200,7 @@ It's a special kind of modifiers using which we can define the scope of a type a
 - Protected Internal
 - Public
 
+```c#
 **//Consuming members of a class from same class**
 namespace AccessDemo1
 {
@@ -244,9 +246,9 @@ Internal Method.
 Protected Method.
 Protected Internal Method.
 Public Method.
-
+```
 **Note: A member of a class that is defined with any scope is always access within a class. If there are any ristriction, the ristrict will start when go outside the class.**
-
+```c#
 //Consuming members of a class from child class of same project
 namespace AccessDemo1
 {
@@ -265,15 +267,15 @@ namespace AccessDemo1
 - Protected Method
 - Protected Internal
 - Public Method
-
+```
 ### Important
--- Private : The method is accessable only within the class in which it was defined. 
--- The Default scope of every method of a class is private. / Every member of class is by default private.
--- We can't declare types as private; so we can't declare private class. 
--- Elements defined in a namespace cannot be explicitly declared as private, protected or protected internal
--- What can use on a class is public and internal by default is internal.
---
-
+- Private : The method is accessable only within the class in which it was defined. 
+- The Default scope of every method of a class is private. / Every member of class is by default private.
+- We can't declare types as private; so we can't declare private class. 
+- Elements defined in a namespace cannot be explicitly declared as private, protected or protected internal
+- What can use on a class is public and internal by default is internal.
+  
+```c#
 //Consuming members of a class from non-child class of same project
 namespace AccessDemo1
 {
@@ -291,10 +293,10 @@ namespace AccessDemo1
 --Protected Internal
 --Public
 --
-
+```
 **Note : Members declare as a protected in a class are accessable only within the child. Not access from non-child class**
 
-
+```c#
 //Case 4: Consuming members of a class from child class of different Project
 namespace AccessDemo1
 {
@@ -312,10 +314,10 @@ namespace AccessDemo1
 --Protected Internal
 --Public
 --
-
+```
 Internal : If you declared a member or classs as **internal** it is accessable only within the project from child and as non-child also.
 
-
+```c#
 //Case 5: Consuming members of a class from non-child class of different Project
 namespace AccessDemo1
 {
@@ -331,18 +333,20 @@ namespace AccessDemo1
 --
 --Public
 --
-//
+```
+
 Can I call private Method? No, Why - not in the same Class  
 Can I call internal Method? No, Why - not in the same Project  
 Can I call protected Method? No, Why - Not a child Class  
 Can I call protected Internal? No, Why - if internal , protected are not accessible , then protected Internal also will not be accessible
 
--------------------------------
-Private : Within the class
-Internal : Within the Project both from child and non-child class
-Protected: Within the class and Within the child class
-Protected Internal : Either Within the Project or Within the child class of other projects
-Public: Global can access from anywhere
+> [!NOTE]  
+> **Private** : Within the class  
+> **Internal** : Within the Project both from child and non-child class  
+> **Protected**: Within the class and Within the child class  
+> **Protected Internal**: Either Within the Project or Within the child class of other projects  
+> **Public**: Global can access from anywhere
+
 -------------------------------
 
 ### Different kind of Variable
@@ -367,7 +371,7 @@ where as non-static members of a class require the instance of class both for in
 - Initialization of instance/non-static variables is associated with instance creation & constructor calling,
   so instance variables can be initialized thru the constructor also.
 [Image]
-
+```c#
 class Program
 {
   int x = 100;          //Non-static
@@ -388,14 +392,14 @@ class Program
       Console.WriteLine(p2.x);
   }
 }
-
+```
 ## Constant
 If a variable is declared by using the keyword "const" we call it as a constant variable 
 and these contant variables can't be modified once after their declaration,
 so it's must to initialize constant variables at the time of declaration only
-
+```c#
 const float pi = 3.14f;
-
+```
 - The behaviour of constant variables will be similar to the behaviour of static variables.
    i.e. initialized one and only one time in the life cycle of a class and doesn't require the instance of class for accessing or initializing.
 Note : (If it create of multiple copy of value , it's a wastage of memory creating a same value of every instance)
@@ -407,4 +411,11 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
  but after initialization.   
  It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
 
- 
+ > [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
