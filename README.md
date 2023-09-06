@@ -408,9 +408,14 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 - The only difference between static and constant variable is static variables can be modified where as constant variable can't be modified.
 
 **_Readonly_**  
- If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants   
+ > If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants   
  but after initialization.   
  It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
+
+ > The behaviour of readonly variables will be similar to the behaviour of non-static variables, i.e. initialized only after creating the instance of class and once for each instance of the class is created.
+> The only difference between readonly and instance variables is instance variables can be modified but not readonly variables.
+> Constant variables is a fixed value for the whole class where as readonly variables is a fixed value specific to an instance of class.
+
 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
