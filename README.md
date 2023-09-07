@@ -380,6 +380,11 @@ class Program
   const float pi;  //**Error: A Const field requires a value to be provided**
   const float pi = 3.14; // **Error: Literal(mean value) of type double cannot be implicity converted to type 'float'; use an 'F' suffix to create a literal of this type**
   const float pi = 3.14f;
+  readonly bool flag;
+  public Program()
+  {
+      this.flag = true;
+  }
   static void Main(string[] args)
   {
       int z;  //static
@@ -412,11 +417,22 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
  but after initialization.   
  It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
 
- > The behaviour of readonly variables will be similar to the behaviour of non-static variables, i.e. initialized only after creating the instance of class and once for each instance of the class is created.
-> The only difference between readonly and instance variables is instance variables can be modified but not readonly variables.
+ > The behaviour of readonly variables will be similar to the behaviour of non-static variables, i.e. initialized only after creating the instance of class and once for     each instance of the class is created.
+> The only difference between readonly and instance variables is instance variables can be modified, but not readonly variables.
 > Constant variables is a fixed value for the whole class where as readonly variables is a fixed value specific to an instance of class.
 
+> Constant variable value cannot modified after declaration but Readonly variables cannot modified after initialization. 
+> [!WARNING]
+> A readonly field cannot be assigned to (except in a constructor or a variable initializer)
 
+> [!IMPORTANT]  
+> **what is an instance variable?** 
+> Instance also called as non-static variables what is it, maintains one copy for each instance of the class created and intializes only the instance is created. if you create N instances N copy , zero instance zero copy.  
+> **Static** -> Maintain one value for the whole class , can be modified, will not create multiple copyies. Intializes one and only.  
+> **Constant** -> These variables can't be modified by after declaration, you must assigned the value at the time of declaration only. You can't be modified the value. Maintain one and only one copy though out the class life cycle.  
+> **Readonly** -> These variables also can't be modified but after initialization not after declaration, maintain the copy of each instances. Once the initialization done we can't be modified the value.  
+
+ 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
