@@ -432,7 +432,79 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 > **Constant** -> These variables can't be modified by after declaration, you must assigned the value at the time of declaration only. You can't be modified the value. Maintain one and only one copy though out the class life cycle.  
 > **Readonly** -> These variables also can't be modified but after initialization not after declaration, maintain the copy of each instances. Once the initialization done we can't be modified the value.  
 
- 
+
+--------------------------------------------------------------------------------------------------------------
+
+**Inheritance** :
+It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the class which provides re-usability.
+
+[<modifers>] class <child class> : <parent class>
+class A {
+- Members
+}
+class B:A {
+- Consuming the members of A from here
+}
+
+Note: In inheritance child class can consume members of it's parent class as if it is the owner of those member's (expect private members of parent).
+
+ A => Parent or Base or Super
+ B => Child or Derived or Sub
+
+```c#
+namespace InheritanceProject
+{
+  class Class1
+  {
+    // class1 parent constructor should be public 
+    public Class1()
+    {
+      Console.WriteLine("Class1 constructor is called");
+    }
+    public void Test1()
+    {
+      Console.WriteLine("Method 1");
+    }
+
+    public void Test2()
+    {
+      Console.WriteLine("Method 2");
+    }
+  }
+
+  class Class2 : Class1
+  {
+    //Private Constructor
+    Class2()
+    {
+      Console.WriteLine("Class2 constructor is called");
+    }
+    public void Test3()
+    {
+      Console.WriteLine("Method 3");
+    }
+
+    static void Main()
+    {
+      Class2 c = new Class2();
+      c.Test1();
+      c.Test2();
+      c.Test3();
+    }
+  }
+}
+
+OutPut:
+Class1 constructor is called
+Class2 constructor is called // Private constructor called
+Method 1
+Method 2
+Method 3
+
+**Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1
+When child class instance is created it's implicitly call the parent class constructor.
+```
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
