@@ -474,7 +474,7 @@ namespace InheritanceProject
 
   class Class2 : Class1
   {
-    //Private Constructor
+    //Private Constructor ;  **Class1** constructor should be access to be Class2 not class2 to class1
     Class2()
     {
       Console.WriteLine("Class2 constructor is called");
@@ -504,6 +504,8 @@ Method 3
 **Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1
 When child class instance is created it's implicitly call the parent class constructor.
 ```
+
+
 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
