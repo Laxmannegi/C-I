@@ -451,6 +451,11 @@ Note: In inheritance child class can consume members of it's parent class as if 
  A => Parent or Base or Super
  B => Child or Derived or Sub
 
+1. Parent classes constructor must be accessible to child class, otherwise inheritance will not be possible.
+2. In inheritance child class can access parent classes members but parent classes can never access any member that is purely defined under the child class.
+ Error :  'Class1' does not contain a definition for 'Test3' and no extension method 'Test3' accepting a first argument of type 'Class1' could be four(are you missing a using directive or an assembly reference?)
+
+
 ```c#
 namespace InheritanceProject
 {
@@ -501,10 +506,32 @@ Method 1
 Method 2
 Method 3
 
+-: Whenever the child class instance is created the child class constructor will implicitly call it's parent class constructors.
+
+**Don't Forget**  
+- Even I don't define a constructor their will be a constructor.
+- Default of scope of class members is private
+
 **Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1
 When child class instance is created it's implicitly call the parent class constructor.
 ```
+```
+static void main()
+{
+  Class1 p ; //p is a variable of class1
+  Class2 c = new Class2(); //c is instance of Class2
+  p = c; // p is a reference of parent class created by using child class instance
+  p.Test1();
+  p.Test2();
+  p.Test3(); // Error still we can't be able to call child class method.
+  Console.ReadLine();
+}
+Error:  
+// Use of unassigned local variable 'p'
+```
+We can initialize a parent classes variables by using the child class instance to make it as a reference, So that the reference will be consuming the memory of child class instance, but in this case also we can't call any pure child class members by using the reference.
 
+[Image]
 
 
  > [!NOTE]
