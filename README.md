@@ -533,7 +533,48 @@ We can initialize a parent classes variables by using the child class instance t
 
 [Image]
 
+**Prev:**
+1. Parent class constructor must be accessable to child class or else inheritance will not be possible.  
+2. In inheritance child classes can access parent classes members but a parent class can never access its child class members.  
+3. We can inialize a parent class variable by using it's child classes instance to make it as a reference and that reference will be consuming the memory of child class  
+   instance but with that reference we can't call any child class members.  
+**4. Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e Object class of system namespace.**  
 
+ > [!IMPORTANT]
+> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the > class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class > > member of the object class.  
+> 4 Important memeber are  
+> - Equal()  
+> - GetHashCode()  
+> - GetType()  
+> - ToString()
+>   are accessable from any where.  
+[Image]
+
+
+Object   
+
+Class1  
+
+Class2  
+
+Class3  
+
+Types of Inheritance:
+No. of parent classes a child class have or the no. of child classes a parent class have.
+1. Single
+2. Multi-Level
+3. Hierarchical
+4. Hybrid
+5. Multiple
+
+[Image]
+
+
+Single Inheritance
+Multiple Inheritance
+
+- If at all a class has 1 immediate parent class to it we call it as single inheritance and if it has more than 1 immediate parent class to it we call it as multiple inheritance.
+- 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
