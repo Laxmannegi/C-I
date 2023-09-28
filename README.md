@@ -515,7 +515,7 @@ Method 3
 **Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1
 When child class instance is created it's implicitly call the parent class constructor.
 ```
-```
+```C#
 static void main()
 {
   Class1 p ; //p is a variable of class1
@@ -540,8 +540,10 @@ We can initialize a parent classes variables by using the child class instance t
    instance but with that reference we can't call any child class members.  
 **4. Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e Object class of system namespace.**  
 
- > [!IMPORTANT]
-> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the > class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class > > member of the object class.  
+ > [!IMPORTANT]  
+> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the 
+  class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class  
+  member of the object class.    
 > 4 Important memeber are  
 > - Equal()  
 > - GetHashCode()  
@@ -574,7 +576,59 @@ Single Inheritance
 Multiple Inheritance
 
 - If at all a class has 1 immediate parent class to it we call it as single inheritance and if it has more than 1 immediate parent class to it we call it as multiple inheritance.
+- In C# we don't have support for multiple inheritance thru classes. What we are provided is only single inheritance thru classes.
 - 
+
+```c#
+
+namespace InheritanceProject
+{
+  class Class1
+  {
+    public Class1(int i)
+    {
+      Console.WriteLine("Class1 Constructor is called": + i );
+    }
+    public void Test1()
+    {
+      Console.WriteLine("Method 1");
+    }
+    public void Test2()
+    {
+      Console.WriteLine("Method 2");
+    }
+  }
+
+  class Class2
+  {
+    public Class2(int a):base(a)
+    {
+      Console.WriteLine("Class2 Constructor is called");
+    }
+    public void Test3()
+    {
+      Console.WriteLine("Method 3");
+    }
+  }
+
+  static void Main()
+  {
+    Class2 c = new Class2(10);
+    Console.ReadLine(); 
+  }
+}
+
+6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor
+// but only if the constructor is paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call
+// it's parent's constructor, so to overcome the problem it the responsibility of the programmer to expilicitly call parent classes constructor from child
+// class constructor and pass values to those paramters.
+// To call parent's constructor from child class we need to use the **base** keyword.
+```
+
+**Entity :** It's a living or non living object associated with a set of attributes.  
+
+step 1: Identify the entities that are associated with the application we are developing.
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
