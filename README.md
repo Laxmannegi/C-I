@@ -647,9 +647,44 @@ You may have a dought return type are different? yes, return is different , retu
 --------------------------------------
 Polymorphism
 --------------------------------------
+--Pending
 
 
+Method Overriding:
+It's an approach of re-implementing a parent classes method under the child class with the same signature.
 
+```C#
+Class1
+Show()
+Show(int i)  
+Test()  
+  
+Class2 : Class1
+Show(string s)  
+Test()  
+
+```
+Overloading:  
+1. In this case we define multiple methods with the same name by changing their parameters.
+2. This can be performed either within a class as well as between parent child classes also.
+3. While overloading a parent classes method under the child class, child class doesn't require to take any permission from the parent class.
+4. Overloading is all about defining multiple behaviours to a Method.
+
+   
+Overriding:  
+1. In this case we define multiple method with the same name and same paraters.
+2. This can be performed only between parent child classes can never be performed with in the same class.
+3. While overriding a parent's method under child class requires a permission from it's parent.
+4. Overriding is all about changing the behaviour of parent's class method under child class.
+
+ Note : If we want to override a parent's method under the child class first that method should be declare by using the virtual modifier in parent class.
+
+ Class1
+ public virtual void Test() //Overidable
+   - Any virtual method of the parent class can be overriden by the child class if required by using the override modifier.  
+
+ Class2:Class1
+ public override void Test() // Overriding
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
