@@ -629,6 +629,27 @@ namespace InheritanceProject
 
 step 1: Identify the entities that are associated with the application we are developing.
 
+-------------------------------------------
+Method Overloading:  
+-------------------------------------------
+
+public void Test()  
+public void Test(int i)  
+public void Test(string s)  
+public void Test(int i, string s) // Order of parameter change  
+public void Test(string s, int i) // Order of parameter change  
+
+public string Test() //Invaild --Parameter is important; Return can't be consider; bacause ambiguity of method come out (same method name and same paramter so, identification of which method has to been call is a confusion, so execution was will not take place for you. 
+You may have a dought return type are different? yes, return is different , return are return of method come will into picture in the end of execution but the confusion is here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
+
+**The call is ambiguous between the following methods or properties: 'Program.Test()' and 'Program.Test()'.**
+
+--------------------------------------
+Polymorphism
+--------------------------------------
+
+
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
