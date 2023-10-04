@@ -650,7 +650,7 @@ Polymorphism
 --Pending
 
 
-Method Overriding:
+# Method Overriding:
 It's an approach of re-implementing a parent classes method under the child class with the same signature.
 
 ```C#
@@ -685,6 +685,182 @@ Overriding:
 
  Class2:Class1
  public override void Test() // Overriding
+
+```C#
+
+namespace MethodOverriding
+{
+  class LoadParent
+  {
+    public void Show()
+    {
+      Console.WriteLine("Parent show Method is called");
+    }
+    public virtual void Test()
+    {
+      Console.WriteLine("Parent Test Method is called");
+    }
+  }
+
+  class LoadChild:LoadParent
+  {
+    //Overloading show's method in child class
+    public void Show(int i)
+    {
+      Console.WriteLine("Child's Show Method Is Called");
+    }
+    //Overriding Test's method in child class
+    public override void Test()
+    {
+      Console.WriteLine("Child's Test Method Is Called");
+    }
+  }
+
+  static void Main()
+  {
+    LoadChild c = new LoadChild();
+    c.show(5);
+    c.show();
+    c.Test();
+  }
+}
+
+```
+# Method Hiding:
+
+- Method overriding is an approach of re-implementing a parent classes method under the child class exactly with the same name and signature.
+
+- Method Hiding/Shadowing is also an approach of re-implementing a parent classes method under the child class exactly with the same name and signature.
+  
+- In the first case child class re-implements it's parent class method which are declare as virtual, where as in the second case child class can re-implement any parent's method even if the method is not declared as virutal.
+
+```C#
+namespace MethodHiding
+{
+  class ParentClass
+  {
+    public virtual void Test1()
+    {
+      Console.WriteLine("Method Test1 from parent class.");
+    }
+
+    public void Test2()
+    {
+      Console.WriteLine("Method Test2 from parent class");
+    }
+  }
+
+  class ChildClass:ParentClass
+  {
+    public override void Test1() //Method Overriding
+    {
+      Console.WriteLine("Method Test1 from child class");
+    }
+
+    public new void Test2()  //Method Hiding/Shadowing
+    {
+      Console.WriteLine("Method Test2 from child class");
+    }
+    or
+
+    public void Test2()  //warning message
+    {
+      Console.WriteLine("Method Test2 from child class");
+    }
+
+    static void Main()
+    {
+      ChildClass c = new ChildClass();
+      c.Test1();
+      c.Test2();
+    }
+  }
+}
+```
+[Image] Warning message method hiding;
+
+
+
+We can re-implement a parent class method under child class by using 2 approaches:
+  1. Method Overriding
+  2. Method Hiding/Shadowing
+
+- After re-implementing parent class methods under child classes the child class instance will start calling the local methods only that is the re-implemented method if required in any case we can also call the parent methods from child classes by using 2 approaches.
+  1. Directly create the instance of parent class under child class, We can parent's method from child class.
+  2. By using the **base keyword** also we can call parent's method from child class, but keyword like this and **base can't be use from static blocks**
+
+[image]
+
+
+
+Note:
+- A Parent class reference even if created by using the child class instance cannot access any members that are purely defined under the child class. **But can call overridden members of child class.** Because overriden members are not considered as pure child class members, but members which are re-implemented by using the approach of hiding are considered as pure child class members and not accessible to parent's references.
+   
+- using P I can't purely define parent class method..
+  
+```C#
+static void Main()
+{
+  ChildClass c = new ChildClass(); //c is Instance of child class
+  ParentClass p = c; // P is a reference of parent class by created by using child's
+  p.Test1(); //Invokes child classes method // In overriding a parent a class reference can call child class overridden members 
+  p.Test2(); //Invokes parent classes method // but in hiding a parent a class reference can't call child class method by which is re-implemented by hiding approach
+}
+
+**Important:**  
+B/w : In overriding parent class as a given a permission for the child for re-implementing the method and when the child class re-implement those method,
+parent class will identify them / recogized them, because the parent class recoginzed us,  parent class able to call child methods.  
+But In method hiding remember without taking any permission from parent class , child class started re-implemention,
+because the child class started without taking any permission parent reference will not recognized this. so in this case invoke parent class method.  
+
+```
+
+# Operator Overloading
+
+
+Method Overloading is an approach of defining multiple behaviours to a method and those behaviours will vary based on the parameters of that method.
+
+String str = "Hello how are you";
+str.Substring(14);  you;
+str.Substring(10);  are you;
+str.Substring(10, 3) are;
+
+
+Operator overloading is also an approach defining multiple behaviours to an operator and those behaviours will vary based on the operand types between which the operator
+is used. For example + is an addition operator when used between 2 numeric operands and it is an concatenation operator when used between 2 string operands.
+  Number + Number  => Addition
+  String + String  => Concatenation
+
+int x = 10;
+int y = 20;
+int z = x + y; // "+ so, here the is confusion is all about, how exactly a computer knows  when + is used to b/w this, it has to add two number".
+int m = x -y;
+int b = x > y;
+
+public static int operator +(int a, int b)
+public static int operator -(int a, int b)
+public static bool operator >(int a, int b)
+public static string operator +(string a , string b)
+public static bool operator ==(string a, string b)
+public static bool operator !=(string a, string b)
+
+string s1 = "Hello";
+string s2 = "World";
+string s3 = s1 + s2;
+bool b1 = s1 == s2;
+bool b2 = s1 != s2;
+
+"Can we substraction two string, no , if you try do also we get an error why we get an error the reason is there no predefine operation method avaiable for performing a substraction between two string "
+[image]
+
+[<modifiers>] static <return type> operator <opt> (<operand types>)
+{
+
+}
+
+
+
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
