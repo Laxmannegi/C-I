@@ -820,17 +820,19 @@ because the child class started without taking any permission parent reference w
 
 Method Overloading is an approach of defining multiple behaviours to a method and those behaviours will vary based on the parameters of that method.
 
+```C#
 String str = "Hello how are you";
 str.Substring(14);  you;
 str.Substring(10);  are you;
 str.Substring(10, 3) are;
-
+```
 
 Operator overloading is also an approach defining multiple behaviours to an operator and those behaviours will vary based on the operand types between which the operator
 is used. For example + is an addition operator when used between 2 numeric operands and it is an concatenation operator when used between 2 string operands.
   Number + Number  => Addition
   String + String  => Concatenation
 
+```C#
 int x = 10;
 int y = 20;
 int z = x + y; // "+ so, here the is confusion is all about, how exactly a computer knows  when + is used to b/w this, it has to add two number".
@@ -849,7 +851,7 @@ string s2 = "World";
 string s3 = s1 + s2;
 bool b1 = s1 == s2;
 bool b2 = s1 != s2;
-
+```
 "Can we substraction two string, no , if you try do also we get an error why we get an error the reason is there no predefine operation method avaiable for performing a substraction between two string "
 [image]
 
@@ -869,3 +871,5 @@ bool b2 = s1 != s2;
 
 > [!WARNING]
 > Critical content demanding immediate user attention due to potential risks.
+
+Can we overload staic method or Override static method
