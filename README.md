@@ -859,7 +859,163 @@ bool b2 = s1 != s2;
 
 }
 
+# Abstract Class and Abstract Method
 
+- A Method without any method body is known as an abstract method, What the method contians is only declaration of the method.
+- If a method is declared as abstract under any class then the child class of that class is reponsible for implementing the method.
+- The concept of abstract methods will be nearly similar to the concept of Method Overriding.
+
+- A class under which we define abstract methods is known as an abtract class.
+
+  Note : To define a method or class as abtract we require to use abstract keyword on them.
+  
+```C#
+abstract class Math
+ {
+    public abstract void Add(int, int y);
+ }
+```
+
+```C#
+class Class1
+{
+  public virtual void Method1()
+  {
+
+  }
+}
+class Class2 : Class1
+{
+  public override Method1() // Optional
+  {
+   -- Re-implementation
+  }
+}
+```
+
+```C#
+abstract class Class1
+{
+  public abstract void Method1();
+}
+class Class2 : Class1
+{
+  public override Method1() // Mandatory
+  {
+   -- implementation
+  }
+}
+```
+
+# Abstract Class:
+  - Abstract Methods
+  - Non-abstract Methods
+
+# Child class of Abstract Class:
+- Implemenation each and every abstract method of parent class.
+- Now only we can consume non-abstract methods of parent class.
+
+
+-----------------------------------
+Abstract Method : A  method without any body is known as abstract method.
+Abstract Class : A Class which contains any abstract members in it is known as abstract class.
+
+Entities: Rectangle, Circle, Triangle, Cone
+
+Rectangle: Width, Height
+Circle: Radius, Pi
+Triangle : Width, Height
+Cone : Radius, Height, Pi
+
+Width, Height, Radius, Pi
+
+```C#
+
+namespace FigureNamespace
+{
+  public abstract class Figure
+  {
+    public double Width, Height, Radius;
+    public const double Pi = 3.14;
+    public abstract double GetArea();
+  }
+
+  public class Rectangle : Figure
+  {
+    public Rectangle(double Width, double Height)
+    {  
+      this.Width = Width;
+      this.Height = Height;
+    }
+    public override double GetArea()
+    {
+      return Width * Height;
+    }
+  }
+
+  public class Circle:Figure
+  {
+    public Circle(double Radius)
+    {
+      this.Radius = Radius; 
+    }
+    public override double GetArea()
+    {
+      return Pi * Radius * Radius;
+    }
+  }
+
+  public class Cone:Figure
+  {
+    public Cone(double Radius, double Height)
+    {
+      this.Radius = Radius;
+      this.Height = Height;
+    }
+    public override double GetArea()
+    {
+      return Pi * Radius (Radius + Math.Sqrt(Height * Height + Radius * Radius));
+    }
+  }
+  class TestFigure
+  {
+    static void Main()
+    {
+      Rectangle r = new Rectangle(12.67, 56.78);
+      Circle c = new Circle(45.67);
+      Cone cn = new Cone(34.98, 12.98);
+
+      Console.WriteLine("Area of Rectangle: " + r.GetArea());
+      Console.WriteLine("Area of Circle:" + c.GetArea())
+      Console.WriteLine("Area of Cone:" + cn.GetArea())
+
+      Console.ReadLine();
+    }
+  }
+}
+```
+--------------------------------------------------------------
+# Interface
+
+Class: It's a user-define data type
+Interface: This is also an user-defined data type only.
+
+Class: Non-Abstract Methods (Methods with method body)
+Abstract Class : Non-Abstract Methods (Methods with method body) and also Abstract Method (Method without method body).
+
+Interface:  Contains only Abstract Methods (Methods without method body).
+
+Note: A class can inherit from a class and interface at a time.
+1. The default scope the members of an interface is public whereas it's private in case of a class.
+2. By Default every member of an interface is abstract so we don't require to use abstract modifier on it again.
+3. We can't declare any fields/variables under an interface.
+4. If required an interface can inherit from another interface.
+5. Every member of an interface should be implement under the child class of the interface with out fail, but while implementing we don't require to use override modifer just like we have done in case of abstract class.
+6. We can't create a instance of Interdace , but we can created a reference of interface.
+   
+[interface image]
+
+public abstract void Add(int a, int b);
 
 
  > [!NOTE]
