@@ -1018,6 +1018,107 @@ Note: A class can inherit from a class and interface at a time.
 public abstract void Add(int a, int b);
 
 
+What is an interface?
+An interface is also a user-defined type like a class but can contain only abstract methods in it.
+
+How to define a interface ?
+[<modifiers>] interface <Name>
+{
+  - Abstract Member Declarations
+}
+
+Multiple Iheritance with Interface:
+
+- single
+- Multi-Level
+- Hierarchical
+- Multiple
+- Hybrid
+
+- Even if multiple inheritance is not supported thru classes in Csharp, it is still supported thru interfaces.
+
+- A class can have one and only one immediate parent class, whereas the same class can have any number of interfaces as it's parent i.e multiple inheritance is supported in CSharp thru interfaces.
+
+- [image]
+
+**Why multiple inheritance is not supported thru class and how is it supported thru interfaces?**  
+Multiple inheritance is not supported thru class because we came accross ambiguity problem
+
+```text
+You are dealing with ambiguous situations when you see that there is more than one solution to a problem, but you aren't sure which one to do. Or, it might be when you come to a conclusion about a situation, but before you can act on it, the situation has already changed.
+```
+
+```C#
+namespace InterfaceProject
+{
+  interface Interface1
+  {
+    void Test();
+  }
+  interface Interface2
+  {
+    void Test();
+  }
+  class MultipleInheritanceTest: Interafce1, Interface2
+  {
+    public void Test()
+    {
+      Console.WriteLine("Interface Method implemented in child class");
+    }
+  }
+}
+```
+# Structure
+
+- Class is a user-defined type.
+- Structure is also a user-defined type.
+
+- Structure in C language can contain only fields in it where as structure in CSharp can contain most of the members what a class can contain like Fields, Methods, Constructors, Properties, Indexers, Operator Methods etc.
+
+  [<modifiers>] struct <name>
+  {
+    - Define members here
+  }
+
+  ```C#
+  namespace DemoProject
+  {
+    struct MyStruct
+    {
+      Public void Display()
+      {
+        Console.WriteLine("Method in a structure");
+      }
+      static void Main()
+      {
+        MyStruct m1 = new MyStruct();
+        m1.Display();
+        Console.ReadLine();
+      }
+    }
+  }
+  ```
+
+Difference between Class and Structure:
+
+1. Class is a reference type whereas structure is a value type.
+2. Memory allocation for instances of class is performed on managed heap whereas memory allocation for instance of structure is performed on stack.
+3. We use class for representing an entity with larger volumes of data whereas we use structures for representing smallar volumes of data.
+
+Note:  All pre-defined data types under the libraries of our language which comes under reference type category E.g: String and Object are classes, whereas all the pre-defined data types which come under value type category E.g: int(Int32), float(single), bool(boolean) are structures.
+
+4. In case of a class "new" is mandatory for creating the instance whereas in case of a structure it is only optional.
+5. Fields of a class can be initialized at the time of declaration whereas it's not possible with fields in structure.
+
+Note: If the structure contain any fields then we need to initialize those fields either by explcitly calling the default constructor with the help of "new" or else if we are not using "new" for creating the instance we need to explicitly assign value to the field referring it thru the instance and assign values.
+
+[image]
+
+6. We can define any constructor under the class that is either parameter less or parameterized and if no constructor is defined
+   then there will be an implicit constructor which is default whereas in case of a structure parameter less of default whereas in
+   case of a structure parameter less of default constructor is always implicit and can't be defined explicitly again, what we can
+   define is only parameterized constructor.
+   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
