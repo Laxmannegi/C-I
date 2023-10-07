@@ -1148,7 +1148,8 @@ namespace DemoProject
   }
 }
 ```
-
+Properties:
+Property is a member of class using which we can expose values associated with a class to the outside enviroment.
 
 
  > [!NOTE]
