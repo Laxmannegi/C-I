@@ -1118,7 +1118,39 @@ Note: If the structure contain any fields then we need to initialize those field
    then there will be an implicit constructor which is default whereas in case of a structure parameter less of default whereas in
    case of a structure parameter less of default constructor is always implicit and can't be defined explicitly again, what we can
    define is only parameterized constructor.
-   
+
+7. If zero constructor are defined in a class after compilation where will be 1 constructor (Implicit) and if we define "n" constructors in a class after compilation there will be "n" constructors only whereas in case of a structure if we define "0" constructors then after compiliation there will be 1 constructor (Implicit) and if we define "n" constructors after compilation ther will be "n + 1" constructors.
+8. Class can be inherited by other classes, whereas structure can't be inherited by other structures i.e. a structure doesn't support inheritance.
+9. A class can implement an interface same as that a structure also can implement an interface.
+
+
+# Enumeration or Enum Type:
+
+```C#
+[<modifiers>] enum <name> [:Type]
+{
+-- list of name constant values
+}
+
+namespace DemoProject
+{
+  public enum Days
+  {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Firday
+  }
+  class TestClass
+  {
+    
+  }
+}
+```
+
+
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
