@@ -1152,6 +1152,145 @@ Properties:
 Property is a member of class using which we can expose values associated with a class to the outside enviroment.
 
 
+# Indexers:
+Modifier <type> this [int index]
+{
+  [get {<stmts>}] //Get Accessor
+  [set {<stmts>}] //Set Accessor
+}
+
+[image]
+
+```C#
+namespace std
+{
+  public object this [int index]
+  {
+    get
+    {
+     if (index == 0)
+      return Eno;
+     else if (index == 1)
+      return Ename;
+     else if (index == 2)
+      return Job;
+     else if (index == 3)
+      return salary;
+     else if (index ==4)
+      return Dname;
+     else if (index == 5)
+      return Location;
+     else
+      return null;
+    }
+
+  set
+  {
+    if(index == 1)
+     Eno = (int)value;
+    else if(index ==2)
+     Ename = (string)value;
+    else if(index == 3)
+     Job = (string)value;
+    else if(index == 4)
+     salary = (double) value
+    else if(index == 5)
+     Dname = (string)value;
+    else if(index == 6)
+     Location = (string)value;
+
+  }
+}
+  public object this [string name]
+  {
+    get
+    {
+     if (name.ToUpper() == "ENO")  // Case sensitive issue in this case
+      return Eno;
+     else if (name.ToUpper() == "ENAME")
+      return Ename;
+     else if (name.ToUpper() == "JOB")
+      return Job;
+     else if (name.ToUpper() == "SALARY")
+      return salary;
+     else if (name.ToUpper() == "DNAME")
+      return Dname;
+     else if (name.ToUpper() == "LOCATION")
+      return Location;
+     else
+      return null;
+    }
+}
+}
+``
+Note:  
+If you define a indexer in class, class is working like virtual array.
+
+-------------
+# Delegate
+
+It's a type safe function pointer.
+(Delegate is type, a class is a type stuct is a type , interface is a type all these are user-define type , class is user-define type , interface is a user-define type. as the Delegate is also user-define type.
+generally if we understand the Different b/w class and struct the main difference b/w class and struct is  class is reference type and struct is a value type same as delegate is a reference type. )
+
+( If your are with vs every you define class will be under namespace same way a struct, interface whatever you are doing everthing are define under a namespace, why type are going to be define under a namespaces namespace is a logical container of types and because namespace is a logical container of type we are going to be all type inside namespace. so, Now if the question aries where i should a define a namespace  )
+
+- A delegate holds the reference of a method and then calls the method for execution.  
+
+- To call a method by using a delegate we have 3 steps:  
+
+1. Define a delegate  
+Modifier delegate void [type <name>]([<parameter list>])  
+
+public delegate void AddDelegate(int x, int y);  
+public void AddNums(int a, int b);  
+
+Public delegate string SayDelegate(string name) //delegete signature is going to match return type and parameter of method
+public static string SayHello(string name)
+
+2. Create an instance of delegate
+  public delegate void AddDelegate(int x, int y);
+  public delegate void SayDelegate(string name);
+
+3. Now call the delegate by passing required parameter values, so that interally the method which is method with the delegate
+   get execute
+
+```C#
+namespace DelegateProgram
+{
+  public delegate void AddDelegate(int x, int y);
+  public delegate void SayDelegate(string name);
+  
+  class Program
+  {
+    public void AddNums(int a, int b)
+    {
+      Console.WriteLine(a+b);
+    }
+    public static string SayHello(string name)
+    {
+      return "Hello " + name;
+    }
+    static void Main(string[] args)
+    {
+      Program p = new Program();
+      //Your method is a non-static method, and right now you are creating an instance of a delegate in a static block,
+       and very important rule is - A non-static member of class can't access directly , you can access it only thru instance of a         class
+      AddDelegate ad = new AddDelegate(p.AddNums);
+      SayDelegate sd = new SayDelegate(SayHello); // With the class we can directly access the name of method,
+                                                      outside the class with name of the class we can access
+      add(1,1);
+      ad.Invoke(1,1) // another way to call method
+      string value = sd.Invoke("Laxman");
+      //p.AddNums(1 ,1);
+      //string value = Program.SayHello("Laxman");
+      Console.WriteLine(value);
+      Console.ReadKey();
+    }
+  }
+}
+```
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
@@ -1162,3 +1301,5 @@ Property is a member of class using which we can expose values associated with a
 > Critical content demanding immediate user attention due to potential risks.
 
 Can we overload staic method or Override static method
+What is private constructor?
+What is the advantge of call a method by delegate?
