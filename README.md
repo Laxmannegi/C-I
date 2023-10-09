@@ -1226,7 +1226,7 @@ namespace std
 Note:  
 If you define a indexer in class, class is working like virtual array.
 
--------------
+-----------
 # Delegate
 
 It's a type safe function pointer.
@@ -1291,6 +1291,245 @@ namespace DelegateProgram
 }
 ```
 
+------------------------
+# Multicast Delegate
+
+```C#
+namespace DelegateProject
+{
+  public delegate void RectDelegate(double Width, double Height);
+  
+  class Rectangle
+  {
+    public void GetArea(double Width, double Height)
+    {
+      Console.WriteLine(Width * Height);
+    }
+    public void GetPerimeter(double Width, double Height)
+    {
+      Console.WriteLine(2 * (Width + Height));
+    }
+
+    static void Main()
+    {
+      Rectangle rect = new Rectangle();
+      // RectDelegate obj = new RectDelegate(rect.GetArea); // another way to intialize delegate
+      RectDelegate obj = rect.GetArea;
+      obj  += rect.GetPerimeter;
+      obj.Invoke(12.34, 56.78);
+
+      //rect.GetArea(12.34, 56.78);
+      //rect.GetPerimeter(12.34, 56.78);
+
+      Console.ReadLine();
+    }
+  }
+}
+// Note :
+// We cear full you are using a multicasting delegate all these have the same signature means the return
+// and the parameter type should match with each other.  
+// If these two method are value returning , it's override the first value.  
+
+
+```
+
+# Anonymous Methods:
+Anonymous is also related to the delegate only. 
+Without binding a named method to the delegate you can bind code block to the delegate.
+
+```C#
+namespace DelegateProject
+{
+  public delegate string GreetingDelegate(string name);
+  class AnonymousMethods
+  {
+    
+    static void Main()
+    {
+      GreetingDelegate obj = delegate(string name)
+      {
+        return "Hello " + name + " a very good morning!";
+      }
+      string str = obj.Invoke("Laxman");
+      Console.WriteLine(str);
+      Console.ReadLine();
+    }
+  }
+}
+
+```
+
+[image]
+[image]
+[image]
+
+
+# Fun, Action and Predicate Delegates
+
+**Generic Delegates:**  
+func  
+action  
+predicate  
+
+
+```c#
+namespace DelegateProject
+{
+  public delegate double Delegate1(int x, float y, double z);
+  public delegate void Delegate2(int x, flaot y, double z);
+  public delegate bool Delegate3(string str);
+  class GenericDelegates
+  {
+    public static double AddNums1(int x, float y, double z)
+    {
+      return x + y + z;
+    }
+
+    public static void AddNums2(int x, float y, double z)
+    {
+      Console.WriteLine(x + y + z);
+    }
+
+    public static bool CheckLength(string str)
+    {
+      if(str.Length > 5)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    static void Main()
+    {
+      Delegate1 obj1 = AddNums1;
+      double value = obj1.Invoke(100, 34.5f, 193.465);
+      Console.WriteLine(value);
+
+      Delegate2 obj2 = AddNums2;
+      obj2.Invoke(100,34.5f,194.453);
+
+      Delegate3 obj3 = CheckLength;
+      obj3.Invoke("HelloWorld");
+    }
+  }
+}
+```
+# To
+
+```c#
+namespace DelegateProject
+{
+  class GenericDelegates
+  {
+    public static double AddNums1(int x, float y, double z)
+    {
+      return x + y + z;
+    }
+
+    public static void AddNums2(int x, float y, double z)
+    {
+      Console.WriteLine(x + y + z);
+    }
+
+    public static bool CheckLength(string str)
+    {
+      if(str.Length > 5)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    static void Main()
+    {
+      Func<int, float, double, double> obj1 = AddNums1;
+      double value = obj1.Invoke(100, 34.5f, 193.465);
+      Console.WriteLine(value);
+
+      Action<int, float, double> obj2 = AddNums2;
+      obj2.Invoke(100,34.5f,194.453);
+
+      Predicate<string> = CheckLength;
+      bool statuc = obj3.Invoke("Hello /World");
+      Console.WriteLine(status);
+      Console.ReadLine();
+    }
+  }
+}
+```
+
+# Lamda Expression
+```c#
+namespace DelegateProject
+{
+  class GenericDelegates
+  {
+    static void Main()
+    {
+      Func<int, float, double, double> obj1 = (x,y,z) =>
+      {
+         return x + y + z;
+      };
+      double value = obj1.Invoke(100, 34.5f, 193.465);
+      Console.WriteLine(value);
+
+      Action<int, float, double> obj2 = (x,y,z) =>
+      {
+         Console.WriteLine(x + y + z);
+      };
+      obj2.Invoke(100,34.5f,194.453);
+
+      Predicate<string> = (str) =>
+      {
+          if(str.Length > 5)
+            return true;
+          return false;
+      };
+      bool status = obj3.Invoke("Hello /World");
+      Console.WriteLine(status);
+      Console.ReadLine();
+    }
+  }
+}
+```
+
+# More Simplify Lamda Expression
+```c#
+namespace DelegateProject
+{
+  class GenericDelegates
+  {
+    static void Main()
+    {
+      Func<int, float, double, double> obj1 = (x,y,z) => x + y + z;
+      double value = obj1.Invoke(100, 34.5f, 193.465);
+      Console.WriteLine(value);
+
+      Action<int, float, double> obj2 = (x,y,z) => Console.WriteLine(x + y + z);
+      obj2.Invoke(100,34.5f,194.453);
+
+      Predicate<string> = (str) =>
+      {
+          if(str.Length > 5)
+            return true;
+          return false;
+      };
+      bool status = obj3.Invoke("Hello /World");
+      Console.WriteLine(status);
+      Console.ReadLine();
+    }
+  }
+}
+```
+
+# Extension Method
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
@@ -1303,3 +1542,6 @@ namespace DelegateProgram
 Can we overload staic method or Override static method
 What is private constructor?
 What is the advantge of call a method by delegate?
+
+---
+In last video I was just being damoustrating about delegate 
