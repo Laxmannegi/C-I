@@ -200,7 +200,7 @@ It's a special kind of modifiers using which we can define the scope of a type a
 - Public
 
 ```c#
-**//Consuming members of a class from same class**
+//Consuming members of a class from same class
 namespace AccessDemo1
 {
   public class Program 
@@ -1542,6 +1542,7 @@ namespace DelegateProject
 Can we overload staic method or Override static method
 What is private constructor?
 What is the advantge of call a method by delegate?
-
+how authentication work?
+way to handle exception in .net core and angular?
 ---
 In last video I was just being damoustrating about delegate 
