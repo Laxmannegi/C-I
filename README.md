@@ -1539,14 +1539,18 @@ namespace DelegateProject
 > [!WARNING]
 > Critical content demanding immediate user attention due to potential risks.
 
-Can we overload staic method or Override static method
-What is private constructor?
-What is the advantge of call a method by delegate?
-how authentication work?
-way to handle exception in .net core and angular?
-Difference between Array and ArrayList?
-Temp Table use case
-CTE Table use case
-How to handle exeception in SP
----
-In last video I was just being damoustrating about delegate 
+```Text
+- Can we overload staic method or Override static method  
+- What is private constructor?  
+- What is the advantge of call a method by delegate?  
+- how authentication work?  
+- way to handle exception in .net core and angular?  
+- Difference between Array and ArrayList?  
+- Temp Table use case  
+- CTE Table use case  
+- How to handle exeception in SP
+- how authentication work?
+- Way to handle exception in .net core and angular?
+```
+
+In last video I was just being demonstrating about delegate 
