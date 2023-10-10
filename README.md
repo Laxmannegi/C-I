@@ -1544,5 +1544,9 @@ What is private constructor?
 What is the advantge of call a method by delegate?
 how authentication work?
 way to handle exception in .net core and angular?
+Difference between Array and ArrayList?
+Temp Table use case
+CTE Table use case
+How to handle exeception in SP
 ---
 In last video I was just being damoustrating about delegate 
