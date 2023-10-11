@@ -1529,6 +1529,107 @@ namespace DelegateProject
 ```
 
 # Extension Method
+- This is a new feature that has been added in CSharp 3.0.
+- It's a mechanism of addding new methods into an existing class or structure also without modifying the source code of the original type and in this process we don't
+  require any permissions from original type and the original type doesn't require any re-compilation.
+- Extension Methods are define as static but once they are bound  with any class or structure they turn into non-static.
+- If an extension method is defined with the same name and signature of an existing method in the class, then extension method will not be called and the preference 
+  always goes to the orignal method only.
+- The first parameter of an extension method should be the name of the type to which that method has to be bound with and this parameter is not taken into consideration     while calling the extension method.
+- An extension method should have one and only one binding parameter and it should be in the first place of the parameter list.
+
+  Note : if an extension method is defined with n parameter then while calling it there will be n-1 parameters only because the binding parameter is excluded.
+  
+- Inheritance is a mechanism using which we can extend the functionalities of a class.
+
+- We can't apply inheritance on sealed classes.
+- If the original type is not a class and it's a structure. (We can't pre)
+
+
+```C#
+namespace ExtensionMethodProject
+{
+  class Program
+  {
+    public void Test1()
+    {
+      Console.WriteLine("Method 1")'
+    }
+
+    public void Test2()
+    {
+      Console.WriteLine("Method 2")'
+    }
+
+    static void Main(string[] args)
+    {
+      Program p = new Program();
+      p.Test1(); p.Test2();
+      Console.ReadLine();
+    }
+  }
+}
+```
+
+
+```C#
+namespace ExtensionMethodProject
+{
+  static class StatClass
+  {
+    public static void Test3(this Program P, int i)
+    {
+      Console.WriteLine("Method 3 : " + i);
+    }
+    Public static long Factorial(this Int32 x)
+    {
+      if(x == 1)
+        return 1;
+      if(x == 2)
+        return 2;
+
+      return x * Factorial(x-1);
+    }
+
+    public static string ToProper(this String oldstr)
+    {
+      if(oldstr.Trim().Length > 0)
+      {
+        string Newstr = null;
+        oldstr = oldstr.ToLower();
+        string[] sarr = oldstr.Split(' ');
+        foreach(string str in sarr)
+        {
+          char[] carr = str.ToCharArray();
+          carr[0] = carr[0].ToUpper();
+          Newstr += " " + new string(carr);
+        }
+      }
+    }
+  }
+
+  class TextExtMethod
+  {
+    static void Main()
+    {
+      Program p = new Program();
+      p.Test1(); p.Test2();
+      p.Test3(5);
+
+      i = 5;
+      double f = i.Factorial();
+      Console.WriteLine("Factorial of {0} is: {1}", i, f);
+
+      String str = "hEILo hOw aRe yoU";
+      string result = str.ToProper();
+      Console.WrtieLine(result);
+      Console.ReadLine(); 
+    }
+  }
+}
+``` 
+
+[image]
 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
