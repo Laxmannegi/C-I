@@ -1627,7 +1627,35 @@ namespace ExtensionMethodProject
     }
   }
 }
-``` 
+```
+# Exceptions and Exception Handling
+
+What is a Exception?
+Whenever we are developing an application, In the application becoming across two diff type error occurs 
+1. Compile time : An error occur in your program due to syntaxical mistake , forget semicolon, culry braces
+2. Runtime Error :
+     - Wrong Implementation of logic
+     - Wrong Input Supplied
+     - Missing required resources
+
+- IndexOutofBound Exception it is a name of a class that come into picture when you go beyond the size of an array to abnormally terminate the program
+- DivideByZeroException
+- OverflowException : Value excedding size limit you will get this error
+- Format Exception
+
+Exception (Parent class):  Logic for abnormal termination
+          - Contain a readonly property to display an error message which is declared as virtual Property "Message"
+          "all the child class overriden the 'Message' property"
+    - Two child are define under exception class
+      - Application Exception : non-Factal Error : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
+      - System Exception :  Factal Error -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
+        -> Format Exception
+        -> Indexout Of Bound Exception
+        -> Arithetic Exception
+            -> DivideByZero Exception
+            -> Overflow Exception
+       
+      
 
 [image]
 
