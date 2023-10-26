@@ -1658,6 +1658,56 @@ Exception (Parent class):  Logic for abnormal termination
 Exception Handling:
 1. Abnormal termination stops so that statements that are not related with the errors can be executed
 2. We can display user friendly errors msgs to the end users so that we can describe about the error.
+3. We can perform corrective action to resolve the problems that may come  into picture due to the error.
+
+```C#
+namespace std
+class Ex
+{
+  try
+  {
+      //Stmt's Which will cause runtime errors
+     //Stmt's Which doesn't require execution when the runtime error occured.
+  }
+  catch(DivideByZeroException ex1)
+  {
+      //Stmt's which should execute only when there is a runtime error.
+  }
+  catch(FormatException ex2)
+  {
+    Console.WriteLine("Input must be numeric");
+  }
+  catch(Exception ex)
+  {
+    Console.WriteLine(ex.Message);
+  }
+  finally
+  {
+    // Exception will execute, Exception will not occure -> excute ; If any return method then also execute.
+  
+  }
+}
+```
+
+```C#
+
+class A
+{
+ try
+  {
+    // Open a file on HD
+    // Write into the file
+  }
+  catch(Exception ex)
+  {
+    
+  }
+  finally
+  {
+    //Close file
+  }
+}
+```
 
 [image]
 
