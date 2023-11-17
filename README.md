@@ -1721,13 +1721,226 @@ Multitasking : Windows operating system is a multitasking operating system. How 
 Under this Operating system we have a process and this running our application, under the process an application run and to run the code inside the application ,process will use a concept knows thread. What is thread? Thread is a light weight process. In a simple word.. A thread is a unit which execute the code under a application.
 
 Operating System:
- - Processs
+ - Process
    - Thread
      
 Every application has logic some logic in it and to execute that logic this thread come into picture. and this thread will be reponsible to executing the logic inside your application.
 
 - Every application by default contains one thread to execute the program and that is known as Main Thread, so every program is by default single threaded model.
 
+Drawback of Single Thread Application / Model
+
+
+Multi-Threading:
+ - Process
+ - - Multiple Threads
+
+  - A process can contain more than one thread in it to execute.
+  - Each Thread are trying to perform different action.
+  - Advantage : The execution take place simultaneously. When their are multiple thread to run in a program what will happen is op is going to allocate some time period for each thread to execute. Mean it will share the time b/w each thread to execute. How much time? That was not in our control. Operation system will take care.
+    suppose there are thread to execute, so the operating system is going share the time b/w each thread and based on the time sharing all thread are going to execute for you equally.
+
+```C#
+using System;
+using System.Threading;
+
+class TheadDemo
+{
+
+static void Test1()
+{
+  for(int i = 1; i <= 50; i++)
+   {
+	Console.WriteLine("Test1");
+   } 
+}
+
+static void Test2()
+{
+  for(int i = 1; i <= 50; i++)
+   {
+	Console.WriteLine("Test2");
+
+	if(i == 20)
+	{
+	Console.WriteLine("Test2 Method going to sleep");
+	  Thread.Sleep(10000);
+         Console.WriteLine("Test2 Method woke up");
+	}
+   } 
+ 
+}
+
+static void Test3()
+{
+  for(int i = 1; i <= 50; i++)
+   {
+	Console.WriteLine("Test3");
+   } 
+}
+
+static void Main()
+{
+  Console.WriteLine("Main Started");
+  Thread t = Thread.CurrentThread;
+  t.Name = "Main Thread Name";
+  Thread t1 = new Thread(Test1);
+  Thread t2 = new Thread(Test2);
+  Thread t3 = new Thread(Test3);
+
+  t1.Start();
+  t2.Start();
+  t3.Start();
+  Console.WriteLine("Current ThreadName {0}", t.Name);
+  Console.WriteLine("Main Exits");
+}
+
+}
+//Note : 4 Thread we have  1 Main thread and 3 Child thread.
+```
+
+# The Constructor of Thread class
+
+The Four constructors we have in our thread class.
+1. ParameterizedThreadStart -> start : Initializes a new instance of the thread class, specifying a delegate that allows an object to be
+2. ThreadStart -> start : A ThreadStart delegate that represents the methods to be invoked when this thread begin executing.
+
+
+# ThreadStart
+```C#
+using System;
+using System.Threading;
+
+namespace std
+{
+ class ThreadStartDemo
+ {
+   static void Test1()
+   {
+    for(int i = 0; i < 50; i++)
+    {
+	    Console.WriteLine("Test: " + i);
+    }
+   }
+   static void Main()
+   {
+     ThreadStart obj = new ThreadStart(Test1);
+     Thread t1 = new Thread(obj);
+     t1.Start();
+   }
+ }
+}
+// Note: When you directly pass a method name to Thead class , internally it will create the instance of the Delegate called as a ThreadStart and pass it as a parameter it's done by a framework or CLR for us.
+
+ThreadStart obj = new ThreadStart(Test1);
+Thread t = new Thread(obj);
+        or
+Thread t = new Thread(Test1);
+// Instantiation of a delegate is process of binding the method with the delegate; This can done by many ways
+
+//Another way
+TheadStart obj = Test1;
+Thread t = new Thread(obj);
+
+// anonymous
+ThreadStart obj = delegate() { Test1(); };
+Thread t = new Thread(obj);
+
+// anonymous - lamda expression
+TheadStart obj = () => Test1();
+Thead t = new Thead(obj);
+
+// Either you expilictly perform it.. or you don't perform it.. then the CLR is going to perform it on behalf of you.
+// Option 1 : You can Peform it
+// Option 2: You directly pass the name of the method CLR will perform it.
+```
+
+# ParameterizedThreadStart
+
+Note : ParameterizedThreadStart Delagate **object** as a parameter
+
+```C#
+using System;
+using System.Threading;
+
+namespace std
+{
+ class ThreadStartDemo
+ {
+   static void Test1(object j)
+   {
+    int k = Convert.ToInt32(j);
+    for(int i = 0; i < k; i++)
+    {
+	Console.WriteLine("Test: " + i);
+    }
+   }
+   static void Main()
+   {
+     ParameterizedThreadStart obj = new ParameterizedThreadStart(Test1);
+     Thread t1 = new Thread(obj);
+     t1.Start(10);
+   }
+ }
+
+}
+```
+# Thead Join
+
+```c#
+
+using System;
+using System.Threading;
+namespace std
+{
+  class ThreadJoinDemo
+  {
+    static void Test1()
+    {
+      Console.WriteLine("Thread 1 Starting");
+      for(int i = 0; i < 50; i ++)
+      {
+        Console.WriteLine("Test1");
+      }
+      Console.WriteLine("Thread 1 Existing");
+    }
+
+    static void Test2()
+    {
+      Console.WriteLine("Thread 2 Starting");
+      for(int i = 0; i < 50; i ++)
+      {
+        Console.WriteLine("Test2");
+      }
+      Console.WriteLine("Thread 2 Existing");
+    }
+
+    static void Test3()
+    {
+      Console.WriteLine("Thread 3 Starting");
+      for(int i = 0; i < 50; i ++)
+      {
+        Console.WriteLine("Test3");
+      }
+      Console.WriteLine("Thread 3 Existing");
+    }
+  
+
+   static void Main()
+   {
+     Console.WriteLine("Main Thead Starting");
+     Thread t1 = new Thread(Test1);
+     Thread t2 = new Thread(Test2);
+     Thread t3 = new Thread(Test3);
+     
+     t1.Start(); t2.Start(); t3.Start();
+     t1.Join(300); t2.Join(); t3.Join();
+     Console.WriteLine("Main Thead Existing");
+   }
+}
+	
+}
+```
 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
