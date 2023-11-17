@@ -1711,6 +1711,24 @@ class A
 
 [image]
 
+
+-----------------
+# MultiThreading
+----------------
+
+Multitasking : Windows operating system is a multitasking operating system. How all these application run at time.. Operating system to execute all this perticular program internally will make use of process. so what is process?
+
+Under this Operating system we have a process and this running our application, under the process an application run and to run the code inside the application ,process will use a concept knows thread. What is thread? Thread is a light weight process. In a simple word.. A thread is a unit which execute the code under a application.
+
+Operating System:
+ - Processs
+   - Thread
+     
+Every application has logic some logic in it and to execute that logic this thread come into picture. and this thread will be reponsible to executing the logic inside your application.
+
+- Every application by default contains one thread to execute the program and that is known as Main Thread, so every program is by default single threaded model.
+
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
