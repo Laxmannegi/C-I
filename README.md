@@ -1942,6 +1942,41 @@ namespace std
 }
 ```
 
+# Lock
+
+```C#
+using System;
+using System.Threading;
+namespace std
+{
+ class ThreadLock
+ {
+   void Test()
+   {
+     lock(this)
+     {    
+	Console.Write("Hello, I'm going ");
+        Thread.Sleep(5000);
+     }
+     Console.WriteLine("to Mars");
+   }
+ 
+  static void Main()
+  {
+    ThreadLock t = new ThreadLock();
+    Thread t1 = new Thread(t.Test);
+    Thread t2 = new Thread(t.Test);
+    Thread t3 = new Thread(t.Test);
+    t1.Start(); t2.Start(); t3.Start();
+  }
+ }
+}
+
+// Hello, I'm going to Mars
+// Hello, I'm going to Mars
+// Hello, I'm going to Mars
+```
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
