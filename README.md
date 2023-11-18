@@ -145,7 +145,7 @@ Note : Generally every class requires some values for execution and the values t
   first block of code to run under the class.
 - Non-static constructors can be overloaded where as static constructor can't be overloaded.
   
-- Every class constains an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
+- Every class contain an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
   - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
     constructor.
   - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will not be present at all.
@@ -436,7 +436,7 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 
 **Inheritance** :
 It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the class which provides re-usability.
-
+```c#
 [<modifers>] class <child class> : <parent class>
 class A {
 - Members
@@ -444,7 +444,7 @@ class A {
 class B:A {
 - Consuming the members of A from here
 }
-
+```
 Note: In inheritance child class can consume members of it's parent class as if it is the owner of those member's (expect private members of parent).
 
  A => Parent or Base or Super
