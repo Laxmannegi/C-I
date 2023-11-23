@@ -1740,6 +1740,10 @@ Multi-Threading:
   - Advantage : The execution take place simultaneously. When their are multiple thread to run in a program what will happen is op is going to allocate some time period for each thread to execute. Mean it will share the time b/w each thread to execute. How much time? That was not in our control. Operation system will take care.
     suppose there are thread to execute, so the operating system is going share the time b/w each thread and based on the time sharing all thread are going to execute for you equally.
 
+
+**What is Context switching?**  
+Whenever you are trying to use multiple thread in your code what will happen operating system will be sharing the time between each and every thread and the control will be transferred between the threads and basically that is called as a context of switching that is going to happen now when the context switiching is not in our control that is done by operating system so it threaded accessing a resource before it completes suppose if the context of switching is performed what is going to happen you know at the same time second thread also will try to access the same resource.  
+
 ```C#
 using System;
 using System.Threading;
@@ -1887,6 +1891,12 @@ namespace std
 ```
 # Thead Join
 
+Main Thread is not allow to get out the program in Middle.  
+If you want the Main Thread to wait until all the thread are completing there work. What you required to do is Join.  
+Now untill all the child threads are finishing/completing there jobs Main thread cannot get way from program/ Main thread will not exit.  
+Main thread cannot exits from program untill all the child thread are finishing there jobs.
+or
+untill all the other thread are exiting from the program main thread is not allowed to exit from the program.
 ```c#
 
 using System;
@@ -1975,8 +1985,17 @@ namespace std
 // Hello, I'm going to Mars
 // Hello, I'm going to Mars
 // Hello, I'm going to Mars
+
+// First Thread execute than immediately that second thread will start the execution but it cannot access this code by means because the code is put in a lock only
+// one thread is allowed to enter into the code into this block multiple thread cannot access this now How many threads can access only one thread and one thread went inside and was sleeping days and until it finishes and comes out the second one cannot access the things now so waits for 5 sec and at the same time third one also start but all are waiting outside the block cannot enter inside just like a telephone booth if I just see a telephone if one person enter into your telephone booth the other person coming over there has to stand outside the person inside the telephone booth is making a call and after he comes out only second one can enter when first one is talking the second one cannot go inside and enter and interrupt him now so compulsory has to wait there until the first one finishes his jobs and comes out and once the first one completes and comes out of it then only the second one enter.
 ```
 
+# Thread Priority
+
+- ThreadPriority Enum : Above Normal , BelowNormal, Highest, Lowest, Normal [d]
+
+- 
+  
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
@@ -1985,6 +2004,7 @@ namespace std
 
 > [!WARNING]
 > Critical content demanding immediate user attention due to potential risks.
+
 
 ```Text
 1. Can we overload staic method or Override static method  
