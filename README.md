@@ -1977,6 +1977,7 @@ namespace std
     Thread t1 = new Thread(t.Test);
     Thread t2 = new Thread(t.Test);
     Thread t3 = new Thread(t.Test);
+    t2.Priority = ThreadPriority.Highest
     t1.Start(); t2.Start(); t3.Start();
   }
  }
@@ -1991,10 +1992,71 @@ namespace std
 ```
 
 # Thread Priority
-
+   - Lowest
+   - Below Normal
+   - Normal[d]
+   - Above Normal
+   - Highest
+     
 - ThreadPriority Enum : Above Normal , BelowNormal, Highest, Lowest, Normal [d]
 
-- 
+- All are going to consume the CPU resources equally you will not find any variation at all but we can change these priorities so that the thread which going to have the highest priority will consume more CPU resources then compared with the other levels so if at all you set the highest that will consume more CPU resources then comapred with other levels.
+
+T1.Abort():
+
+#  ThreadPerformance
+
+```C#
+using System.Threading;
+using System.Diagnostics
+namespace std
+{
+  class ThreadPerformance
+  {
+   public static void IncrementCounter1()
+   {
+ 	long Count = 0;
+ 	for(long i = 0; i <= 100000000; i++)
+	   Count++;
+ 	Console.WriteLine("IncrementCounter1: " + Count);
+   }
+   public static void IncrementCounter2()
+   {
+ 	long Count = 0;
+ 	for(long i = 0; i <= 100000000; i++)
+	   Count++;
+ 	Console.WriteLine("IncrementCounter2: " + Count);
+   }
+   static void Main()
+   {
+     Thread t1 = new Thread(IncrementCounter1);
+     Thread t2 = new Thread(IncrementCounter2);
+
+     Stopwatch s1 = new Stopwatch();
+     Stopwatch s2 = new Stopwatch();
+
+     //Single Threaded Model
+     s1.Start();
+     IncrementCounter1();
+     IncrementCounter2();
+     s2.Stop();
+
+    // Multithread Model
+     s2.Start();
+     t1.Start(); 
+     t2.Start();
+     s2.Stop();
+
+     t1.Join();
+     t2.Join();
+     
+     Console.WriteLine("Time taken to complete the work in single threaded model: " + s1.ElapsedMilliseconds);
+     Console.WriteLine("Time taken to complete the work in multi threaded model: " + s2.ElapsedMilliseconds);
+     Console.ReadLine();
+   }
+  }
+}
+```
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
