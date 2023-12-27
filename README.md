@@ -2217,6 +2217,18 @@ namespace std
 // Remember: Every Class by default contains 4 method init.- GetHashCode(), ToEqual(), GetType(), ToString()
 // Hashtable Every item contain three values - Key, Value, HashCode
 ```
+What is a problem the problem is in an application I want to store n number of integer value, so what is that is n number of integer values so generally if at all I say I want to store 10 integer value what we can do we can take an Integer array in store. Array are type safe actually so we can declare an integer array the type safe but when we can use an array if you know the size I wanted to store 10 items array is okay I want to store 20 items array is Okay but If i want to store n items the N is not known the N is not known right now so in the runtime when the values are being taken out at the time we are going to identify them so when n is  not known we cannot use the array so because the problem with the arrays is arrays fixed length so they cannot increase the size if you want to increase the what the drawback is your required to create a new array and copy the old values to the new array, So overcome this particular problem we came to collections. Collection when you talk about a collection size is not requied to be specified by a collection because collection can store variable number of items it's not like a fixed length it is a variable length and the size of the collection is going grow automatically Auto resizing facility is avaiable **but not type safe**. Why they are not type safe if C for storing n number of integer values  if i take a collection while entering the value by mistake if any wrong values entered there it accepts the wrong type of values entered it accepts . I'm going enter string values it's accept , I'm going to enter integer value , bool, float it accepts whatever we enter it accepts but our requirement is purely sotring integer values so this the problem we have with the collections.
+
+**Collection has one drawback is not type safe**
+
+Array : Type Safe but fixed length
+Collection: Auto Resizing but not Type Safe
+
+# Generic Collection: in C# 2.0
+Generic Collection is also a collection. It's a type safe and Auto Resizing.
+
+
+
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
