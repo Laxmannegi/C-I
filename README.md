@@ -2008,7 +2008,7 @@ T1.Abort():
 
 ```C#
 using System.Threading;
-using System.Diagnostics
+using System.Diagnostics;
 namespace std
 {
   class ThreadPerformance
@@ -2057,6 +2057,105 @@ namespace std
   }
 }
 ```
+
+# Collections in C#
+
+## Collections
+
+- Dynamic Array
+
+What are these collections see, first thing what the collection means the first important point to understand it's a dynamic Array. What is this Dynamic Array.
+if you just came across the Arrays in any of the language like C or C++ or in C-sharp language you'll understand about this Array are fixed length What's it once an array is declared we can never change the size of an array 
+
+int[] arr = new int[10];
+
+suppose, if you want to increase the size of array you have two option
+1. you required to manually create a new array and to copy the values
+
+int[] arr = new int[15];
+
+2. Array class so in the System namespace there is a class called array this array class provides as a method called as Resize. By calling this resize method also
+   we can resize an array so it is possible to resize by calling the resize method open but remember even through there is a method called resize to research an array
+   what is does internally it will destory the old array and it creates a new array.
+
+Array.Resize();
+
+```C#
+namespace std
+{
+  class Program
+  {
+    int[] arr = new arr[10];
+    Array.Resize(ref arr, 15);
+  }
+}
+```
+   
+Drawback of Array
+1. Increasing the size
+2. You can never insert value at middle of the Array / Inserting values into the middle.
+3. Deleting or removing values from the middle
+
+
+1. Auto Resizing ( The size of your array automatically increment whenever we keep adding new values to it.)
+2. It is possible to insert the values in middle of the collections
+3. Possible delete or remove the values in middle of the collections
+
+The Collection Which are introduced in the 1.0 are known as 
+Non-Generic Collections: 
+System.Collections - Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable
+
+Difference between an Array and ArrayList:
+
+Fixed Length 				Variable Length
+Not Possible to insert items		We can insert items into the middle
+Not Possible to delete items		We can delete items from the middle
+
+```C#
+using System;
+using System.Collections;
+namespace std
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      ArrayList al = new ArrayList();  // ArrayList al = new ArrayList(10);  you can set inital Capacity
+      Console.WriteLine(al.Capacity);
+      al.Add(100);
+      Console.WriteLine(al.Capacity);
+      al.Add(100), al.Add(200), al.Add(300);
+      Console.WriteLine(al.Capacity);
+      al.Add(500);
+      Console.WriteLine(al.Capacity);
+
+      foreach(object obj in al)
+      {
+        Console.Write(obj + "  ");
+      }
+      a.Insert(3, 350);
+
+      foreach(object obj in al)
+      {
+        Console.Write(obj + "  ");
+      }
+      al.Remove(200);  // remove through values
+      al.ReamoveAt(1); // remove through index
+      Console.ReadLine();
+    }
+  }
+}
+
+// output
+0
+2
+4
+8
+100 200 300 400 500
+100 200 300 350 400 500
+```
+
+
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
