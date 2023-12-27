@@ -2133,14 +2133,17 @@ namespace std
       {
         Console.Write(obj + "  ");
       }
+      Console.WriteLine();
       a.Insert(3, 350);
 
       foreach(object obj in al)
       {
         Console.Write(obj + "  ");
       }
+      Console.WriteLine();
+
       al.Remove(200);  // remove through values
-      al.ReamoveAt(1); // remove through index
+      al.ReamoveAt(1); // or you can remove by index position also
       Console.ReadLine();
     }
   }
@@ -2148,14 +2151,72 @@ namespace std
 
 // output
 0
-2
+4
 4
 8
 100 200 300 400 500
 100 200 300 350 400 500
 ```
 
+Diff b/w Array and Collection
+1. Array are fixed length but Collections are variables length
+2. Array of an never can be increase if you want to increase the size of an Array, internally a new Array gets created and values are copy into the new array.
+The Size of the Collection grow automatically as you keep adding new into it. The collection will grow so that what auto sizing.
+3. We can never remove item from an array but we can remove an item from an collection.
+4. We can never insert item into an array but we can insert an items into a collection.
 
+**Both are going to store the value in same style in the index pattern.**
+
+Hashtables: Key/Values Combination; key is User Define value
+
+Array and ArrayList : Key/Value Combination; Key are predefine
+
+"Eid", 1010
+"Ename","Scott"
+"Job","Manager"
+"Salary",25000.00
+"Mgrid", 1002
+"Phone",234893393
+"Email",scott@gmail.com
+"Department","Sales"
+"Location","Mumbai"
+"Age", 30
+
+```C#
+using System;
+using System.Collection;
+
+namespace std
+{
+  class HashCollection
+  {
+   static void Main()
+   {
+     Hashtable ht = new Hashtable();
+     ht.Add("Eid", 1010);
+     ht.Add("Ename","Scott");
+     ht.Add("Job","Manager");
+     ht.Add("Salary",25000.00);
+     ht.Add("Mgrid", 1002);
+     ht.Add("Phone",234893393);
+     ht.Add("Email",scott@gmail.com);
+     ht.Add("Department","Sales");
+     ht.Add("Location","Mumbai");
+     ht.Add("Did", 30);
+
+     Console.WriteLine("Hello".GetHashCode());
+     foreach(object key in ht.Keys)
+     {
+        Console.WriteLine(key + ":" + ht[key]);
+     }
+     Console.ReadLine();
+   }
+  }
+}
+
+// Remember: Every Class by default contains 4 method init.- GetHashCode(), ToEqual(), GetType(), ToString()
+// Hashtable Every item contain three values - Key, Value, HashCode
+```
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
