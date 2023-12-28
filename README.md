@@ -2227,8 +2227,42 @@ Collection: Auto Resizing but not Type Safe
 # Generic Collection: in C# 2.0
 Generic Collection is also a collection. It's a type safe and Auto Resizing.
 
+List<T>
 
+public class Customer
+{
+public int Custid { get; set;}
+public string Name { get; set;}
+public double Balance {get; set;}
+}
 
+List<int> li = new List<int>();
+List<string> ls = new List<string>();
+List<Customer> customers = new List<Customer>();
+
+Whatever collection classes we have in System.Collection namespace for all those classes Microsoft has provided a replacement in System.Collection.Generic namespace.
+
+List<T> - Strongly Typed 
+```C#
+namespace std
+{
+ class Program
+ {
+  static void Main()
+  {
+   List<int> li = new List<int>();
+   li.Add(10); li.Add(20); li.Add(30); li.Add(40);
+
+   li.insert(3,35);
+   foreach(int i in li)
+   {
+     Console.Write( i + "  ");
+   }
+   Console.ReadLine();
+  }
+ }
+}
+```
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
