@@ -2255,7 +2255,7 @@ namespace std
 
    li.insert(3,35);
    foreach(int i in li)
-   {
+   {                                                           
      Console.Write( i + "  ");
    }
    Console.ReadLine();
@@ -2263,6 +2263,139 @@ namespace std
  }
 }
 ```
+ArrayList  
+In ArrayList is capable to store any type values init. The reason is Add method is going to take Object parameter. you can pass anything so it's not type safe.
+
+```C#
+
+namespace std
+{
+ class Generics
+ {
+  // if we use object, Internal compailer have to perform boxing and unboxing.
+   public bool Compare<T>(T a , T b)
+   {
+	if (a.Equal(b))
+           return true;
+        return false;
+   }
+   static void Main()
+   {
+     Generic obj = new Generic();
+     bool result = obj.Compare<float>(10.5f,10); //angular braces
+     Console.WriteLine(result);
+     Console.ReadLine();
+   }
+ }
+}
+
+```
+
+```C#
+
+namespace std
+{
+ class Generics2
+ {
+  // if we use object, Internal compailer have to perform boxing and unboxing.
+   public bool Add<T>(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 + d2)
+   }
+
+   public bool Sub<T>(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 - d2)
+   }
+
+   public bool Mul<T>(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 * d2)
+   }
+
+   public bool Div<T>(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 / d2)
+   }
+
+   static void Main()
+   {
+     Generic obj = new Generic();
+     obj.Add<int>(10,10);
+     obj.Mul<int>(10,20);
+     obj.Sub<int>(10,20);
+     obj.Div<int>(10,40);
+     Console.ReadLine();
+   }
+ }
+}
+
+```
+
+// Pass Type directly to the class
+
+```C#
+
+namespace std
+{
+ class Generics2<T>
+ {
+  // if we use object, Internal compailer have to perform boxing and unboxing.
+   public bool Add(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 + d2)
+   }
+
+   public bool Sub(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 - d2)
+   }
+
+   public bool Mul(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 * d2)
+   }
+
+   public bool Div(T a , T b)
+   {
+	dynamic d1 = a;
+        dynamic d2 = b;
+	Console.WriteLine(d1 / d2)
+   }
+
+   static void Main()
+   {
+     Generic<int> obj = new Generic<int>();
+     obj.Add(10,10);
+     obj.Mul(10,20);
+     obj.Sub(10,20);
+     obj.Div(10,40);
+     Console.ReadLine();
+   }
+ }
+}
+
+```
+
+HashTable
+
+Dictionary<TKey, TValue>
+
+
   
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
@@ -2286,6 +2419,11 @@ namespace std
 9. How to handle exeception in SP
 10. how authentication work?
 11. Way to handle exception in .net core and angular?
+12. Difference b/w var and Dynamic //  Dynamic introduce in .net 4.0
+13. Difference b/w Dictionary and hashtable
+14. Difference b/w ArrayList and List
+14. What is System.Collection and System.Collection.Generic
+
 ```
 
 In last video I was just being demonstrating about delegate 
