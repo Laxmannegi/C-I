@@ -2390,13 +2390,169 @@ namespace std
 }
 
 ```
+HashTable : Store a value in key value combination and List  
 
-HashTable
+Comming to Generic collection hashtable was repalce as Dictionary  
 
-Dictionary<TKey, TValue>
+List<T> : In List key are pre-define
+Dictionary<TKey, TValue> 
 
 
-  
+```c#
+
+namespace std
+{
+  class DictionaryCollection
+  {
+    static void Main()
+    {
+      Dictionary<string, object> dt = new Dictionary<string, Object>();
+      dt.Add("EId", 1010);
+      dt.Add("Ename", "Laxman");
+      dt.Add("Job", "Manager");
+      dt.Add("Salary", 24000);
+      dt.Add("Email", "adbc@gmail.com");
+      dt.Add("Phone", "23728282");
+
+      foreach(string key in  dt.Keys)
+         Console.WriteLine(key + ": " + dt[key]);
+    }
+  }
+}
+
+// Dictionary will store the value in sequence / Dicionary will print all the values in sequence
+// Hashtable didn't store the value in sequence
+```
+
+In case of a generic collection the type of values we want to store under the collections need not be pre-define typed only like int, float, char, string, bool etc. but it can also be some user-defined type also.
+
+Customer:
+ - CustId
+ - Name
+ - City
+ - Balance
+
+```C#
+
+namespace std
+{
+  public class Customer
+  {
+   public int Custid { get; set; }
+   public string Name { get; set; }
+   public string City { get; set; }
+   public double Balance { get; set; }
+  }
+
+  class TestCustomer
+  {
+    static void Main()
+    {
+      List<Customer> Customers = new List<Customer>();
+      Customer c1 = new Customer { Custid = 101, Name = "Laxman", City = "Hyderabad", Balance = 25000.00};
+      Customer c2 = new Customer { Custid = 102, Name = "Dev", City = "Kolkalta", Balance = 25000.00};
+      Customer c3 = new Customer { Custid = 103, Name = "Sohit", City = "Dubai", Balance = 25000.00};
+      Customer c4 = new Customer { Custid = 104, Name = "Sanoop", City = "Dehradun", Balance = 25000.00};
+      Customer.Add(c1); Customer.Add(c2); Customer.Add(c3); Customer.Add(c4);
+
+      foreach(Customer obj in Customers)
+      {
+        Console.WriteLine(obj.Custid + " " + obj.Name + " " + obj.City + " " + obj.Balance);
+      }
+      Console.ReadLine();
+    }
+  }
+}
+
+```
+# IComparable & IComparer
+
+And Comparison Delegate  
+
+```C#
+
+namespace std
+{
+  public class Student : IComparable<Student>
+  {
+   public int Sid { get; set; }
+   public string Name { get; set; }
+   public int Class { get; set; }
+   public float Marks { get; set; }
+
+   public int CompareTo(Customer other)
+   {
+     if (this.Sid > other.Sid)
+         return 1;
+     else if (this.Sid < other.Sid)
+         return -1;
+     else
+         return 0;
+   }
+  }
+  // suppose we don't have a access of student class or student is pre-define classs or some other person has implemented.. to overcome this problem take a new class and implment a interface IComparer; 
+  Class CompareStudents : IComparer<Student>
+  {
+    public int CompareTo(Student x , Student y)
+    {
+      if (x.Marks > y.Marks)
+        return 1;
+      else if (x.Marks < y.Marks)
+        return -1;
+      else
+        return 0;
+    }
+  }
+  class TestCustomer
+  {
+    public static int CompareNames(Student s1, Student s2)
+    {
+      S1.Name.CompareTo(S2.Name);
+    }
+    static void Main()
+    {
+      Student s1 = new Student { Sid = 101, Name = "Laxman", Class = 10, Marks = 372.00f};
+      Student s2 = new Student { Sid = 102, Name = "Dev", Class = 10, Marks = 500.00f};
+      Student s3 = new Student { Sid = 103, Name = "Sohit", Class = 10, Marks = 659.00f};
+      Student s4 = new Student { Sid = 104, Name = "Sanoop", Class = 10, Marks = 700.00f};
+
+      List<Student> Students = new List<Student>() {s1, s2, s3, s4, s5, s6};
+      CompareStudents obj = new CompareStudents();
+      Students.Sort(obj);
+      //Students.Sort();
+      //Student.Sort(1,5, obj);
+
+      //Comparison<Student> obj = new Comparison<Student>(CompareNames);
+      //Student.Sort(obj);
+
+      //Student.Sort(CompareNames);
+      //Student.Sort(delegate(Student S1, Student S2) { return S1.Name.CompareTo(S2.Name); }); //anonomus method
+      Student.Sort((S1,S2) => S1.Name.CompareTo(S2.Name)); // lamda experssion
+      Student.Sort( new Comparison<Student>(CompareNames));
+      
+      foreach(Student obj in Students)
+      {
+        Console.WriteLine(obj.Sid + " " + obj.Name + " " + obj.Class + " " + obj.Marks);
+      }
+      
+    }
+  }
+}
+
+```
+[image] error
+
+
+# IEnumerable Interface
+
+IEnumerable is parent of all the collection
+
+IEnumerable
+  - ICollection
+     - IList
+     - IDictionary
+       
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
@@ -2423,7 +2579,9 @@ Dictionary<TKey, TValue>
 13. Difference b/w Dictionary and hashtable
 14. Difference b/w ArrayList and List
 14. What is System.Collection and System.Collection.Generic
-
+15. Reverse String
+16. Difference b/w record and class
+17. 
 ```
 
 In last video I was just being demonstrating about delegate 
