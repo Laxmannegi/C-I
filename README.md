@@ -2547,10 +2547,11 @@ namespace std
 
 IEnumerable is parent of all the collection
 
-IEnumerable
+- IEnumerable
   - ICollection
      - IList
      - IDictionary
+       Hashtable, Dictionary
        
 
  > [!NOTE]
