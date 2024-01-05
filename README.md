@@ -1222,7 +1222,7 @@ namespace std
     }
 }
 }
-``
+```
 Note:  
 If you define a indexer in class, class is working like virtual array.
 
@@ -2424,9 +2424,9 @@ namespace std
 // Hashtable didn't store the value in sequence
 ```
 
-In case of a generic collection the type of values we want to store under the collections need not be pre-define typed only like int, float, char, string, bool etc. but it can also be some user-defined type also.
+**In case of a generic collection the type of values we want to store under the collections need not be pre-define typed only like int, float, char, string, bool etc. but it can also be some user-defined type also.**
 
-Customer:
+Customer:\
  - CustId
  - Name
  - City
@@ -2545,15 +2545,146 @@ namespace std
 
 # IEnumerable Interface
 
-IEnumerable is parent of all the collection
+IEnumerable Interface is parent of all the collection
 
 - IEnumerable
   - ICollection
      - IList
      - IDictionary
        Hashtable, Dictionary
-       
 
+Foreach work because Every Collection inherit from Interface called IEnumerable. This IEnumerable Internal contains a method GetEnumerator() and that GetEnumerator method Implemented by all the collection class and that GetEnumerator method is used by the foreach for Printing. 
+
+[Image]
+
+```C#
+namespace std
+{
+ class class Employee
+ {
+   public int Id { get; set; }
+   public string Name { get; set; }
+   public string Job { get; set; }
+   public double Salary { get; set; }
+ }
+
+ public class Organization
+ {
+   List<Employee> Employees = new List<Employee>();
+   public void Add(Employee Emp)
+   {
+     Employees.Add(Emp);
+   }
+ }
+ class TestEmployee
+ {
+  static void Main()
+  {
+    List<Employee> Employees = new List<Employee>();
+    Employees.Add(new Employee {Id = 101, Name = "Raju", Job = "Manager", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Venkart", Job = "Manager", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Sohit", Job = "HR", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Dev", Job = "Developer", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Piyush", Job = "Andriod", Salary = 25000.00});
+
+    foreach(Employee emp in Employees)
+    {
+       Console.WriteLine(Emp.Id + " " + Emp.Name + " " + Emp.Job + " " + Emp.Salary);
+    }
+    Console.ReadLine();
+  }
+ }
+}
+```
+
+```C#
+using System.Collection;
+using System.Collection.Generic;
+
+namespace std
+{
+ class class Employee
+ {
+   public int Id { get; set; }
+   public string Name { get; set; }
+   public string Job { get; set; }
+   public double Salary { get; set; }
+ }
+
+ public class Organization : IEnumerable
+ {
+   List<Employee> Employees = new List<Employee>();
+   public void Add(Employee Emp)
+   {
+     Employees.Add(Emp);
+   }
+   public int Count
+   {
+     get { return Employees.Count; }
+   }
+   public Employee this[int index]
+   {
+     get { return Employees[index] }
+   }
+   public IEnumerator GetEnumerator()
+   {
+     //return Employees.GetEnumerator();
+      return new OrganizationEnumerator(this);
+   }
+ }
+
+ public class OrganizationEnumerator : IEnumerator
+ {
+    Organization OrgColl;
+    int CurrentIndex;
+    Employee CurrentEmployee;
+
+    public OrganizationEnumerator(Organization org)
+    {
+      OrgColl = org;
+      CurrentIndex = -1;
+    }
+    public object Current
+    {
+       get {}
+    }
+
+    public bool MoveNext()
+    {
+      if (++CurrentIndex >= OrgColl.Count )
+         return false;
+      else
+         CurrentEmployee = OrgColl[CurrentIndex];
+      return true;
+    }
+
+    public void Reset()
+    {
+       throw new NotImplementedException();
+    }
+ }
+ class TestEmployee
+ {
+  static void Main()
+  {
+    Organization Employees = new Organization();
+    Employees.Add(new Employee {Id = 101, Name = "Raju", Job = "Manager", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Venkart", Job = "Manager", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Sohit", Job = "HR", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Dev", Job = "Developer", Salary = 25000.00});
+    Employees.Add(new Employee {Id = 101, Name = "Piyush", Job = "Andriod", Salary = 25000.00});
+
+    foreach(Employee emp in Employees)
+    {
+       Console.WriteLine(Emp.Id + " " + Emp.Name + " " + Emp.Job + " " + Emp.Salary);
+    }
+    Console.ReadLine();
+  }
+ }
+}
+
+[image]
+```
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
