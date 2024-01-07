@@ -532,7 +532,8 @@ Error:
 ```
 We can initialize a parent classes variables by using the child class instance to make it as a reference, So that the reference will be consuming the memory of child class instance, but in this case also we can't call any pure child class members by using the reference.
 
-[Image]
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/0c0f6fd8-233c-45f5-b39c-dbb44894b9c2)
+
 
 **Prev:**
 1. Parent class constructor must be accessable to child class or else inheritance will not be possible.  
@@ -1041,7 +1042,9 @@ Multiple Iheritance with Interface:
 
 - A class can have one and only one immediate parent class, whereas the same class can have any number of interfaces as it's parent i.e multiple inheritance is supported in CSharp thru interfaces.
 
-- [image]
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/897974c4-7754-4726-80e5-a701f88025c8)
+
+
 
 **Why multiple inheritance is not supported thru class and how is it supported thru interfaces?**  
 Multiple inheritance is not supported thru class because we came accross ambiguity problem
