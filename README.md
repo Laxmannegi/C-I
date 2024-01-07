@@ -347,6 +347,8 @@ namespace AccessDemo1
 > **Protected Internal**: Either Within the Project or Within the child class of other projects  
 > **Public**: Global can access from anywhere
 
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/9f92060c-f00e-42b4-a69f-685c20f9f900)
+
 
 **_Different kind of Variable_**  
 
@@ -2685,6 +2687,10 @@ namespace std
 
 [image]
 ```
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/fbd6ee46-fed4-4d94-81de-bf692f5c1745)
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/463d09f4-c97b-48ce-8e6e-3d36126c4938)
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/7f349e64-0923-4540-bc09-cf871ee89827)
+
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
