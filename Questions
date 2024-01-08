@@ -1,0 +1,448 @@
+-----> OOPs
+
+1. What Is OOPS concept and types of OOPS ?
+2. What Is Polymorphism and its type ?
+3. what Is Runtime Polymorphism and Compile Time Polymorphism ?
+4. What Is Inheritance and its types ?
+5. what Is the use of Delegates ?
+6. What Is Abstract Class And Interface ?
+7. Can we Inherite Abstract class Into Interface
+8. How can we Acchive Abstraction ?
+9. What Is Abstract class & Abstract method ?
+10. What Is Solid Principles in C# ?
+11. what Is Partial Classes?
+12. What is sealed class?
+-----> C#
+
+1. Value type and ref type
+2. Diff b/w stack and Heap
+3. Boxing and Unboxing
+4. Diff b/w const and readonly
+5. Diff b/w object, dynamic and var
+6. ref and out and in keyword
+7. Tuple
+8. Automapper
+9. ExtensionMethod
+10. == and Equal
+11. Delegate and Event
+12. Thread and TPL and howto handle exception
+13. what is async and await
+14. Coalescing operator
+15. Diff b/w throw and throw ex
+16. partial class
+17. Diff b/w .ToString and Convert.ToString
+18. Genric and its type and constranints
+19. Collection and Genric collection
+20  Diff b/w ArrayList and Array
+21. Diff b/w Dictionary and HashTable
+22. Constructor and type, what are the order of execution
+23. static class and use of it and what are the order of execution
+24. Diff b/w Array clone and copy
+25. what is shadow copy and deep copy
+26. what is difference between list and ienumerable in c#
+27. what is use of using keyword in c#
+28. what is block in c#
+29. what is dependency inversion principle c#
+30. what is postback in asp.net
+31. What is use of finally block
+32. what is immutable string in c#
+33. difference between == and equals in c#
+34. Difference between System.string and System.Text
+35. break & continue
+
+-----> .Net Core
+
+1. Page life cycle in .Net Core
+2. Describe about Startup Page in .NET Core
+3. What is the main reason of using .net core rather than mvc ?
+4. Can we pass null value in unique id ?
+5. Describe Get Put Post Delete method in .net core ?
+6. How To Use Sessions In ASP.NET Core ?
+7. How to handle session in .Net Core ?
+8. Middleware in .net core
+9. Net-Core-vs-Net-Framework
+10. Difference between a GET and POST
+11. Difference between a Post and Put method
+12. Can we create multiple Get method with same name ?
+13. What are authentication used in .Net Core ?
+14. What is API and why we use API() ?
+15. Difference Between REST API SOAP API
+16. How to define routing in .Net Core
+
+-----> Design Pattern
+
+1. What is Dependency Injection
+2. what is dependency inversion principle c#
+3. What is Design Pattern
+4. Diff b/w Singleton Transient and Scoped
+5. Diff b/w Singleton and Static
+6. Creational design pattern like factory method, factory design method and abstract factory method
+7. Repository design patern
+8. Observer and Prototype design pattern
+9. SOLID Princliple
+10. DI and IoC
+11. Diff b/w Anti Pattern and Singleton
+
+-----> SQL
+
+1. Diff primary key and Unique key
+2. Diff Union and Union all
+3. Diff Function and Procedure
+4. Index and It's type, Curving index
+5. Joins, self joins
+6. Diff NULLIF and ISNULL
+7. Diff char, varchar and nvarchar
+8. Diff CTE and temp table and table variables
+9. Norm forms 1nf, 2nf and 3nf
+10. User defined function type
+11. TRIGGER
+12. use of Cursor and alternative of It
+13. View and Index View
+14. Window Function like Rank, Dense_Rank and ROW_NUMBER
+15. Stuff, String_Agg, String_slpit function in SQL--
+16. Diff Pivot and Unpivot
+17. Transaction and try catch block
+18. Concurrency Control
+19. Lock query, block query and deadlock
+20. How to performe SQL Queries performance
+
+-----> Angular
+
+1. Diff b/w AOT and JIT
+2. Bundling, minfication and tree shaking
+3. How to share data b/w components like Input, output, Service, subject, Router using query param
+4. Diff b/w Subject and Subject Behavior and subject Replay
+5. RXJS
+6. Diff b/w observal, observe and subscriber
+7. Diff b/w observable and Promise and Subject
+8. Use of Async and await
+9. Auth Gurd
+10. Routing
+11. Diff b/w Lazy loading, pre loading and eager loading
+12. Intercepter
+13. How to call API like using HTTPClient service
+14. Dynamic components
+15. Diff types of directive like Components, Structure and Attribute directive
+16. Life Cycle of Angular
+17. Diff b/w NgOnChange, DoChnage, Constructor and NgOnInit
+18. When we use NgContentinit and NgViewInit
+19. Diff type of rxjs operator like map, filter, concetmap, mergemap, debounce and debounceunitl
+20. Use of DI(Dipendency Injection) and who manage It
+21. Diff b/w Pipe and Impure Pipe and real use of It
+22. Latest Angular version and it's feature
+23. ViewEncapsulation like shadow native and none
+24. ChangeDetection.OnPush
+25. Use of custom directive and real use of it
+26. Can we use *ngif and *ngfor in same div
+27. Use of Projection like ng-content and its selected property
+28. Diff b/w Reactive form and template-drive form and how to create custome validation
+29. Can we load angular application from server side ? using Angular-universal
+30. Types of json file in anular and use of it
+31. How angular application bootstrap
+32. How to implement browser caching
+33. Use of Router Outlet and router link
+34. Router state and Router event
+35. Use of track by
+36. How to improve Angular application performance
+37. Two way binding
+38. what is Interpolation
+39. Types of forms in angular
+40. How to add scss in angular
+
+
+------Sumit-----------------------------------------------------------------------------------------------
+
+================MSSQL======================
+
+1. Diff Primary key and Unique key
+
+2. Diff Union and Union all
+
+3. Diff Function and Proc
+
+4. Index and It's type, Curving index
+
+5. Joins , Self Join
+
+6. Diff NULLIF and ISNULL
+
+7. Diff char and varchar and nvarchar
+
+8. Diff CTE and Temp table and table variable
+
+9. Norm forms 1nf and 2nf and 3nf
+
+10. User-defined function Type
+
+11. Trigger
+
+12.Cursor use of and alternative of it.
+
+13.View and Index View
+
+14. Window Function like Rank, Dense_Rank, Row_number
+
+15. Stuff and String_Agg and String_split function in MSSQL
+
+16. Pivot and Unpivot
+
+17. Transaction and try catch block 
+
+18. Concurrency control  
+
+19. Lock query and block query and deadlock
+
+20. How to improve Proc and Query and how to identify slow query
+
+
+
+=======================Angular=============
+
+1. Diff AOT and JIT
+
+2. Bundling and minfication and tree shaking
+
+3. How to share data b/w components like Input, output, Service, Subject, Router using query param
+
+4. Diff b/w Subject and Subject Behavior and Subject Replay
+
+5. Rxjs
+
+6. Diff b/w observable and observe and subscriber 
+
+7. Diff observable and Promise and Subject
+
+8. Use of Async and await
+
+9. Auth Gurd
+
+10.Routing
+
+11. Lazy loading and pre loading and eager loading
+
+12.Intercepter 
+
+13.How to call API like using HTTPClient service
+
+14.Dynamic components
+
+15. Diff type of directive like components and structure and attribute directive
+
+16. Life Cycle in Angular
+
+17. Diff  NgOnChange and DoChange and Constructor and ngoninit
+
+18. When to use NgContentinit and NgviewInit
+
+19. Diff type of rxjs operator like map, filter, concatmap, mergemap,debounce, debounceunitl
+
+20. Use of DI and who manage it
+
+21. Diff B/w Pipe and Impure Pipe and real use of it 
+
+22. Latest Angular version and it's feature 
+
+23.ViewEncaputualtion like shadow native and none etc.
+
+24. ChagneDetection.OnPush
+
+25. Use of custom directive and real use of it
+
+26. Can we use *ngif and *ngfor in same div
+
+27. Use of Projection like ng-content and its selcted property
+
+28. Diff Reactive form and template -driven form and how to create custom validation
+
+29. Can we load angular application from server side ? using Angular-universal 
+
+30. Type of json file in angular and use of it.
+
+31. How angular application bootstrap
+
+32. how to implement browser caching
+
+33.  Use of Router Outlet and router link
+
+34. Router State and Router Event
+
+35. Use of track by 
+
+36. How to improve Angular application performance
+
+
+
+===================C#=================
+
+1. Value type and ref type
+
+2. Diff Stack and Heap
+
+3. boxing and unboxing
+
+4. Diff b/w Const and readonly
+
+5. Diff b/w object and Dyanmic and var
+
+6.  Ref and out and IN keyword
+
+7. Tuple
+
+8. AutoMapper
+
+9. Extension method
+
+10.== and Equal
+
+11.Delegate  and Event
+
+12. Thread Vs TPL and how to handle exception 
+
+13. Async and await
+
+14.Coalescing operator
+
+15. Diff b/w throw and throw ex
+
+16. Partials class
+
+17. Diff b/w .ToString and Convert.ToString
+
+18.Genric and its type  and constranints
+
+19. Collection and Genric collection
+
+20. Diff b/w ArrayList and array
+
+21. Diff b/w Dictionary and HashTable
+
+22. Constructor and type, what are the order of execution 
+
+23. Static class and use of it and what are the order of execution 
+
+24. Diff  Array Clone and Copy
+
+25. Shadow copy and deep copy
+
+22. How to improve C# code 
+
+==============Design Pattern ================
+
+1. Diff b/w Singleton and static
+
+2. Creational design pattern like factory method and factory design method and abstract factory method
+
+3. Repository design pattern
+
+4. Observer Pattern and Prototype Design Pattern
+
+5. SOLID Principle
+
+6. DI and IoC
+
+7. Diff  Anti Pattern and Singleton 
+
+8. Diff b/w Design pattern and Architecture pattern  and Principle
+
+================ Dot Net Architecture pattern===========
+
+1. MVC Architecture 
+
+2. Web form Architecture 
+
+3. Microservice Architecture 
+
+4. Rest (Mostly used in API)
+
+5. Event Driven Architecture (Mostly used in API)
+
+6. SOAP (Mostly used in API )
+
+7. DDD(Domain Driven Development) Architecture 
+
+8. TDD(Test Driven Development) Architecture 
+
+9. BDD(Behavior Domain Development) Architecture 
+
+10.Clean Architecture 
+
+11. N Layered Architecture 
+
+12. N-Tire Architecture 
+
+======== Agile Methodology=======================
+
+1. What is Story and Milestone and Bugs/Task/Feature
+
+2. What is Timeline of Milestone (like 2-3 week)
+
+3. What is Milestone points
+
+4.  Scrum methodology
+
+5. What is work flow Agile methodology
+
+Work flow Agile methodology
+
+5.1 Client/End User Create Story (What has to do in 3 week )
+
+5.2 Scrum Master(Team Lead /Any Senior Eng.) convert story into milestone and divide into  sub issues/bugs/feature with developer understating points assign to developer according to skills
+
+5.3  Scrum Master(Team Lead /Any Senior Eng.) take daily meetings with developer for daily status/progress of milestone 
+
+5.4 After complete milestone, Scrum master take a review meetings with client and take feedback 
+
+if client suggest any things then fix it next milestone 
+
+5.5 If 2-3 milestone  completed then take again review meeting with client with full feature If all feature are good then decide to move on production.
+
+
+
+====Version Control==================
+
+1. We can use diff type of version control 
+
+1.1 Git or SVN
+
+2. Central  repository like GITHUB and GITLAB and Assembla 
+
+3. Charry Pick
+
+4. Rebase
+
+5. Bisect
+
+6. PR(Used in GitHub )/ MR(Used in GitLab)
+
+7.Diff Pull and Fetch and Push and Merge
+
+
+
+
+
+==========Flow of Branches ==========
+
+1. What are Environment branches
+
+1.1 We have Production, Pre production , Staging, dev, features/tasks/issue branches
+
+2. If any features/tasks/issue branches completed then merge with dev branch
+
+3. If all  features/tasks/issue branches completed and merged with dev branch 
+
+4. Then merge dev branch with staging branch and test all feature on staging if all good then merge staging to pre production and test if all good on pre production then decide to move on production 
+
+======= CI/CD=======================
+
+1. In GitLab and GitHub and Assembla has CI/CD feature to automate Testing , Building, Deploy 
+
+2.In GitLab we have .gitlab-ci.yml file in this file we have to write script to test, build, deploy
+
+3.Suppose if enable it on dev branch if any code merge in dev branch then CI/CD script run automatically  and build your source-code and Test Unit Test and and deploy it on staging 
+
+In case if it fail then it will show error what part is cause of it.
+
+4. You can configure CI/CD for deploy IIS or Docker Image or Virtual Machine
+
+5. We can use Jenkins as CI/CD UI
+
