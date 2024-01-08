@@ -1,2 +1,23 @@
 Difference b/w CPU and I/O operation
 Define Concurrent and Parallel Programming
+
+
+
+
+
+Best Practices
+ 1. Always use async and await together
+ 2. Always return a Task from an asynchronous method
+ 3. Always await an asynchronous method to validate the operation
+ 4. Use async and await all the way up the chain
+ 5. Never use async void unless it's an event handler or delegate
+ 6. Never block an asynchronous operation by calling Result or Wait()
+
+You'll know how to effectively apply asynchronous and parallel programming
+
+
+Note : The **WebClient** provides a way for us to synchronously go and download a string from a particular web API.
+
+Executing long running synchronous operations on the UI thread will lock up the application.
+
+
