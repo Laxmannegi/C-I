@@ -2723,6 +2723,8 @@ namespace std
 15. Reverse String
 16. Difference b/w record and class
 17. What is ActionResult , IActionResult, Task<IActionResult>
+18. String comparison: InvariantCultureIgnoreCase vs OrdinalIgnoreCase? -> StringComparison.InvariantCultureIgnoreCase
+19. ObservableCollection
 ```
 
 In last video I was just being demonstrating about delegate 
