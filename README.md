@@ -423,12 +423,12 @@ The behaviour of readonly variables will be similar to the behaviour of non-stat
 - Constant variables is a fixed value for the whole class where as readonly variables is a fixed value specific to an instance of class.   
 - Constant variable value cannot modified after declaration but Readonly variables cannot modified after initialization.
   
-[!WARNING]
+> [!WARNING]
 - A readonly field cannot be assigned to (except in a constructor or a variable initializer).  
 
 > [!IMPORTANT]  
 > **what is an instance variable?**.  
-> Instance also called as non-static variables what is it, maintains one copy for each instance of the class created and intializes only the instance is created. if you create N instances N copy , zero instance zero copy.   
+> **Instance** -> also called as non-static variables what is it, maintains one copy for each instance of the class created and intializes only the instance is created. if you create N instances N copy , zero instance zero copy.   
 > **Static** -> Maintain one value for the whole class , can be modified, will not create multiple copyies. Intializes one and only.   
 > **Constant** -> These variables can't be modified by after declaration, you must assigned the value at the time of declaration only. You can't be modified the value. Maintain one and only one copy though out the class life cycle.   
 > **Readonly** -> These variables also can't be modified but after initialization not after declaration, maintain the copy of each instances. Once the initialization done we can't be modified the value.   
@@ -436,8 +436,8 @@ The behaviour of readonly variables will be similar to the behaviour of non-stat
 
 --------------------------------------------------------------------------------------------------------------
 
-**Inheritance** :
-It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the class which provides re-usability.
+**Inheritance**
+It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the classes which provides re-usability.   
 ```c#
 [<modifers>] class <child class> : <parent class>
 class A {
@@ -452,9 +452,9 @@ Note: In inheritance child class can consume members of it's parent class as if 
  A => Parent or Base or Super
  B => Child or Derived or Sub
 
-1. Parent classes constructor must be accessible to child class, otherwise inheritance will not be possible.
-2. In inheritance child class can access parent classes members but parent classes can never access any member that is purely defined under the child class.
- Error :  'Class1' does not contain a definition for 'Test3' and no extension method 'Test3' accepting a first argument of type 'Class1' could be four(are you missing a using directive or an assembly reference?)
+1. Parent classes constructor must be accessible to child class, otherwise inheritance will not be possible.   
+2. In inheritance child class can access parent classes members but parent classes can never access any member that is purely defined under the child class.   
+ Error :  'Class1' does not contain a definition for 'Test3' and no extension method 'Test3' accepting a first argument of type 'Class1' could be four(are you missing a using directive or an assembly reference?).   
 
 
 ```c#
@@ -513,8 +513,8 @@ Method 3
 - Even I don't define a constructor their will be a constructor.
 - Default of scope of class members is private
 
-**Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1
-When child class instance is created it's implicitly call the parent class constructor.
+**Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1.  
+When child class instance is created it's implicitly call the parent class constructor.   
 ```
 ```C#
 static void main()
@@ -535,17 +535,14 @@ We can initialize a parent classes variables by using the child class instance t
 ![image](https://github.com/Laxmannegi/C-I/assets/15025418/0c0f6fd8-233c-45f5-b39c-dbb44894b9c2)
 
 
-**Prev:**
+**Remember**
 1. Parent class constructor must be accessable to child class or else inheritance will not be possible.  
 2. In inheritance child classes can access parent classes members but a parent class can never access its child class members.  
-3. We can inialize a parent class variable by using it's child classes instance to make it as a reference and that reference will be consuming the memory of child class  
-   instance but with that reference we can't call any child class members.  
+3. We can inialize a parent class variable by using it's child classes instance to make it as a reference and that reference will be consuming the memory of child class instance but with that reference we can't call any child class members.  
 **4. Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e Object class of system namespace.**  
 
  > [!IMPORTANT]  
-> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the 
-  class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class  
-  member of the object class.    
+> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class member of the object class.    
 > 4 Important memeber are  
 > - Equal()  
 > - GetHashCode()  
@@ -555,9 +552,9 @@ We can initialize a parent classes variables by using the child class instance t
 [Image]
 
 
-Object   
-
-Class1  
+Object(always on the top any Parent class of Class1)   
+ 
+Class1(Class1 is a child of Object class and parent class of class2)  
 
 Class2  
 
@@ -620,11 +617,7 @@ namespace InheritanceProject
   }
 }
 
-6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor
-// but only if the constructor is paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call
-// it's parent's constructor, so to overcome the problem it the responsibility of the programmer to expilicitly call parent classes constructor from child
-// class constructor and pass values to those paramters.
-// To call parent's constructor from child class we need to use the **base** keyword.
+6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values to those paramters to call parent's constructor from child class we need to use the **base** keyword.
 ```
 
 **Entity :** It's a living or non living object associated with a set of attributes.  
