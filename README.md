@@ -617,7 +617,11 @@ namespace InheritanceProject
   }
 }
 
-6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values to those paramters to call parent's constructor from child class we need to use the **base** keyword.
+6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's
+// parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is
+// parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the
+// responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values
+// to those paramters to call parent's constructor from child class we need to use the **base** keyword.
 ```
 
 **Entity :** It's a living or non living object associated with a set of attributes.  
