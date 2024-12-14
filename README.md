@@ -414,7 +414,7 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 
 - The only difference between static and constant variable is static variables can be modified where as constant variable can't be modified.
 
-**_Readonly_**  
+**Readonly**  
  > If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants   
  but after initialization.   
  It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.  
