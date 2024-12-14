@@ -160,8 +160,9 @@ Variable of a class:  a copy of the class that is not initialized.
 
 Instance of a class: a copy of the class that is initialized by using the new keyword.
 
-Class: It's is user-defined type / data type. / Class is collection object
+Class: It's a user-defined type / data type. / Class is collection object
 If you want to consume of a class, we need to create a copy of it.
+
 ```c#
 int = 100; // int is only a buleprint for your particular data, it doesn't have any memory location.
 int i = 100;
@@ -176,7 +177,7 @@ First f = new First(); //f is instance of class
 First f;               //f is variable of class
 f = new First();       //f is instance of class
 ```
-Memory allocation is done only  after creating instance , untill and unless you create an instance memory allocation is not done.  
+Memory allocation is done only  after creating instance , untill and unless you create an instance memory allocation will be done. Instance can be created only by using the new keyword
 Every instance unique itself.  
 The changes made on one instance never relfect on another instance.  
 
@@ -365,7 +366,7 @@ namespace AccessDemo1
 Note: Static members of a class doesn't require the instance of class for initailization or execution also, 
 where as non-static members of a class require the instance of class both for initialization and execution.
 
-- Static variables of a class are initialized immediately once the execution of class start, where as instance variables are initialized only after the creating the class instance as well as each and every time the instance of class is created.
+- Static variables of a class are initialized immediately once the execution of class starts, where as instance variables are initialized only after the creating the class instance as well as each and every time the instance of class is created.
 - In the life cycle of a class a static varible is initialized one and only one time,
   whereas instance variables are initialized for 0 times if no instance are created and n times if n instances are created.
   
