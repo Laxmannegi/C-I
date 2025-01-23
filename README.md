@@ -2722,6 +2722,10 @@ namespace std
 17. What is ActionResult , IActionResult, Task<IActionResult>
 18. String comparison: InvariantCultureIgnoreCase vs OrdinalIgnoreCase? -> StringComparison.InvariantCultureIgnoreCase
 19. ObservableCollection
+
+How we can connect open API to another API
+-- through reffid
+
 ```
 
 In last video I was just being demonstrating about delegate 
