@@ -558,7 +558,7 @@ Class2
 
 Class3  
 
-Types of Inheritance:
+Types of Inheritance:  
 No. of parent classes a child class have or the no. of child classes a parent class have.
 1. Single
 2. Multi-Level
@@ -567,12 +567,12 @@ No. of parent classes a child class have or the no. of child classes a parent cl
 5. Multiple
 
 
-Single Inheritance
+Single Inheritance  
 Multiple Inheritance
 
 - If at all a class has 1 immediate parent class to it we call it as single inheritance and if it has more than 1 immediate parent class to it we call it as multiple inheritance.
 - In C# we don't have support for multiple inheritance thru classes. What we are provided is only single inheritance thru classes.
-- 
+
 
 ```c#
 
@@ -613,11 +613,11 @@ namespace InheritanceProject
   }
 }
 
-6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's  
-// parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is  
-// parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the  
-// responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
-// to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
+ In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's  
+ parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is  
+ parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the  
+ responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
+ to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
 ```
 2. Multilevel Inheritance
    ```C#
@@ -631,11 +631,12 @@ namespace InheritanceProject
    class ChildClass1 : BaseClass  { }
    class ChildClass2 : BaseClass  { }
    ```
- **Why C# doesn't support mutiple inheritance?** 
+ **Why C# doesn't support mutiple inheritance?**  
  C# does not support multiple inheritance for classes primarily to void the complexity and ambiguity it can introduce, which can make code diffcult to maintain and debug.
- **Ambiguity Problem (Diamond Problem)**
+ 
+ **Ambiguity Problem (Diamond Problem)**  
  When a class inherits from two base classes that have methods and properties with the same name, it creates ambiguity. This issue is often referred to as the "Diamond problem".
- or
+ or  
  The Diamond Problem occurs in multiple inheritance when a class inherits from two base classes that have a common ancestor, creating ambiguity about which inherits method or
  property to use. Since C# does not allow multiple inheritance for classes, this problem is avoided.
 
