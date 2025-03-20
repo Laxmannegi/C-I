@@ -936,10 +936,10 @@ namespace MethodHiding
 ```
 
 **Key Points About Method Hiding**  
-  **No Overriding**: The method in the derived class does not override the base class method; it simply hides it.  
-  **new Keyword**: The new keyword is used in the derived class to explicitly indicate that the method is intended to hide the base class method.  
-  **Compile-Time Binding**: The method to be called is determined at compile time based on the reference type, not the object type (unlike method overriding, which is resolved at 		runtime).  
-  **Not Polymorphic**: Method hiding does not exhibit polymorphic behavior. The base class method is not overridden, so the derived class method does not take its place in the 		inheritance hierarchy.  
+ - **No Overriding**: The method in the derived class does not override the base class method; it simply hides it.  
+ - **new Keyword**: The new keyword is used in the derived class to explicitly indicate that the method is intended to hide the base class method.  
+ - **Compile-Time Binding**: The method to be called is determined at compile time based on the reference type, not the object type (unlike method overriding, which is resolved at 		runtime).  
+ - **Not Polymorphic**: Method hiding does not exhibit polymorphic behavior. The base class method is not overridden, so the derived class method does not take its place in the 		inheritance hierarchy.  
   
 **How Method Hiding Works**
  - If you call the method using a **base class reference**, the base class method is executed.
