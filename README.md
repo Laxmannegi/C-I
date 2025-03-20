@@ -454,7 +454,7 @@ Note: In inheritance child class can consume members of it's parent class as if 
 
 1. Parent classes constructor must be accessible to child class, otherwise inheritance will not be possible.   
 2. In inheritance child class can access parent classes members but parent classes can never access any member that is purely defined under the child class.   
- Error :  'Class1' does not contain a definition for 'Test3' and no extension method 'Test3' accepting a first argument of type 'Class1' could be four(are you missing a using directive or an assembly reference?).   
+Error :  'Class1' does not contain a definition for 'Test3' and no extension method 'Test3' accepting a first argument of type 'Class1' could be four(are you missing a using directive or an assembly reference?).   
 
 
 ```c#
@@ -530,15 +530,13 @@ static void main()
 Error:  
 // Use of unassigned local variable 'p'
 ```
-We can initialize a parent classes variables by using the child class instance to make it as a reference, So that the reference will be consuming the memory of child class instance, but in this case also we can't call any pure child class members by using the reference.
-
-![image](https://github.com/Laxmannegi/C-I/assets/15025418/0c0f6fd8-233c-45f5-b39c-dbb44894b9c2)
-
+We can initialize a parent classes variables by using the child class instance to make it as a reference, So that the reference will be consuming the memory of child class instance,   but in this case also we can't call any pure child class members by using the reference.
 
 **Remember**
 1. Parent class constructor must be accessable to child class or else inheritance will not be possible.  
 2. In inheritance child classes can access parent classes members but a parent class can never access its child class members.  
-3. We can inialize a parent class variable by using it's child classes instance to make it as a reference and that reference will be consuming the memory of child class instance but with that reference we can't call any child class members.  
+3. We can inialize a parent class variable by using it's child classes instance to make it as a reference and that reference will be consuming the memory of child class instance but 
+   with that reference we can't call any child class members.  
 **4. Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e Object class of system namespace.**  
 
  > [!IMPORTANT]  
@@ -549,8 +547,8 @@ We can initialize a parent classes variables by using the child class instance t
 > - GetType()  
 > - ToString()
 >   are accessable from any where.  
-[Image]
 
+![image](https://github.com/Laxmannegi/C-I/assets/15025418/0c0f6fd8-233c-45f5-b39c-dbb44894b9c2)
 
 Object(always on the top any Parent class of Class1)   
  
@@ -567,8 +565,6 @@ No. of parent classes a child class have or the no. of child classes a parent cl
 3. Hierarchical
 4. Hybrid
 5. Multiple
-
-[Image]
 
 
 Single Inheritance
@@ -617,13 +613,65 @@ namespace InheritanceProject
   }
 }
 
-6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's
-// parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is
-// parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the
-// responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values
-// to those paramters to call parent's constructor from child class we need to use the **base** keyword.
+6. >// In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's  
+// parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is  
+// parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the  
+// responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
+// to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
 ```
+2. Multilevel Inheritance
+   ```C#
+   class BaseClass { }
+   class IntermediateClass : BaseClass { }
+   class DerivedClass : IntermediateClass { }
+   ```
+3. Hierarchical Inheritance : Multiple classes inherit from a single base class.
+   ```C#
+   class BaseClass { }
+   class ChildClass1 : BaseClass  { }
+   class ChildClass2 : BaseClass  { }
+   ```
+ **Why C# doesn't support mutiple inheritance?** 
+ C# does not support multiple inheritance for classes primarily to void the complexity and ambiguity it can introduce, which can make code diffcult to maintain and debug.
+ **Ambiguity Problem (Diamond Problem)**
+ When a class inherits from two base classes that have methods and properties with the same name, it creates ambiguity. This issue is often referred to as the "Diamond problem".
+ or
+ The Diamond Problem occurs in multiple inheritance when a class inherits from two base classes that have a common ancestor, creating ambiguity about which inherits method or
+ property to use. Since C# does not allow multiple inheritance for classes, this problem is avoided.
 
+ ```C#
+ class A
+ {
+    public void Display()
+    {
+ 	Console.WriteLine("Class A Display");
+    }
+ }
+ class B : A
+ {
+    public void Display()
+    {
+	Console.WriteLine("Class B Display");
+    }
+ }
+ class C : A
+ {
+    public void Diplay()
+    {
+	Console.WriteLine("Class C Display");
+    }
+ }
+ //Hypothetical case of multiple inheritance:
+ Class D : B,C
+ {
+    //Ambiguity: Which 'Display' method should D use?
+ }
+
+//Usage:
+D obj = new D();
+obj.Display(); //Ambiguous: B's Display or C's Display?
+ ```
+ 
 **Entity :** It's a living or non living object associated with a set of attributes.  
 
 step 1: Identify the entities that are associated with the application we are developing.
@@ -638,8 +686,11 @@ public void Test(string s)
 public void Test(int i, string s) // Order of parameter change  
 public void Test(string s, int i) // Order of parameter change  
 
-public string Test() //Invaild --Parameter is important; Return can't be consider; bacause ambiguity of method come out (same method name and same paramter so, identification of which method has to been call is a confusion, so execution was will not take place for you. 
-You may have a dought return type are different? yes, return is different , return are return of method come will into picture in the end of execution but the confusion is here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
+public string Test() //Invaild --Parameter is important; Return can't be consider;
+// bacause ambiguity of method come out (same method name and same paramter so, identification of which method has to been call is a confusion, so execution was will not take place for you.  
+// You may have a dought return type are different? yes, return is different , return type are return of method will come into picture in the end of execution but the confusion is  
+// here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what  
+// to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
 
 **The call is ambiguous between the following methods or properties: 'Program.Test()' and 'Program.Test()'.**
 
