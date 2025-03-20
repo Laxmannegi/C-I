@@ -436,7 +436,7 @@ The behaviour of readonly variables will be similar to the behaviour of non-stat
 
 --------------------------------------------------------------------------------------------------------------
 
-**Inheritance**
+**Inheritance**  
 It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the classes which provides re-usability.   
 ```c#
 [<modifers>] class <child class> : <parent class>
@@ -511,7 +511,7 @@ Method 3
 
 **Don't Forget**  
 - Even I don't define a constructor their will be a constructor.
-- Default of scope of class members is private
+- Default scope of class members is private
 
 **Class2** constructor is not public , **Class2** constructor doesn't required to be public why? **Class1** constructor should be access to be Class2 not class2 to class1.  
 When child class instance is created it's implicitly call the parent class constructor.   
@@ -680,7 +680,7 @@ step 1: Identify the entities that are associated with the application we are de
 -------------------------------------------
 Method Overloading:  
 -------------------------------------------
-
+```C#
 public void Test()  
 public void Test(int i)  
 public void Test(string s)  
@@ -692,7 +692,7 @@ public string Test() //Invaild --Parameter is important; Return can't be conside
 // You may have a dought return type are different? yes, return is different , return type are return of method will come into picture in the end of execution but the confusion is  
 // here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what  
 // to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
-
+```
 **The call is ambiguous between the following methods or properties: 'Program.Test()' and 'Program.Test()'.**
 
 --------------------------------------
