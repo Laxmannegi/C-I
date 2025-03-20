@@ -436,7 +436,7 @@ The behaviour of readonly variables will be similar to the behaviour of non-stat
 
 --------------------------------------------------------------------------------------------------------------
 
-**Inheritance**  
+## Inheritance    
 It's a mechanism of consuming the members of one class in another class by establishing parent/child relationship between the classes which provides re-usability.   
 ```c#
 [<modifers>] class <child class> : <parent class>
@@ -540,7 +540,7 @@ We can initialize a parent classes variables by using the child class instance t
 **4. Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e Object class of system namespace.**  
 
  > [!IMPORTANT]  
-> General when we define a class we think like we didn't from inherit any class but by default your is inherited from object class. And Object is a parent class of all the class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class member of the object class.    
+> General when we define a class we think like we didn't inherit from any class but by default your are inherited from object class. And Object is a parent class of all the class that is present in our base class libary well as each and every class what we are defined here object is a parent class so, because the object is a parent class member of the object class.    
 > 4 Important memeber are  
 > - Equal()  
 > - GetHashCode()  
@@ -613,10 +613,9 @@ namespace InheritanceProject
   }
 }
 
- In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's  
- parent classes constructor but only if the constructor is paremeter less, where as if the constructor of parent is  
- parameterized, child class constructor can't impilictly call it's parent's constructor, so to overcome the problem it is the  
- responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
+ In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor but only if the constructor is   
+ paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call it's parent's constructor,  
+ so to overcome the problem it is the responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
  to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
 ```
 **2. Multilevel Inheritance**
@@ -637,8 +636,8 @@ namespace InheritanceProject
  **Ambiguity Problem (Diamond Problem)**  
  When a class inherits from two base classes that have methods and properties with the same name, it creates ambiguity. This issue is often referred to as the "Diamond problem".
  or  
- The Diamond Problem occurs in multiple inheritance when a class inherits from two base classes that have a common ancestor, creating ambiguity about which inherits method or
- property to use. Since C# does not allow multiple inheritance for classes, this problem is avoided.
+ The Diamond Problem occurs in multiple inheritance when a class inherits from two base classes that have a common ancestor, ~~creating ambiguity about which inherits method or
+ property to use~~. Since C# does not allow multiple inheritance for classes, this problem is avoided.  
 
  ```C#
  class A
@@ -689,7 +688,7 @@ public void Test(int i, string s) // Order of parameter change
 public void Test(string s, int i) // Order of parameter change  
 
 public string Test() //Invaild --Parameter is important; Return can't be consider;
-// bacause ambiguity of method come out (same method name and same paramter so, identification of which method has to been call is a confusion, so execution was will not take place for you.  
+// bacause ambiguity of method come out (same method name and same parameter so, identification of which method has to been call is a confusion, so execution was will not take place for you.  
 // You may have a dought return type are different? yes, return is different , return type are return of method will come into picture in the end of execution but the confusion is  
 // here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what  
 // to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
@@ -716,6 +715,69 @@ Polymorphism is a core concept in object-oriented programming that allows object
 
 **Dynamic Binding:**
  The method to be executed is determined at runtime based on the object's type, not the reference type.  
+
+```C#
+using System;
+
+// Base class
+class Animal
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound");
+    }
+}
+// Derived class
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+// Derived class
+class Cat : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Cat meows");
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Reference type: Animal | Object type: Animal
+        Animal myAnimal = new Animal();
+        myAnimal.MakeSound(); // Calls Animal's MakeSound
+
+        // Reference type: Animal | Object type: Dog
+        Animal myDog = new Dog();
+        myDog.MakeSound(); // Calls Dog's MakeSound
+
+        // Reference type: Animal | Object type: Cat
+        Animal myCat = new Cat();
+        myCat.MakeSound(); // Calls Cat's MakeSound
+    }
+}
+```
+**Reference Type vs. Object Type:**
+ - In the line Animal myDog = new Dog();:
+ - Reference Type: Animal (the type of the variable myDog).
+ - Object Type: Dog (the actual object being created).
+
+**Method Execution:**
+ - When you call myDog.MakeSound(), the method that gets executed is determined by the object type (Dog), not the reference type (Animal).
+ - Even though myDog is of type Animal, the actual object is a Dog, so the Dog class's MakeSound() method is executed.
+
+**Runtime Decision:**
+ - The decision about which method to call is made at runtime (not at compile time). This is why it's called runtime polymorphism.
+```````````````````````````````````````````````````````````````````````````````````````````````
+`  Note: 											      `
+`  - Reference Type: Determines what methods and properties are accessible at compile time.     `
+`  - Object Type: Determines which implementation of a method is executed at runtime.           `
+```````````````````````````````````````````````````````````````````````````````````````````````
+This behavior is the essence of runtime polymorphism and is a powerful feature of OOP.
 
 **Benefits of Polymorphism:**  
  **Code Reusability:** Write code that works with the base class and reuse it for derived classes.  
@@ -755,6 +817,22 @@ Overriding:
 2. This can be performed only between parent child classes can never be performed with in the same class.
 3. While overriding a parent's method under child class requires a permission from it's parent.
 4. Overriding is all about changing the behaviour of parent's class method under child class.
+
+![image](https://github.com/user-attachments/assets/ae5447e3-2910-4d7c-8882-5ee49b4dfecd)
+
+**When to Use**  
+**Method Overloading:**  
+  - Use when you want to perform similar operations with different inputs.  
+  - Example: A Calculator class with multiple Add methods for different data types.  
+
+**Method Overriding:**  
+ - Use when you want to provide a specific implementation of a method in a derived class.  
+ - Example: A Shape class with a Draw() method, and derived classes like Circle and Rectangle overriding Draw() to provide their own implementations.  
+
+**Real-World Analogy**  
+ **Method Overloading**: Think of a coffee machine with different buttons for different types of coffee (espresso, cappuccino, latte).  
+ - The machine has the same name ("Make Coffee") but behaves differently based on the input (button pressed).
+ **Method Overriding**: Think of a vehicle with a StartEngine() method. A Car and a Motorcycle can override this method to start their engines in different ways.  
 
  Note : If we want to override a parent's method under the child class first that method should be declare by using the virtual modifier in parent class.
 
@@ -856,6 +934,76 @@ namespace MethodHiding
   }
 }
 ```
+
+**Key Points About Method Hiding**  
+  **No Overriding**: The method in the derived class does not override the base class method; it simply hides it.  
+  **new Keyword**: The new keyword is used in the derived class to explicitly indicate that the method is intended to hide the base class method.  
+  **Compile-Time Binding**: The method to be called is determined at compile time based on the reference type, not the object type (unlike method overriding, which is resolved at 		runtime).  
+  **Not Polymorphic**: Method hiding does not exhibit polymorphic behavior. The base class method is not overridden, so the derived class method does not take its place in the 		inheritance hierarchy.  
+  
+**How Method Hiding Works**
+ - If you call the method using a **base class reference**, the base class method is executed.
+ - If you call the method using a **derived class reference**, the derived class method is executed.
+
+```C#
+using System;
+
+// Base class
+class Animal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound");
+    }
+}
+
+// Derived class
+class Dog : Animal
+{
+    // Method hiding using the 'new' keyword
+    public new void MakeSound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Case 1: Base class reference pointing to a base class object
+        Animal myAnimal = new Animal();
+        myAnimal.MakeSound(); // Calls Animal's MakeSound
+
+        // Case 2: Base class reference pointing to a derived class object
+        Animal myDogAsAnimal = new Dog();
+        myDogAsAnimal.MakeSound(); // Calls Animal's MakeSound (not Dog's)
+
+        // Case 3: Derived class reference pointing to a derived class object
+        Dog myDog = new Dog();
+        myDog.MakeSound(); // Calls Dog's MakeSound
+    }
+}
+
+**Explanation**
+Case 1: myAnimal.MakeSound() calls the MakeSound method from the Animal class because the reference type is Animal.  
+Case 2: myDogAsAnimal.MakeSound() also calls the MakeSound method from the Animal class because the reference type is Animal, even though the object type is Dog.  
+ This is because method hiding is based on the reference type, not the object type.  
+Case 3: myDog.MakeSound() calls the MakeSound method from the Dog class because the reference type is Dog.  
+
+**When to Use Method Hiding**
+Use method hiding when you want to provide a new implementation of a method in a derived class without affecting the base class method.   
+It is useful when the base class method is not marked as virtual (and cannot be overridden), but you still want to define a method with the same name in the derived class.
+
+**Real-World Analogy**  
+Think of method hiding like a new version of a book:  
+ > The base class is the original book.  
+ > The derived class is a new edition of the book.  
+ > If you read the book using the original title (base class reference), you get the original content.  
+ > If you read the book using the new edition title (derived class reference), you get the updated content.  
+```
+![image](https://github.com/user-attachments/assets/ffb11030-92fe-482e-92e7-b2aeb66b6e75)
+
 [Image] Warning message method hiding;
 
 
