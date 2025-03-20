@@ -558,7 +558,7 @@ Class2
 
 Class3  
 
-Types of Inheritance:  
+**Types of Inheritance:**  
 No. of parent classes a child class have or the no. of child classes a parent class have.
 1. Single
 2. Multi-Level
@@ -567,8 +567,8 @@ No. of parent classes a child class have or the no. of child classes a parent cl
 5. Multiple
 
 
-Single Inheritance  
-Multiple Inheritance
+**Single Inheritance**  
+**Multiple Inheritance**  
 
 - If at all a class has 1 immediate parent class to it we call it as single inheritance and if it has more than 1 immediate parent class to it we call it as multiple inheritance.
 - In C# we don't have support for multiple inheritance thru classes. What we are provided is only single inheritance thru classes.
@@ -619,13 +619,13 @@ namespace InheritanceProject
  responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
  to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
 ```
-2. Multilevel Inheritance
+**2. Multilevel Inheritance**
    ```C#
    class BaseClass { }
    class IntermediateClass : BaseClass { }
    class DerivedClass : IntermediateClass { }
    ```
-3. Hierarchical Inheritance : Multiple classes inherit from a single base class.
+**3. Hierarchical Inheritance** : Multiple classes inherit from a single base class.
    ```C#
    class BaseClass { }
    class ChildClass1 : BaseClass  { }
