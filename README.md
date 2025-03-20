@@ -680,6 +680,7 @@ step 1: Identify the entities that are associated with the application we are de
 -------------------------------------------
 Method Overloading:  
 -------------------------------------------
+**Method overloading** in C# is a feature that allows a class to have multiple methods with the **same name** but with **different parameters**.
 ```C#
 public void Test()  
 public void Test(int i)  
@@ -693,13 +694,40 @@ public string Test() //Invaild --Parameter is important; Return can't be conside
 // here where to start there is not clearity where to start the execution, When you don't know the where to start talking about the end of excution is foolishness. So first thing what  
 // to required is where to start is not clear, so talking about end is not point here why where is not clear here.. that is why return type will never taken into considersion.  ).
 ```
-**The call is ambiguous between the following methods or properties: 'Program.Test()' and 'Program.Test()'.**
+
+**The call is ambiguous between the following methods or properties: 'Program.Test()' and 'Program.Test()'.**   
+
+**Compile-Time Polymorphism:** Method overloading is an example of compile-time polymorphism because the decision about which method to call is made at compile time.  
 
 --------------------------------------
-Polymorphism
+# Polymorphism
 --------------------------------------
---Pending
+Polymorphism is a core concept in object-oriented programming that allows objects of different classes to be treated as objects of a common baseclass. It enables a single interface to represent different underlying forms. For example, in C#, you can have a base class Animal with a method MakeSound(), and derived classes like Dog and Cat can override this method to provide their own implementation. This allows you to call MakeSound() on any Animal object, and the correct method will be executed based on the actual object type at runtime.
 
+**Types of Polymorphism:**
+
+**Compile-Time Polymorphism (Static Polymorphism):**  
+ - Achieved through method overloading and operator overloading.    
+ - The method to be executed is determined at compile time.  
+   
+**Runtime Polymorphism (Dynamic Polymorphism):**  
+ - Achieved through method overriding and inheritance.  
+ - The method to be executed is determined at runtime.  
+
+**Dynamic Binding:**
+ The method to be executed is determined at runtime based on the object's type, not the reference type.  
+
+**Benefits of Polymorphism:**  
+ **Code Reusability:** Write code that works with the base class and reuse it for derived classes.  
+ **Flexibility:** Easily extend functionality by adding new derived classes without modifying existing code.  
+ **Maintainability:** Simplifies code maintenance and reduces complexity.  
+
+**Real-World Analogy:**
+Think of polymorphism like a remote control. The remote control (base class) has a button called Power. When you press it:  
+ - For a TV, it turns the TV on/off.  
+ - For a fan, it turns the fan on/off.  
+ - For a light, it turns the light on/off.  
+The same button (Power) behaves differently depending on the device (object) it is used with. This is polymorphism in action!
 
 # Method Overriding:
 It's an approach of re-implementing a parent classes method under the child class with the same signature.
@@ -860,14 +888,13 @@ static void Main()
 
 **Important:**  
 B/w : In overriding parent class as a given a permission for the child for re-implementing the method and when the child class re-implement those method,
-parent class will identify them / recogized them, because the parent class recoginzed us,  parent class able to call child methods.  
+parent class will identify them / recogized them, because the parent class recoginzed us, parent class able to call child methods.  
 But In method hiding remember without taking any permission from parent class , child class started re-implemention,
 because the child class started without taking any permission parent reference will not recognized this. so in this case invoke parent class method.  
 
 ```
 
 # Operator Overloading
-
 
 Method Overloading is an approach of defining multiple behaviours to a method and those behaviours will vary based on the parameters of that method.
 
