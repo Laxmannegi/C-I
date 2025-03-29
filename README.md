@@ -1297,6 +1297,14 @@ namespace InterfaceProject
   }
 }
 ```
+Abstract classes vs Interfaces
+- Asbtract classes can have implementation for some of its members(Methods), but the interface can't have the implementation for any of it's members (In C#, starting from C# 8.0, interfaces can include methods with default implementations. These are called default interface methods and are particularly useful for evolving interfaces without breaking existing implementations.).  
+- Interface cannot have fields where as an abstract class can have fields.  
+- An interface can inherit from another interface only and cannot inherit from an abstract class, where as an abstract class can inherit from another abstract class or another interface.  
+- A class can inherit from multiple interfaces at the same time, where as a class cannot inherit from multiple classes at the same time.
+- Abstract class members can have access modifiers where as interface members cannot have access modifiers.
+
+
 # Structure
 
 - Class is a user-defined type.
