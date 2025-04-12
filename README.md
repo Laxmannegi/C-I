@@ -1385,8 +1385,8 @@ namespace DemoProject
   }
 }
 ```
-Properties:
-Property is a member of class using which we can expose values associated with a class to the outside enviroment.
+# Properties:  
+Property is a member of class using which we can expose values associated with a class to the outside enviroment.  
 
 
 # Indexers:
@@ -1466,37 +1466,37 @@ If you define a indexer in class, class is working like virtual array.
 -----------
 # Delegate
 
-It's a type safe function pointer.
-(Delegate is type, a class is a type stuct is a type , interface is a type all these are user-define type , class is user-define type , interface is a user-define type. as the Delegate is also user-define type.
-generally if we understand the Different b/w class and struct the main difference b/w class and struct is  class is reference type and struct is a value type same as delegate is a reference type. )
+It's a type safe function pointer.    
+(Delegate is type, a class is a type stuct is a type , interface is a type all these are user-define type , class is user-define type , interface is a user-define type. as the Delegate is also user-define type. Generally if we understand the Different b/w class and struct the main difference b/w class and struct is  class is reference type and struct is a value type same as delegate is a reference type. )   
 
-( If your are with vs every you define class will be under namespace same way a struct, interface whatever you are doing everthing are define under a namespace, why type are going to be define under a namespaces namespace is a logical container of types and because namespace is a logical container of type we are going to be all type inside namespace. so, Now if the question aries where i should a define a namespace  )
+( If your are with us everytime you define class will be under namespace same way a struct, interface whatever you are doing everthing are define under a namespace, **why type are going to be define under a namespaces** - namespace is a logical container of types and because namespace is a logical container of type we are going to be all type inside namespace. We can define a delegate inside namespace and inside class also (but inside class it will be called nested delegate)).   
 
 - A delegate holds the reference of a method and then calls the method for execution.  
 
 - To call a method by using a delegate we have 3 steps:  
 
-1. Define a delegate  
-Modifier delegate void [type <name>]([<parameter list>])  
-
+**1. Define a delegate**  
+Modifier delegate void [type <name>]([<parameter list>])   
+```C#
 public delegate void AddDelegate(int x, int y);  
-public void AddNums(int a, int b);  
+public void AddNums(int a, int b);
 
 Public delegate string SayDelegate(string name) //delegete signature is going to match return type and parameter of method
 public static string SayHello(string name)
+```
+**2. Create an instance of delegate**  
+```C#
+AddDelegate ad = new AddDelegate(p.AddNums);
+SayDelegate sd = new SayDelegate(SayHello);
+```
 
-2. Create an instance of delegate
-  public delegate void AddDelegate(int x, int y);
-  public delegate void SayDelegate(string name);
-
-3. Now call the delegate by passing required parameter values, so that interally the method which is method with the delegate
-   get execute
+**3.** Now call the delegate by passing required parameter values, so that interally the method which is method with the delegate get execute.
 
 ```C#
 namespace DelegateProgram
 {
   public delegate void AddDelegate(int x, int y);
-  public delegate void SayDelegate(string name);
+  public delegate string SayDelegate(string name);
   
   class Program
   {
@@ -1512,7 +1512,7 @@ namespace DelegateProgram
     {
       Program p = new Program();
       //Your method is a non-static method, and right now you are creating an instance of a delegate in a static block,
-       and very important rule is - A non-static member of class can't access directly , you can access it only thru instance of a         class
+       and very important rule is - A non-static member of class can't access directly , you can access it only thru instance of a class
       AddDelegate ad = new AddDelegate(p.AddNums);
       SayDelegate sd = new SayDelegate(SayHello); // With the class we can directly access the name of method,
                                                       outside the class with name of the class we can access
@@ -1562,17 +1562,20 @@ namespace DelegateProject
     }
   }
 }
-// Note :
-// We cear full you are using a multicasting delegate all these have the same signature means the return
-// and the parameter type should match with each other.  
-// If these two method are value returning , it's override the first value.  
 
+// Be careful
+- when you're using Multicasting make sure all these methods are going to have the same signature means the return types and the parameter types should exactly match with each other and one more thing suppose if these two methods are value returning methods what is the problem you'll face you know that value returning you will get the result of the last method only.
+  
+//Note :
+1. Be careful when you're using Multicasting make sure all these methods are going to have the same signature means the return types and the parameter types should exactly match with each other.
+2. If these two method are value returning , it's override the first value.  
 
 ```
 
 # Anonymous Methods:
-Anonymous is also related to the delegate only. 
-Without binding a named method to the delegate you can bind code block to the delegate.
+In C# 2.0 anonymous method are introduced.  
+- Anonymous is also related to the delegate only.  
+- Without binding a named method to the delegate you can bind code block to the delegate.  
 
 ```C#
 namespace DelegateProject
@@ -1586,22 +1589,44 @@ namespace DelegateProject
       GreetingDelegate obj = delegate(string name)
       {
         return "Hello " + name + " a very good morning!";
-      }
+      };
+      // you also don't need type parameter here also. GreetingDelegate know parameter and return type then why we need to type delegate also. --So, In C# 3.0  Csharp Introduce Lambda Expression.
+      GreetingDelegate obj1 = delegate
+      {
+        return "Hello " + name + " a very good morning!";
+      };
+      // Lambda Expression is just a short hand of anonymus method.
+      GreetingDelegate obj = (name) =>
+      {
+        return "Hello " + name + " a very good morning!";
+      };
       string str = obj.Invoke("Laxman");
       Console.WriteLine(str);
       Console.ReadLine();
     }
   }
 }
+Anonymous methods in C# were introduced in C# 2.0 to allow developers to define inline methods without explicitly naming them. These are primarily used with delegates to bind a block of code directly, making your program concise and often more readable.
 
+When to Use Anonymous Methods:
+When you need to define small methods inline with delegates.
+When you want to avoid cluttering your code with named methods for simple operations.
+For event handling, to assign quick functionality without creating a separate named method.
+
+Limitations:
+Anonymous methods are less preferred compared to lambda expressions, which were introduced in C# 3.0 and provide more concise syntax.
+Anonymous methods cannot contain unsafe code.
+They can't access ref or out parameters from the outer method.
 ```
 
-[image]
-[image]
-[image]
+**Lambda expressions** allow you to write methods inline without the need for explicitly declaring a delegate or anonymous method. They use the => operator (known as the "lambda operator") to separate input parameters from the method body.  
 
+**Common Use Cases**  
+**Delegates:** Simplify assigning methods.  
+**LINQ Queries:** Perform filtering, mapping, and aggregation.  
+**Event Handlers:** Provide quick inline logic for event handling.  
 
-# Fun, Action and Predicate Delegates
+# Fun, Action and Predicate Delegates  
 
 **Generic Delegates:**  
 func  
