@@ -1622,16 +1622,25 @@ They can't access ref or out parameters from the outer method.
 **Lambda expressions** allow you to write methods inline without the need for explicitly declaring a delegate or anonymous method. They use the => operator (known as the "lambda operator") to separate input parameters from the method body.  
 
 **Common Use Cases**  
-**Delegates:** Simplify assigning methods.  
-**LINQ Queries:** Perform filtering, mapping, and aggregation.  
-**Event Handlers:** Provide quick inline logic for event handling.  
+ - **Delegates:** Simplify assigning methods.  
+ - **LINQ Queries:** Perform filtering, mapping, and aggregation.  
+ - **Event Handlers:** Provide quick inline logic for event handling.  
 
 # Fun, Action and Predicate Delegates  
 
 **Generic Delegates:**  
-func  
-action  
-predicate  
+ - Func : Func delegate is used when a method is going to return a value;
+   ```C#
+   delegate  TResult System.Func<in T1, in T2, in T3... T16, out TResult>(T1 arg1, T2 arg2, T3 arg3...);
+   ```
+ - Action : Action delegate is going to be used when your method is going to be void
+   ```C#
+   delegate  TResult System.Action<in T1, in T2, in T3... T16>(T1 arg1, T2 arg2, T3 arg3...);
+   ```
+ - Predicate  : When we want the return as a boolen.
+   ```C#
+   delegate  TResult System.Predicate<in T>(T arg1);
+   ```
 
 
 ```c#
@@ -1720,7 +1729,30 @@ namespace DelegateProject
       Predicate<string> = CheckLength;
       bool statuc = obj3.Invoke("Hello /World");
       Console.WriteLine(status);
-      Console.ReadLine();
+
+      Console.WriteLine("***************************using lamda expression*******************************");
+
+      Func<double, int, double, double> func1 = (double i, int j, double k) =>
+      {
+         return i + j + k;
+      };
+      double v = func1.Invoke(783.234, 324, 34.44);
+      Console.WriteLine($"Addition Func : {v}");
+
+      Action<double, int, double> action = (double i, int j, double k) =>
+      {
+         double v = i + j + k;
+         //Console.WriteLine($"Addition of ActionDelegate :  {v.ToString("#.##")}");
+         Console.WriteLine($"Addition of ActionDelegate :  {Math.Round(v,2)}");
+       };
+         action.Invoke(34.34, 234, 234.3);
+
+       Predicate<string> predicate = (string value) =>
+       {
+          return value.Length > 7 ? true: false;
+       };     
+       Console.WriteLine(predicate.Invoke("MsDhohi"));
+       Console.ReadLine();
     }
   }
 }
@@ -1797,7 +1829,7 @@ namespace DelegateProject
 - Extension Methods are define as static but once they are bound  with any class or structure they turn into non-static.
 - If an extension method is defined with the same name and signature of an existing method in the class, then extension method will not be called and the preference 
   always goes to the orignal method only.
-- The first parameter of an extension method should be the name of the type to which that method has to be bound with and this parameter is not taken into consideration     while calling the extension method.
+- The first parameter of an extension method should be the name of the type to which that method has to be bound with and this parameter is not taken into consideration while calling the extension method.
 - An extension method should have one and only one binding parameter and it should be in the first place of the parameter list.
 
   Note : if an extension method is defined with n parameter then while calling it there will be n-1 parameters only because the binding parameter is excluded.
