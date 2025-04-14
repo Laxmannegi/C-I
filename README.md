@@ -1831,13 +1831,13 @@ namespace DelegateProject
   always goes to the orignal method only.
 - The first parameter of an extension method should be the name of the type to which that method has to be bound with and this parameter is not taken into consideration while calling the extension method.
 - An extension method should have one and only one binding parameter and it should be in the first place of the parameter list.
-
   Note : if an extension method is defined with n parameter then while calling it there will be n-1 parameters only because the binding parameter is excluded.
   
+**Another ways**  
 - Inheritance is a mechanism using which we can extend the functionalities of a class.
-
+**But Problems**  
 - We can't apply inheritance on sealed classes.
-- If the original type is not a class and it's a structure. (We can't pre)
+- If the original type is not a class and it's a structure. (We can't apply inheritance in struc).
 
 
 ```C#
@@ -1922,6 +1922,37 @@ namespace ExtensionMethodProject
   }
 }
 ```
+# String vs StringBuilder
+ - String are immutable. String is a reference type, it storage value in heap
+ - StringBuilder is mutable.
+ - **Automatic Resizing** : Yes, StringBuilder automatically adjusts its internal capacity (i.e., memory allocation) as the size of the text increases.
+ - **Initial Allocation**: By default, StringBuilder allocates 16 characters (not bytes) of capacity initially when no specific capacity is specified.
+ - **Doubling Capacity**: When the text exceeds the current capacity, StringBuilder increases its capacity. Typically, it doubles the current capacity to accommodate the new content
+ - The String Builder maintains only one copy in heap memory irrespective of the number of changes made to that variable value.
+```C#
+    StringBuilder sb = new StringBuilder("Hello");
+    sb.Append("word");
+    sb.Append("San Deo");
+
+   using System.Text;
+
+   class program
+   {
+      public static void Main()
+      {
+         string str = "Tutorial";
+         StringBuilder sb = new StringBuilder(str);
+         sb.Append(" Gateway");
+         Console.WriteLine(sb);
+         sb.Insert(0, "Welcome To ");
+         Console.WriteLine(sb);
+         sb.Replace("Welcome To", "Hello!! from");
+         Console.WriteLine(sb);
+         Console.ReadLine();
+     }
+  }
+```
+
 # Exceptions and Exception Handling
 
 What is a Exception?
@@ -1932,24 +1963,24 @@ Whenever we are developing an application, In the application becoming across tw
      - Wrong Input Supplied
      - Missing required resources
 
-- IndexOutofBound Exception it is a name of a class that come into picture when you go beyond the size of an array to abnormally terminate the program
-- DivideByZeroException
-- OverflowException : Value excedding size limit you will get this error
-- Format Exception
+- **IndexOutofBound** Exception it is a name of a class that come into picture when you go beyond the size of an array to abnormally terminate the program
+- **DivideByZeroException**
+- **OverflowException** : Value excedding size limit you will get this error
+- **Format Exception**
 
-Exception (Parent class):  Logic for abnormal termination
-          - Contain a readonly property to display an error message which is declared as virtual Property "Message"
-          "all the child class overriden the 'Message' property"
-    - Two child are define under exception class
-      - Application Exception : non-Factal Error : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
-      - System Exception :  Factal Error -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
+Exception (Parent class):  
+  - Logic for abnormal termination
+   - Contain a readonly property to display an error message which is declared as virtual Property "Message" - "all the child class overriden the 'Message' property"
+   - Two child are define under exception class
+   - **Application Exception** : non-Factal Error : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
+   - **System Exception** :  Factal Error -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
         -> Format Exception
         -> IndexoutOfBound Exception
         -> Arithetic Exception
             -> DivideByZero Exception
             -> Overflow Exception
        
-Exception Handling:
+**Exception Handling:**
 1. Abnormal termination stops so that statements that are not related with the errors can be executed
 2. We can display user friendly errors msgs to the end users so that we can describe about the error.
 3. We can perform corrective action to resolve the problems that may come  into picture due to the error.
