@@ -1972,13 +1972,14 @@ Exception (Parent class):
   - Logic for abnormal termination
    - Contain a readonly property to display an error message which is declared as virtual Property "Message" - "all the child class overriden the 'Message' property"
    - Two child are define under exception class
-   - **Application Exception** : non-Factal Error : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
-   - **System Exception** :  Factal Error -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
-        -> Format Exception
-        -> IndexoutOfBound Exception
-        -> Arithetic Exception
-            -> DivideByZero Exception
-            -> Overflow Exception
+   - **Application Exception** :
+      - **non-Factal Error** : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
+   - **System Exception** :  **Factal Error** -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
+        - Format Exception
+      **IndexoutOfBound Exception** :
+        - Arithetic Exception
+        - DivideByZero Exception
+        - Overflow Exception
        
 **Exception Handling:**
 1. Abnormal termination stops so that statements that are not related with the errors can be executed
