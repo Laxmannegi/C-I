@@ -121,15 +121,14 @@ class Test
   Non-Static constructor are responsible in initializing non-static fields and these constructors must be explicitly( when we are create instance of a class) called.
   non-static constructor executes only after create the instance of class as well as each and every time the instance of class is created.
   
-- In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for zero of no instances are created and "n" times if "n" 
+- In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for zero if no instances are created and "n" times if "n" 
   instances are created.
 - Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors are impliclity called and more over it's the 
   first block of code to run under the class.
 - Non-static constructors can be overloaded where as static constructor can't be overloaded.
   
 - Every class contain an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
-  - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
-    constructor.
+  - Every class except a static class contains an impicit non-static constructor if not defined with an explicit constructor.
   - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will not be present at all.
  
 **Why constructure are need in our class?**
@@ -362,8 +361,7 @@ namespace AccessDemo1
 Note: Static members of a class doesn't require the instance of class for initailization or execution also, where as non-static members of a class require the instance of class both for initialization and execution.
 
 - Static variables of a class are initialized immediately once the execution of class starts, where as instance variables are initialized only after the creating the class instance as well as each and every time the instance of class is created.
-- In the life cycle of a class a static varible is initialized one and only one time,
-  whereas instance variables are initialized for 0 times if no instance are created and n times if n instances are created.
+- In the life cycle of a class a static variable is initialized one and only one time, whereas instance variables are initialized for 0 times if no instance are created and n times if n instances are created.
   
 - Initialization of instance/non-static variables is associated with instance creation & constructor calling,
   so instance variables can be initialized thru the constructor also.
@@ -409,10 +407,10 @@ Note : (If it create of multiple copy of value , it's a wastage of memory creati
 - The only difference between static and constant variable is static variables can be modified where as constant variable can't be modified.
 
 **Readonly**  
-If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants but after initialization.   
-It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.   
+- If a variable is declared by using the readonly keyword we call that variables as a readonly variable and these variables also can't be modified like constants but after -initialization.   
+- It's not compulsory to initialize a readonly variable at the time of declaration, they can also be initialized under the constructor.   
+- The behaviour of readonly variables will be similar to the behaviour of non-static variables, i.e. initialized only after creating the instance of class and once foreach instance of the class is created.   
 
-The behaviour of readonly variables will be similar to the behaviour of non-static variables, i.e. initialized only after creating the instance of class and once foreach instance of the class is created.   
 - The only difference between readonly and instance variables is instance variables can be modified, but not readonly variables.  
 - Constant variables is a fixed value for the whole class where as readonly variables is a fixed value specific to an instance of class.   
 - Constant variable value cannot modified after declaration but Readonly variables cannot modified after initialization.
@@ -422,10 +420,10 @@ The behaviour of readonly variables will be similar to the behaviour of non-stat
 
 > [!IMPORTANT]  
 > **what is an instance variable?**.  
-> **Instance** -> also called as non-static variables what is it, maintains one copy for each instance of the class created and intializes only the instance is created. if you create N instances N copy , zero instance zero copy.   
-> **Static** -> Maintain one value for the whole class , can be modified, will not create multiple copyies. Intializes one and only.   
-> **Constant** -> These variables can't be modified by after declaration, you must assigned the value at the time of declaration only. You can't be modified the value. Maintain one and only one copy though out the class life cycle.   
-> **Readonly** -> These variables also can't be modified but after initialization not after declaration, maintain the copy of each instances. Once the initialization done we can't be modified the value.   
+ -  **Instance** -> also called as non-static variables what is it, maintains one copy for each instance of the class created and intializes only the instance is created. if you create N instances N copy , zero instance zero copy.   
+ - **Static** -> Maintain one value for the whole class , can be modified, will not create multiple copyies. Intializes one and only.   
+ - **Constant** -> These variables can't be modified by after declaration, you must assigned the value at the time of declaration only. You can't be modified the value. Maintain one and only one copy though out the class life cycle.   
+ - **Readonly** -> These variables also can't be modified but after initialization not after declaration, maintain the copy of each instances. Once the initialization done we can't be modified the value.   
 
 
 --------------------------------------------------------------------------------------------------------------
