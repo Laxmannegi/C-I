@@ -1955,7 +1955,7 @@ namespace ExtensionMethodProject
 
 # Exceptions and Exception Handling
 
-What is a Exception?
+What is a Exception?  
 Whenever we are developing an application, In the application becoming across two diff type error occurs 
 1. Compile time : An error occur in your program due to syntaxical mistake , forget semicolon, culry braces
 2. Runtime Error :
@@ -1972,15 +1972,16 @@ Exception (Parent class):
   - Logic for abnormal termination
    - Contain a readonly property to display an error message which is declared as virtual Property "Message" - "all the child class overriden the 'Message' property"
    - Two child are define under exception class
-   - **Application Exception** :
+   - **Application Exception** : CLR will not throw
       - **non-Factal Error** : These are basically we can perform these type of action, but we don't want. These exception cause by programmer will do.
-   - **System Exception** :  **Factal Error** -> These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
+   - **System Exception** : All the exception raised by the CLR. Conditions are predefined and based on the predifined condition the exceptions is raise in the program.
+      - **Factal Error** : These type of action should never be perform so, system will never allow to be performed. These exception cause by CLR.
         - Format Exception
-      **IndexoutOfBound Exception** :
+        - **IndexoutOfBound Exception** 
         - Arithetic Exception
         - DivideByZero Exception
         - Overflow Exception
-       
+       // CLR throw exception instance
 **Exception Handling:**
 1. Abnormal termination stops so that statements that are not related with the errors can be executed
 2. We can display user friendly errors msgs to the end users so that we can describe about the error.
@@ -2009,8 +2010,9 @@ class Ex
   }
   finally
   {
-    // Exception will execute, Exception will not occure -> excute ; If any return method then also execute.
-  
+       Exception occure will execute
+       Exception didn't occure will also execute
+       Even if any return method then also execute.
   }
 }
 ```
@@ -2035,9 +2037,6 @@ class A
 }
 ```
 
-[image]
-
-
 -----------------
 # MultiThreading
 ----------------
@@ -2061,8 +2060,8 @@ Multi-Threading:
  - Process
  - - Multiple Threads
 
-  - A process can contain more than one thread in it to execute.
-  - Each Thread are trying to perform different action.
+  - A process can contain more than one thread in it to execute.  
+  - Each Thread are trying to perform different action.   
   - Advantage : The execution take place simultaneously. When their are multiple thread to run in a program what will happen is op is going to allocate some time period for each thread to execute. Mean it will share the time b/w each thread to execute. How much time? That was not in our control. Operation system will take care.
     suppose there are thread to execute, so the operating system is going share the time b/w each thread and based on the time sharing all thread are going to execute for you equally.
 
