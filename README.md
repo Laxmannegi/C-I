@@ -111,6 +111,27 @@ class Test
    they are implicilty called and more over these constructor are first to execute under any class.
 3. **Static constructor can't be parameterized** so overloading static constructor are not possible.
 
+
+**Static Constructors vs Non-Static Constructors:**
+ - If a constructor is explicitly declared by using a static modifier we call that constructor as static constructor whereas rest of other are non-static constructors only.
+ - Constructors are responsile for initializing fields/variables of a class, static fields are initialized by static constructors and non-static fields are initialized by non-static constructors.
+ 
+- Static constructor are responsible in initializing static variables and these constructors are never called explicitly they are implicilty called and these constructor are executes 
+  immediately once the execution of a class starts more over it's the first block of code to run under a class.  
+  Non-Static constructor are responsible in initializing non-static fields and these constructors must be explicitly( when we are create instance of a class) called.
+  non-static constructor executes only after create the instance of class as well as each and every time the instance of class is created.
+  
+- In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for zero of no instances are created and "n" times if "n" 
+  instances are created.
+- Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors are impliclity called and more over it's the 
+  first block of code to run under the class.
+- Non-static constructors can be overloaded where as static constructor can't be overloaded.
+  
+- Every class contain an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
+  - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
+    constructor.
+  - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will not be present at all.
+ 
 **Why constructure are need in our class?**
 
 - Every class requires a constructor to be present init if we want to create an intance of that class.
@@ -126,42 +147,17 @@ class Test
   - Whenever we define a class first identify whether if the class variables requires some values to execute and if they are required then define a constructor explicitly 
     and pass values thru that constructor, so that every time the instance of class is created we get a chance of passing new values.
 
-Note : Generally every class requires some values for execution and the values that are required for a class to execute are always send to that class by using the constructor only. 
+**Note : Generally every class requires some values for execution and the values that are required for a class to execute are always send to that class by using the constructor only. **
 
 
-**Static Constructors vs Non-Static Constructors:**
-- If a constructor is explicitly declared by using a static modifier we call that constructor as static constructor whereas 
-  rest of other are non-static constructors only.
+ - Variable of a class
+ - Instance of a class
+ - Reference of a class
 
-- Constructors are responsile for initializing fields/variables of a class, static fields are initialized by static 
-  constructors and non-static fields are initialized by non-static constructors.
-  
-- Static Constructors are implicitly called whereas non-static constructors must be explicitly( when we are create instance of a class) called.
-- Static constructors executes immediately once the execution of a class starts and more over it's the first block of code to run under a class whereas non-static 
-  constructor executes only after create the instance of class as well as each and every time the instance of class is created.
-- In the life cycle of a class static constructor executes one and only one time whereas non-static constructor executes for
-  zero of no instances are created and "n" times if "n" instances are created.
-- Non-static constructors can be parameterized but static constructor cannot have any parameter because static constructors are impliclity called and more over it's the 
-  first block of code to run under the class.
-- Non-static constructors can be overloaded where as static constructor can't be overloaded.
-  
-- Every class contain an implicit constructor if not defined explicilty and those implicit constructor are defined based on the following criteria:
-  - Every class except a static class contains an impicit non-static constructor if not defined with an explicit   
-    constructor.
-  - Static constructors are implicitly defined only if that class contains any static fields or else that constructor will not be present at all.
- 
- ---------------------------------------------------------------------------------------------------------------------------
-#
-Variable of a class
-Instance of a class
-Reference of a class
+**Variable of a class:**  a copy of the class that is not initialized.
+**Instance of a class:** a copy of the class that is initialized by using the new keyword.
 
-Variable of a class:  a copy of the class that is not initialized.
-
-Instance of a class: a copy of the class that is initialized by using the new keyword.
-
-Class: It's a user-defined type / data type. / Class is collection object
-If you want to consume of a class, we need to create a copy of it.
+Class: It's a user-defined type / data type. / Class is collection object. If you want to consume of a class, we need to create a copy of it.
 
 ```c#
 int = 100; // int is only a buleprint for your particular data, it doesn't have any memory location.
@@ -177,9 +173,9 @@ First f = new First(); //f is instance of class
 First f;               //f is variable of class
 f = new First();       //f is instance of class
 ```
-Memory allocation is done only  after creating instance , untill and unless you create an instance memory allocation will be done. Instance can be created only by using the new keyword
+Memory allocation is done only  after creating instance, untill and unless you create an instance memory allocation will be done. Instance can be created only by using the new keyword
 Every instance unique itself.  
-The changes made on one instance never relfect on another instance.  
+The changes made on one instance never reflect on another instance.  
 
 **Reference of a class:**
 References is copy of the class that is initialized by using an existing instance and references of class will not have any memory allocation they will be sharing the same
@@ -363,8 +359,7 @@ namespace AccessDemo1
 - If a variable is explicitly declared by using the static modifer or else if a variable is declared under any static block then those varibles are static where as rest of 
  the other are non-static.
 
-Note: Static members of a class doesn't require the instance of class for initailization or execution also, 
-where as non-static members of a class require the instance of class both for initialization and execution.
+Note: Static members of a class doesn't require the instance of class for initailization or execution also, where as non-static members of a class require the instance of class both for initialization and execution.
 
 - Static variables of a class are initialized immediately once the execution of class starts, where as instance variables are initialized only after the creating the class instance as well as each and every time the instance of class is created.
 - In the life cycle of a class a static varible is initialized one and only one time,
@@ -372,7 +367,6 @@ where as non-static members of a class require the instance of class both for in
   
 - Initialization of instance/non-static variables is associated with instance creation & constructor calling,
   so instance variables can be initialized thru the constructor also.
-[Image]
 
 ```c#
 class Program
@@ -616,7 +610,7 @@ namespace InheritanceProject
  In the first point we learnt whenever child class instance is created, child class constructor will implicity call it's parent classes constructor but only if the constructor is   
  paremeter less, where as if the constructor of parent is parameterized, child class constructor can't impilictly call it's parent's constructor,  
  so to overcome the problem it is the responsibility of the programmer to expilicitly call parent classes constructor from child class constructor and pass values  
- to those paramters to call parent's constructor from child class we need to use the **base** keyword.  
+ to those parameters to call parent's constructor from child class we need to use the **base** keyword.  
 ```
 **2. Multilevel Inheritance**
    ```C#
