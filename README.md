@@ -2033,11 +2033,13 @@ class A
 # MultiThreading
 ----------------
 
-Multitasking : Windows operating system is a multitasking operating system. How all these application run at time.. Operating system to execute all this perticular program internally will make use of process. so what is process?
+Multitasking : Windows operating system is a multitasking operating system.  
+How all these application run at time.. Operating system to execute all this particular program internally will make use of process.  
+so what is process?   
+Under this Operating system we have a process and this running our application, under the process an application run and to run the code inside the application ,process will use a concept knows thread.  
+What is thread? Thread is a light weight process. In a simple word.. A thread is a unit which execute the code under a application.
 
-Under this Operating system we have a process and this running our application, under the process an application run and to run the code inside the application ,process will use a concept knows thread. What is thread? Thread is a light weight process. In a simple word.. A thread is a unit which execute the code under a application.
-
-Operating System:
+**Operating System:**
  - Process
    - Thread
      
@@ -2047,10 +2049,9 @@ Every application has logic some logic in it and to execute that logic this thre
 
 Drawback of Single Thread Application / Model
 
-
 Multi-Threading:
  - Process
- - - Multiple Threads
+ - Multiple Threads
 
   - A process can contain more than one thread in it to execute.  
   - Each Thread are trying to perform different action.   
@@ -2122,9 +2123,9 @@ static void Main()
 
 # The Constructor of Thread class
 
-The Four constructors we have in our thread class.
-1. ParameterizedThreadStart -> start : Initializes a new instance of the thread class, specifying a delegate that allows an object to be
-2. ThreadStart -> start : A ThreadStart delegate that represents the methods to be invoked when this thread begin executing.
+The Four constructors we have in our thread class.  
+1. ParameterizedThreadStart -> start : Initializes a new instance of the thread class, specifying a delegate that allows an object to be  
+2. ThreadStart -> start : A ThreadStart delegate that represents the methods to be invoked when this thread begin executing.  
 
 
 # ThreadStart
@@ -2208,12 +2209,12 @@ namespace std
 ```
 # Thead Join
 
-Main Thread is not allow to get out the program in Middle.  
-If you want the Main Thread to wait until all the thread are completing there work. What you required to do is Join.  
-Now untill all the child threads are finishing/completing there jobs Main thread cannot get way from program/ Main thread will not exit.  
-Main thread cannot exits from program untill all the child thread are finishing there jobs.
-or
-untill all the other thread are exiting from the program main thread is not allowed to exit from the program.
+Main Thread is not allow to get out the program in Middle.   
+If you want the Main Thread to wait until all the thread are completing there work. What you required to do is Join.   
+Now untill all the child threads are finishing/completing there jobs Main thread cannot get way from program/ Main thread will not exit.   
+Main thread cannot exits from program untill all the child thread are finishing there jobs.  
+or  
+untill all the other thread are exiting from the program main thread is not allowed to exit from the program.  
 ```c#
 
 using System;
@@ -2304,8 +2305,8 @@ namespace std
 // Hello, I'm going to Mars
 // Hello, I'm going to Mars
 
-// First Thread execute than immediately that second thread will start the execution but it cannot access this code by means because the code is put in a lock only
-// one thread is allowed to enter into the code into this block multiple thread cannot access this now How many threads can access only one thread and one thread went inside and was sleeping days and until it finishes and comes out the second one cannot access the things now so waits for 5 sec and at the same time third one also start but all are waiting outside the block cannot enter inside just like a telephone booth if I just see a telephone if one person enter into your telephone booth the other person coming over there has to stand outside the person inside the telephone booth is making a call and after he comes out only second one can enter when first one is talking the second one cannot go inside and enter and interrupt him now so compulsory has to wait there until the first one finishes his jobs and comes out and once the first one completes and comes out of it then only the second one enter.
+- First Thread execute than immediately that second thread will start the execution but it cannot access this code by means because the code is put in a lock only
+one thread is allowed to enter into the code or into this block multiple thread cannot access this now. How many threads can access only one thread and one thread went inside and was sleeping days and until it finishes and comes out the second one cannot access the things now so waits for 5 sec and at the same time third one also start but all are waiting outside the block cannot enter inside just like a telephone booth if I just see a telephone if one person enter into your telephone booth the other person coming over there has to stand outside the person inside the telephone booth is making a call and after he comes out only second one can enter when first one is talking the second one cannot go inside and enter and interrupt him now so compulsory has to wait there until the first one finishes his jobs and comes out and once the first one completes and comes out of it then only the second one enter.
 ```
 
 # Thread Priority
@@ -2381,19 +2382,19 @@ namespace std
 
 - Dynamic Array
 
-What are these collections see, first thing what the collection means the first important point to understand it's a dynamic Array. What is this Dynamic Array.
-if you just came across the Arrays in any of the language like C or C++ or in C-sharp language you'll understand about this Array are fixed length What's it once an array is declared we can never change the size of an array 
+What is this Dynamic Array.  
+if you just came across the Arrays in any of the language like C or C++ or in C-sharp language you'll understand about this Array are fixed length What's it once an array is declared we can never change the size of an array.
 
 int[] arr = new int[10];
 
-suppose, if you want to increase the size of array you have two option
-1. you required to manually create a new array and to copy the values
+suppose, if you want to increase the size of array you have two option  
+1. you required to manually create a new array and to copy the values  
 
 int[] arr = new int[15];
 
 2. Array class so in the System namespace there is a class called array this array class provides as a method called as Resize. By calling this resize method also
    we can resize an array so it is possible to resize by calling the resize method open but remember even through there is a method called resize to research an array
-   what is does internally it will destory the old array and it creates a new array.
+   what is does internally it will destory the old array and it creates a new array.  
 
 Array.Resize();
 
@@ -2408,19 +2409,18 @@ namespace std
 }
 ```
    
-Drawback of Array
+**Drawback of Array**
 1. Increasing the size
 2. You can never insert value at middle of the Array / Inserting values into the middle.
 3. Deleting or removing values from the middle
 
-
+**ArrayList**
 1. Auto Resizing ( The size of your array automatically increment whenever we keep adding new values to it.)
 2. It is possible to insert the values in middle of the collections
 3. Possible delete or remove the values in middle of the collections
 
-The Collection Which are introduced in the 1.0 are known as 
-Non-Generic Collections: 
-System.Collections - Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable
+The Collection Which are introduced in the 1.0 are known as Non-Generic Collections:  
+**System.Collections** - Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable
 
 Difference between an Array and ArrayList:
 
@@ -2437,7 +2437,7 @@ namespace std
   {
     static void Main(string[] args)
     {
-      ArrayList al = new ArrayList();  // ArrayList al = new ArrayList(10);  you can set inital Capacity
+      ArrayList al = new ArrayList();  // ArrayList al = new ArrayList(10);  or you can set initial Capacity (constructor)
       Console.WriteLine(al.Capacity);
       al.Add(100);
       Console.WriteLine(al.Capacity);
@@ -2469,8 +2469,8 @@ namespace std
 // output
 0
 4
-4
-8
+4 //till 4th item
+8 //5Th item added
 100 200 300 400 500
 100 200 300 350 400 500
 ```
@@ -2487,17 +2487,6 @@ The Size of the Collection grow automatically as you keep adding new into it. Th
 Hashtables: Key/Values Combination; key is User Define value
 
 Array and ArrayList : Key/Value Combination; Key are predefine
-
-"Eid", 1010
-"Ename","Scott"
-"Job","Manager"
-"Salary",25000.00
-"Mgrid", 1002
-"Phone",234893393
-"Email",scott@gmail.com
-"Department","Sales"
-"Location","Mumbai"
-"Age", 30
 
 ```C#
 using System;
@@ -2530,22 +2519,22 @@ namespace std
    }
   }
 }
-
+- Right now you might be wondering here what is it why these values are not printed in a sequential order they are not at all printed in the sequential order. The reason why you're not going to get them in a sequential order is HashTable internally while storing the values for every key you given will internally generate hashcode value and stores and it has an hashing algorithm for storing the value into this one.
 // Remember: Every Class by default contains 4 method init.- GetHashCode(), ToEqual(), GetType(), ToString()
 // Hashtable Every item contain three values - Key, Value, HashCode
 ```
 What is a problem the problem is in an application I want to store n number of integer value, so what is that is n number of integer values so generally if at all I say I want to store 10 integer value what we can do we can take an Integer array in store. Array are type safe actually so we can declare an integer array the type safe but when we can use an array if you know the size I wanted to store 10 items array is okay I want to store 20 items array is Okay but If i want to store n items the N is not known the N is not known right now so in the runtime when the values are being taken out at the time we are going to identify them so when n is  not known we cannot use the array so because the problem with the arrays is arrays fixed length so they cannot increase the size if you want to increase the what the drawback is your required to create a new array and copy the old values to the new array, So overcome this particular problem we came to collections. Collection when you talk about a collection size is not requied to be specified by a collection because collection can store variable number of items it's not like a fixed length it is a variable length and the size of the collection is going grow automatically Auto resizing facility is avaiable **but not type safe**. Why they are not type safe if C for storing n number of integer values  if i take a collection while entering the value by mistake if any wrong values entered there it accepts the wrong type of values entered it accepts . I'm going enter string values it's accept , I'm going to enter integer value , bool, float it accepts whatever we enter it accepts but our requirement is purely sotring integer values so this the problem we have with the collections.
 
 **Collection has one drawback is not type safe**
-
-Array : Type Safe but fixed length
-Collection: Auto Resizing but not Type Safe
+Array : Type Safe but fixed length  
+Collection: Auto Resizing but not Type Safe  
 
 # Generic Collection: in C# 2.0
 Generic Collection is also a collection. It's a type safe and Auto Resizing.
-
-List<T>
-
+ - List<T> - Represent a strongly typed list of objects that can be accessed by index. Provides methods to search, sorted and manipulate lists.
+ -**Whatever collection classes we have in System.Collection namespace for all those classes Microsoft has provided a replacement in System.Collection.Generic namespace.**
+ - 
+```C#
 public class Customer
 {
 public int Custid { get; set;}
@@ -2556,10 +2545,9 @@ public double Balance {get; set;}
 List<int> li = new List<int>();
 List<string> ls = new List<string>();
 List<Customer> customers = new List<Customer>();
+```
+**ArrayList** : In ArrayList is capable to store any type values init. The reason is Add method is going to take Object parameter. you can pass anything so it's not type safe.
 
-Whatever collection classes we have in System.Collection namespace for all those classes Microsoft has provided a replacement in System.Collection.Generic namespace.
-
-List<T> - Strongly Typed 
 ```C#
 namespace std
 {
@@ -2580,16 +2568,21 @@ namespace std
  }
 }
 ```
-ArrayList  
-In ArrayList is capable to store any type values init. The reason is Add method is going to take Object parameter. you can pass anything so it's not type safe.
 
 ```C#
-
 namespace std
 {
  class Generics
  {
   // if we use object, Internal compailer have to perform boxing and unboxing.
+   //Everytime we use this method it perform boxing and unboxing. unneccessary process of boxing and unboxing it's impacts in performance.
+   public bool Compare1(object Value1 , object Value2)
+   {
+       if(Value1.Equals(Value2))
+                return true;
+            return false;
+   }
+
    public bool Compare<T>(T a , T b)
    {
 	if (a.Equal(b))
@@ -2605,16 +2598,15 @@ namespace std
    }
  }
 }
-
 ```
 
 ```C#
-
 namespace std
 {
  class Generics2
  {
-  // if we use object, Internal compailer have to perform boxing and unboxing.
+   //Dynamic is introduce in c# 4.0. Which allows to declare a variable by using the keyword dynamic. Data Type of the variable is identified in the runtime
+   // Var is introduce in c# 3.0, Var is similar to dynamic. but var identifies the type at compilation time.
    public bool Add<T>(T a , T b)
    {
 	dynamic d1 = a;
@@ -2657,7 +2649,7 @@ namespace std
 
 ```
 
-// Pass Type directly to the class
+**Pass Type directly to the class**
 
 ```C#
 
@@ -2665,7 +2657,6 @@ namespace std
 {
  class Generics2<T>
  {
-  // if we use object, Internal compailer have to perform boxing and unboxing.
    public bool Add(T a , T b)
    {
 	dynamic d1 = a;
@@ -2707,13 +2698,12 @@ namespace std
 }
 
 ```
-HashTable : Store a value in key value combination and List  
+**HashTable :** Store a value in key value combination.    
 
-Comming to Generic collection hashtable was repalce as Dictionary  
+Comming to Generic collection hashtable was replace as Dictionary  
 
-List<T> : In List key are pre-define
-Dictionary<TKey, TValue> 
-
+List<T> : In List key are pre-define  
+Dictionary<TKey, TValue>  
 
 ```c#
 
