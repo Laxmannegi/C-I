@@ -2774,7 +2774,112 @@ namespace std
 ```
 # IComparable & IComparer
 
-And Comparison Delegate  
+- IComparable : The IComparable interface is used to define a type's natural ordering. When a class implements IComparable, it means that instances of that class can be ordered/sorted.
+   - Defined in **System** namespace
+   - Contains a single method: CompareTo()
+- IComparer : The IComparer interface is used to define additional comparison behaviors outside a class's natural ordering. It's useful when you want to sort objects in different ways.
+   - Defined in **System.Collections** namespace
+   - Contains a single method: Compare()
+   - Allows multiple sorting criteria
+   - Can be used when you don't control the source class
+  
+- Comparison Delegate : Comparison delegates provide another way to define custom sorting logic in C#, offering more flexibility than `IComparable` and `IComparer` in certain scenarios.
+
+## Key Comparison Delegates
+
+### 1. `Comparison<T>` Delegate
+
+A built-in delegate type specifically for comparison operations:
+
+```csharp
+public delegate int Comparison<in T>(T x, T y);
+```
+
+### 2. `Func<T, T, int>`
+
+A more generic delegate that can also be used for comparisons:
+
+```csharp
+Func<Person, Person, int> comparison = (x, y) => x.Age.CompareTo(y.Age);
+```
+
+## Usage Examples
+
+### Basic Usage with `Comparison<T>`
+
+```csharp
+List<Person> people = GetPeople();
+
+// Using a named method
+people.Sort(CompareByName);
+
+// Using lambda expression
+people.Sort((x, y) => x.Age.CompareTo(y.Age));
+
+// ...
+
+private static int CompareByName(Person x, Person y)
+{
+    return string.Compare(x.Name, y.Name, StringComparison.Ordinal);
+}
+```
+
+### Comparison vs IComparer
+
+```csharp
+// Using IComparer
+people.Sort(new AgeComparer());
+
+// Equivalent using Comparison delegate
+people.Sort((x, y) => x.Age.CompareTo(y.Age));
+```
+
+## Advantages of Comparison Delegates
+
+1. **Concise syntax** - Especially with lambda expressions
+2. **No need for separate classes** - Unlike `IComparer`
+3. **More flexible** - Can capture local variables via closures
+4. **Easier for one-off comparisons** - No need to create full comparer classes
+
+## Common Patterns
+
+### Chaining Comparisons
+
+```csharp
+people.Sort((x, y) => {
+    int nameCompare = x.Name.CompareTo(y.Name);
+    return nameCompare != 0 ? nameCompare : x.Age.CompareTo(y.Age);
+});
+```
+
+### Reverse Sorting
+
+```csharp
+// Descending order by age
+people.Sort((x, y) => y.Age.CompareTo(x.Age));
+```
+
+### Null Handling
+
+```csharp
+people.Sort((x, y) => {
+    if (x == null) return y == null ? 0 : -1;
+    if (y == null) return 1;
+    return x.Name.CompareTo(y.Name);
+});
+```
+
+## When to Use Which
+
+- **Use `IComparable<T>`** when your type has a natural ordering
+- **Use `IComparer<T>`** when:
+  - You need multiple reusable comparison strategies
+  - You're implementing a strategy pattern
+  - You need to pass the comparer to APIs that require it
+- **Use `Comparison<T>`** when:
+  - You need a one-off comparison
+  - You want the conciseness of lambda expressions
+  - You need to capture local variables in your comparison logic
 
 ```C#
 
@@ -2797,7 +2902,7 @@ namespace std
          return 0;
    }
   }
-  // suppose we don't have a access of student class or student is pre-define classs or some other person has implemented.. to overcome this problem take a new class and implment a interface IComparer; 
+  // suppose we don't have a access of student class or student is pre-define classs or some other person has implemented.. to overcome this problem take a new class and implement a interface IComparer; 
   Class CompareStudents : IComparer<Student>
   {
     public int CompareTo(Student x , Student y)
@@ -2847,8 +2952,6 @@ namespace std
 }
 
 ```
-[image] error
-
 
 # IEnumerable Interface
 
@@ -2856,13 +2959,10 @@ IEnumerable Interface is parent of all the collection
 
 - IEnumerable
   - ICollection
-     - IList
-     - IDictionary
-       Hashtable, Dictionary
+     - IList -> List
+     - IDictionary -> Hashtable, Dictionary
 
-Foreach work because Every Collection inherit from Interface called IEnumerable. This IEnumerable Internal contains a method GetEnumerator() and that GetEnumerator method Implemented by all the collection class and that GetEnumerator method is used by the foreach for Printing. 
-
-[Image]
+Foreach will work because every collection inherit from an Interface called IEnumerable. This IEnumerable Internal contains a method GetEnumerator() and that GetEnumerator method Implemented by all the collection class and that GetEnumerator method is used by the foreach for Printing. 
 
 ```C#
 namespace std
