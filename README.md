@@ -3090,11 +3090,280 @@ namespace std
  }
 }
 
-[image]
 ```
 ![image](https://github.com/Laxmannegi/C-I/assets/15025418/fbd6ee46-fed4-4d94-81de-bf692f5c1745)
 ![image](https://github.com/Laxmannegi/C-I/assets/15025418/463d09f4-c97b-48ce-8e6e-3d36126c4938)
 ![image](https://github.com/Laxmannegi/C-I/assets/15025418/7f349e64-0923-4540-bc09-cf871ee89827)
+
+
+# LINQ (Language Integrated Query) in C#
+
+## Introduction of LINQ in .NET 3.5
+
+LINQ (Language Integrated Query) was one of the most significant innovations introduced with .NET Framework 3.5 in November 2007. It represented a major evolution in how developers could work with data in C# and VB.NET.  
+
+It's a query language that is introduced in .Net 3.5 framework for working with relational database i.e. Sql Server.  
+LINQ is a powerful feature in C# that provides a consistent way to query data from various sources like collections, databases, XML, and more.  
+LINQ has been designed for writing queries on a wide variety of data sources.  
+
+SEQL : Structured English Query Language as we call it's as SQL  
+
+## Key Components Introduced in .NET 3.5
+
+### 1. **LINQ Providers**
+- LINQ to Objects (for in-memory collections, Array etc.)
+- LINQ to SQL (for relational databases) Linq to Sql is not only about querying the data but also allows us to perform Insert, Update and Delete operations/CURD.
+   - Note: We can also call stored procedures by using Linq to SQL.
+- LINQ to XML (for XML documents)
+- LINQ to DataSet (for ADO.NET DataSets, DataTables, Relational Database Tables)
+
+### 2. **Language Enhancements**
+- **Lambda expressions**: `x => x.Property`
+- **Extension methods**: Allowing LINQ methods to be added to existing types
+- **Anonymous types**: `new { Prop1 = value1, Prop2 = value2 }`
+- **Implicitly typed variables**: `var` keyword
+- **Query syntax**: SQL-like syntax integrated into the language
+
+### 3. **Core Namespaces**
+- `System.Linq` (core LINQ functionality)
+- `System.Data.Linq` (LINQ to SQL)
+- `System.Xml.Linq` (LINQ to XML)
+
+## Why LINQ Was Revolutionary
+
+1. **Unified Querying**: Same syntax for querying databases, collections, XML, etc.
+2. **Type Safety**: Compile-time checking of queries
+3. **IntelliSense Support**: Full IDE support for query operations
+4. **Declarative Programming**: Focus on "what" not "how"
+
+## Example of LINQ in .NET 3.5
+
+```csharp
+// Before LINQ (filtering a list)
+List<Product> expensiveProducts = new List<Product>();
+foreach (Product p in products)
+{
+    if (p.Price > 100)
+    {
+        expensiveProducts.Add(p);
+    }
+}
+
+// With LINQ (much cleaner)
+var expensiveProducts = from p in products
+                       where p.Price > 100
+                       select p;
+
+// Or using method syntax
+var expensiveProducts = products.Where(p => p.Price > 100);
+```
+
+## Impact on .NET Development
+
+1. **Reduced Code**: Eliminated much boilerplate code for data operations
+2. **Improved Readability**: Queries became more intention-revealing
+3. **Reduced Errors**: Compile-time checking caught many errors early
+4. **New Paradigms**: Enabled more functional programming styles in C#
+
+## LINQ to SQL (Original ORM)
+
+.NET 3.5 introduced LINQ to SQL as Microsoft's first ORM:
+```csharp
+// DataContext maps to database
+var db = new NorthwindDataContext();
+
+// Query executes when enumerated
+var londonCustomers = from c in db.Customers
+                     where c.City == "London"
+                     select c;
+
+foreach (var cust in londonCustomers)
+{
+    Console.WriteLine(cust.CompanyName);
+}
+```
+
+## Evolution Since .NET 3.5
+
+While LINQ's core remains unchanged, subsequent versions added:
+- .NET 4.0: Parallel LINQ (PLINQ)
+- .NET 4.5: Async LINQ operations
+- Entity Framework evolved to replace LINQ to SQL
+- More LINQ methods in later versions (e.g., `Zip`, `Aggregate` enhancements)
+
+LINQ's introduction in .NET 3.5 fundamentally changed C# programming and remains one of the most widely used features of the language today.
+
+## LINQ Basics
+
+### Key Components:
+- **Query Syntax**: SQL-like syntax
+- **Method Syntax**: Extension methods with lambda expressions
+- **Standard Query Operators**: Methods like `Where`, `Select`, `OrderBy`, etc.
+
+## LINQ Query Syntax vs Method Syntax
+
+### Query Syntax Example:
+```csharp
+var results = from product in products
+              where product.Price > 100
+              orderby product.Name
+              select product;
+```
+
+### Method Syntax Example:
+```csharp
+var results = products
+             .Where(p => p.Price > 100)
+             .OrderBy(p => p.Name);
+```
+
+## Common LINQ Operators
+
+### Filtering
+- `Where`: Filters a sequence
+```csharp
+var cheapProducts = products.Where(p => p.Price < 50);
+```
+
+### Sorting
+- `OrderBy`/`OrderByDescending`: Ascending/descending sort
+- `ThenBy`/`ThenByDescending`: Secondary sort
+```csharp
+var sortedProducts = products
+                   .OrderBy(p => p.Category)
+                   .ThenByDescending(p => p.Price);
+```
+
+### Projection
+- `Select`: Transforms each element
+```csharp
+var productNames = products.Select(p => p.Name);
+```
+
+### Aggregation
+- `Count`, `Sum`, `Average`, `Min`, `Max`
+```csharp
+var totalPrice = products.Sum(p => p.Price);
+```
+
+### Grouping
+- `GroupBy`: Groups elements by a key
+```csharp
+var productsByCategory = products.GroupBy(p => p.Category);
+```
+
+### Joining
+- `Join`: Similar to SQL INNER JOIN
+```csharp
+var joinedData = products.Join(categories,
+                      p => p.CategoryId,
+                      c => c.Id,
+                      (p, c) => new { p.Name, Category = c.Name });
+```
+
+## LINQ to Objects
+
+Works with in-memory collections:
+```csharp
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+var evenNumbers = numbers.Where(n => n % 2 == 0);
+```
+
+## LINQ to SQL/Entity Framework
+
+Queries are translated to SQL:
+```csharp
+var customers = dbContext.Customers
+                        .Where(c => c.City == "London")
+                        .ToList();
+```
+
+## Deferred Execution
+
+LINQ queries are not executed immediately:
+```csharp
+var query = products.Where(p => p.Price > 100); // Query not executed yet
+var results = query.ToList(); // Execution happens here
+```
+
+## Immediate Execution Methods
+
+Force immediate execution:
+- `ToList()`
+- `ToArray()`
+- `Count()`
+- `First()`
+- `Single()`
+
+## Custom LINQ Operators
+
+You can create your own extension methods:
+```csharp
+public static IEnumerable<T> WherePriceGreaterThan<T>(
+    this IEnumerable<T> source, decimal price) where T : Product
+{
+    return source.Where(p => p.Price > price);
+}
+
+// Usage:
+var expensiveProducts = products.WherePriceGreaterThan(100);
+```
+
+## Performance Considerations
+
+1. **Deferred Execution**: Be aware of when queries are actually executed
+2. **Multiple Enumeration**: Avoid enumerating the same query multiple times
+3. **Database Queries**: Understand what SQL is generated for EF Core/LINQ to SQL
+4. **AsParallel**: For CPU-bound operations, consider `AsParallel()` for potential performance boost
+
+## LINQ with Anonymous Types
+
+```csharp
+var productInfo = products.Select(p => new 
+{
+    p.Name,
+    p.Price,
+    IsExpensive = p.Price > 100
+});
+```
+
+## LINQ Set Operations
+
+- `Distinct()`: Remove duplicates
+- `Union()`: Combine sequences
+- `Intersect()`: Common elements
+- `Except()`: Elements in first but not second
+
+```csharp
+var uniqueCategories = products.Select(p => p.Category).Distinct();
+```
+
+## LINQ Element Operators
+
+- `First()`/`FirstOrDefault()`
+- `Last()`/`LastOrDefault()`
+- `Single()`/`SingleOrDefault()`
+- `ElementAt()`
+
+```csharp
+var firstExpensive = products.FirstOrDefault(p => p.Price > 100);
+```
+
+## LINQ Partitioning
+
+- `Skip()`: Bypass elements
+- `Take()`: Return elements
+- `SkipWhile()`/`TakeWhile()`: Conditional partitioning
+
+```csharp
+var secondPage = products.Skip(10).Take(10);
+```
+
+![image](https://github.com/user-attachments/assets/852c9a8b-c66a-421e-879a-53c480ee426b)
+![image](https://github.com/user-attachments/assets/8d499f8f-c37b-4694-a1e3-edd62ca2e813)
+![image](https://github.com/user-attachments/assets/c722ce6a-19cb-4896-8ee4-c3777dd4bbc5)
+
+
 
  > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
