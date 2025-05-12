@@ -1,0 +1,909 @@
+Advance C#
+
+Delegate:
+Delegate is a type safe function pointer.
+Delegate is a reference type that can hold a reference to a method.
+
+Multi-Cast Delegate
+By using a MultiCast delegate multiple objects can be assigned to one delegate instance by using the Plus operator +=
+
+
+EF
+Step 1 - Add-Migration FirstCreate
+Step 2 - update-database
+
+Covariance and Contravariance is apliable in delegate C#
+
+Generics :
+ C# Version 2 Generics was introduced
+ Use generic types to maximize code reuse, type safety and performance.
+ You can create Generic Interfaces, Classes, Methods, Events and Delegates
+ 
+Func, Action and Predicate
+ - These generic delegates are available in the System namespace
+ 
+What is callback Method?
+basically callbacks are simple functions which are used to notify the calling instance when an asynchronous code block has been executed and the result is
+available.
+
+This delegate represents the callback method that will be invoked when the asynchronous operation finishes.
+
+~~~Generic Constraints in C#~~~
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters
+https://dotnettutorials.net/lesson/generic-constraints-in-csharp/
+
+Generic constraints in C# allow you to restrict the types that can be used as arguments for generic type parameters. 
+This ensures type safety and gives you access to members of the constraining type within the generic class or method.
+
+Concurrent Collection in C#
+ConcurrentDictionary Collection Class in C#
+ConcurrentQueue Collection Class in C#
+ConcurrentStack Collection Class in C#
+ConcurrentBag Collection Class in C#
+BlockingCollection in C#
+
+---Questions----------------------
+if( is)
+Equal vs ==
+what is yeild keyword and use case?
+- Uses yield return, which means the items are produced lazily—one at a time—without needing to store the entire collection in memory. This is especially useful for large datasets.
+
+what is record and tuple in c#
+https://devblogs.microsoft.com/dotnet/announcing-net-5-0-rc-1/
+
+yeild
+----------------------------------
+
+Two kinds of blocking operation
+CPU Bound -> complex calculation , scentific calculation ; examples of CPU bound task are video audio content conversion
+I/O - > Read and write operation. It's block the CPU. ; include task such as writing to your hard disk drive waiting for a response from the network or
+        querying a database these operations 
+
+CPU Ideal
+
+StateMachine:
+https://developer.mozilla.org/en-US/docs/Glossary/State_machine
+https://github.com/topics/state-machine
+https://github.com/statecharts/statecharts.github.io/blob/master/what-is-a-state-machine.md
+
+Async and await
+
+async, Task , await
+
+HttpClient httpClient = new HttpClient();
+HttpResponseMessage httpResponseMessage = await httpClient.GetAsync("");
+string result = await httpResponseMessage.Content.ReadAsStringAsync();
+
+Asynchronous Programming in C#
+
+Lagacy:
+Asynchronous Programming Model(APM)
+Event Based Asynchronous Pattern(EAP)
+
+Recommended:
+Task-based Asynchronous Pattern 
+Handle the negative ux effects that can be caused by long-running IO bound operations 
+
+https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/using-an-asynccallback-delegate-and-state-object
+
+````````````````````````````````````````````````````````````````````````````````````````````````````
+DateTime dateBeforeAfter = DateTime.Now;
+
+List<Task<decimal[]>> tasks = new List<Task<decimal[]>>();
+Task<decimal[]> getOpeningPricesTask = Task.Run(() => stockMarketTechnicalAnalysisData.GetOpening());
+tasks.Add(getOpeningPricesTask);
+Task.WaitAll(task.ToArray());
+
+DateTime dateTimeAfter = DateTime.Now;
+TimeSpan timespan = dateTimeAfter.Subtract(dateTimeBefore);
+````````````````````````````````````````````````````````````````````````````````````````````````````
+WaitAll -> doesn't return task, it's run synchoronously.
+WhenAll -> return task and it's a async method
+ConfigureAwait(false) - When you don't want to return back to MainThread after Task complete.
+
+```Best Practices````````````````````
+Ask the question is the operation CPU bound or IO bound and then apply the relevant asynchronous code appropriately avoid writing CPU bound operations
+within reusable library components using the task.run method 
+`````````````````````````````````````
+Cancelling Asynchronous Operations - required .net5.0 SDK
+
+```LINQ```````````````````````````
+https://learn.microsoft.com/en-us/dotnet/csharp/linq/
+
+Langauage Integrated Query was introduced in .Net 3.5 in 2007
+
+Language-Integrated Query (LINQ) is the name for a set of technologies based on the integration of query capabilities directly into the C# language. 
+Traditionally, queries against data are expressed as simple strings without type checking at compile time or IntelliSense support. 
+Furthermore, you have to learn a different query language for each type of data source: SQL databases, XML documents, various Web services, and so on. 
+With LINQ, a query is a first-class language construct, just like classes, methods, and events.
+
+When you write queries, the most visible "language-integrated" part of LINQ is the query expression. Query expressions are written in a 
+declarative query syntax. By using query syntax, you perform filtering, ordering, and grouping operations on data sources with a minimum of code. 
+You use the same query expression patterns to query and transform data from any type of data source.
+
+-> Query expressions use many familiar C# language constructs, which make them easy to read.
+-> The variables in a query expression are all strongly typed.
+-> A query isn't executed until you iterate over the query variable, for example in a foreach statement.
+-> At compile time, query expressions are converted to standard query operator method calls according to the rules defined in the C# specification. 
+   Any query that can be expressed by using query syntax can also be expressed by using method syntax. In some cases, query syntax is more readable and concise. 
+   In others, method syntax is more readable. There's no semantic or performance difference between the two different forms. 
+-> Query expressions can be compiled to expression trees or to delegates, depending on the type that the query is applied to. IEnumerable<T> queries 
+are compiled to delegates. IQueryable and IQueryable<T> queries are compiled to expression trees.
+
+https://learn.microsoft.com/en-us/dotnet/csharp/linq/
+
+.NET 5 runtime 2020 - cross platform bearer break.
+
+LINQ -> Object
+
+Extension methods and lambda expressions are fundamental to how LINQ is implemented in c# the Enumerable class and Queryable class are two static classes 
+that contain extension methods the enumerable class and the querable class are both memebers of the system.Linq namespace
+
+LINQ (Language-Integrated Query) in C# is implemented through the Enumerable and Queryable classes, both of which provide extension methods for querying collections.
+
+Enumerable Class: Contains extension methods for working with in-memory collections that implement IEnumerable<T>. These methods execute immediately and 
+work on objects like lists, arrays, and other enumerables.
+
+Queryable Class: Provides extension methods for working with data sources that implement IQueryable<T>, typically remote databases. These methods 
+generate expression trees that allow deferred execution in database queries (e.g., Entity Framework).
+
+LINQ in C# is implemented using the Enumerable and Queryable classes, both of which contain extension methods. The Enumerable class provides LINQ 
+operations for in-memory collections (IEnumerable<T>), while the Queryable class enables LINQ for databases and remote queries (IQueryable<T>). 
+Both are members of the System.Linq namespace.
+
+public static class Extension
+{
+    public static List<T> Filter<T>(this List<T> records, Func<T, bool> predicate)
+    {
+        List<T> filteredList = new List<T>();
+        foreach (T record in records)
+        {
+            if (predicate(record))
+            {
+                filteredList.Add(record);
+            }
+        }
+        return filteredList;
+    }
+
+    public static IEnumerable<T> Filter1<T>(this List<T> input, Func<T, bool> predicate)
+    {
+        foreach (T item in input)
+        {
+            if (predicate(item))
+            {
+                yield return item;
+            }
+        }
+    }
+}
+
+            var resultList = from emp in employeeList
+                             join dept in departmentList
+                             on emp.DepartmentId equals dept.Id
+                             select new
+                             {
+                                 EmployeeId = emp.Id,
+                                 FirstName = emp.FirstName,
+                                 LastName = emp.LastName,
+                                 AnnualSalary = emp.AnnualSalary,
+                                 Manager = emp.IsManager,
+                                 Department = dept.LongName
+                             };
+							 
+	-> select clause we are able the data as an IEnumerable collection of an anonymous types
+	-> We are assigning the collection returned by the linq query to a variable preceded by the var keyword. 
+	-> C# 3.0 Variables that are declared at a method scope can have an implicit type var though the use of var keyword the c# compiler is able to infer the
+	   types included in the colletion returned from the query, so we are abe to return a collection of objects that are of an anonymous type.
+	-> Anonymous types provide a convenient way to encapsulate a set of read-only properties into a single object without having to explicitly define a type first.
+	
+	
+-> Select
+-> Where
+-> Join
+-> GroupJoin
+  
+-> Method Chaining
+-> Deferred Execution of LINQ Queries -> Deferred execution means that the evaluation of an expression is delayed untill its value is required this improves performance because only necessary execution are carried out.
+-> Immediate Execution of Linq Queries -> ()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yield: You can use a yield return statement to return each element one at a time. The sequence returned from an iterator method can be consumed by using a foreach statement 
+or linq query. Each iteration of the foreach loop calls the iterator method when a yeild return statement is reached in the iterator method the relevant value
+in the IEnumerable collection is returned and the current location in code is retained. Execution is restarted from that location the next time that the iterator function
+is called.
+
+Lazy Evaluation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LINQ Functionality encapsulated in two static classes that are members of the system.linq namespace these two static classes are method 	
+
+Join
+GroupJoin use into
+
+    ////GroupJoin Operation Example -Method Syntax (LEFT OUTER Join)
+    //var results = departmentList.GroupJoin(employeList,
+    //    dept => dept.Id,
+    //    emp => emp.DepartmentId,
+    //    (dept, empGroup) => new
+    //    {
+    //        Employees = empGroup,
+    //        DepartmentName = dept.LongName
+    //    });
+
+
+   ////GroupJoin Operation Example -Query Syntax (LEFT OUTER Join)
+   var results = from dept in departmentList
+                 join emp in employeList on dept.Id equals emp.DepartmentId
+                 into employeeGroup
+                 select new
+                 {
+                     Employees = employeeGroup,
+                     DepartmentName = dept.LongName
+                 };
+				 
+
+
+Sorting Operators
+ -> OrderBy -> OrderBy(o => o.DepartmentId)
+ -> OrderByDescending
+ -> ThenBy - Method Syntax
+ -> ThenByDescending - Method Syntax
+ 
+ //Query Syntax
+ var result = from emp in employeelist
+             join dept in departmentList on emp.DepartmentId equals dept.Id
+             orderby emp.DepartmentId, emp.AnnualSalary descending
+             select new
+             {
+                 Id = emp.Id,
+                 FirstName = emp.FirstName,
+                 LastName = emp.LastName,
+                 AnnualSalary = emp.AnnualSalary,
+                 DepartmentId = emp.DepartmentId,
+                 DepartmentName = dept.LongName
+             };
+
+ // Method Syntax
+ var result = employeelist.Join(departmentList,
+     emp => emp.DepartmentId,
+     dept => dept.Id,
+     (emp, dept) => new
+     {
+         Id = emp.Id,
+         FirstName = emp.FirstName,
+         LastName = emp.LastName,
+         AnnualSalary = emp.AnnualSalary,
+         DepartmentId = emp.DepartmentId,
+         DepartmentName = dept.LongName
+     }).OrderBy(o => o.DepartmentId).ThenBy(o => o.AnnualSalary);
+
+Grouping Operators
+ -> GroupBy - Deferred Execution
+ -> ToLookup - Immediate Execution - Method Syntax
+ 
+     ////Grouping Operators
+    ///GroupBy
+    var groupResult = from emp in employeelist
+                      orderby emp.DepartmentId
+                      group emp by emp.DepartmentId;
+
+    foreach (var empGroup in groupResult)
+    {
+        Console.WriteLine($"DepartmentId : {empGroup.Key}");
+        foreach (Employee employee in empGroup)
+        {
+            Console.WriteLine($"\t Employee FullName : {employee.FirstName} {employee.LastName}");
+        }
+    }
+
+
+    ////ToLookup Operator
+    var groupResult = employeelist.OrderBy(o => o.DepartmentId).ToLookup(e => e.AnnualSalary);
+
+    foreach (var empGroup in groupResult)
+    {
+        Console.WriteLine($"DepartmentId : {empGroup.Key}");
+        foreach (Employee employee in empGroup)
+        {
+            Console.WriteLine($"\t Employee FullName : {employee.FirstName} {employee.LastName}");
+        }
+    }
+ 
+Quantifier Operators
+ -> All
+ -> Any
+ -> Contains
+ 
+     ////All, Any, Contains Quantifier Operators
+    ///All and Any Operators
+    var annualSalaryCompare = 100000;
+
+    bool isTrueAll = employeelist.All(e => e.AnnualSalary > annualSalaryCompare);
+    if (isTrueAll)
+    {
+        Console.WriteLine($"All employee annual salary are above {annualSalaryCompare}");
+    }
+    else
+    {
+        Console.WriteLine($"Not all employee annual salaries are above {annualSalaryCompare}");
+    }
+
+    bool isAnyTrue = employeelist.Any(e => e.AnnualSalary > annualSalaryCompare);
+    if(isAnyTrue)
+    {
+        Console.WriteLine($"At least one employee has an annual salary above {annualSalaryCompare}");
+    }
+    else
+    {
+        Console.WriteLine($"Not Anyone employee annual salaries are above {annualSalaryCompare}");
+    }
+ 
+     ////Quantifier Contains
+    var searchEmployee = new Employee
+    {
+        Id = 1,
+        FirstName = "Viaks",
+        LastName = "Kumar",
+        AnnualSalary = 10000,
+        IsManager = false,
+        DepartmentId = 1
+    };
+
+    var result = employeelist.Contains(searchEmployee,new EmployeeEqualityComparer());
+
+    if (result)
+    {
+        Console.WriteLine($"An employee record for {searchEmployee.FirstName} {searchEmployee.LastName} was found.");
+    }
+    else
+    {
+        Console.WriteLine($"No record found for {searchEmployee.FirstName} {searchEmployee.LastName}");
+    }
+ 
+    public class EmployeeEqualityComparer : IEqualityComparer<Employee>
+    {
+        public bool Equals(Employee? x, Employee? y)
+        {
+            return x.Id == y.Id && x.FirstName == y.FirstName && x.LastName == y.LastName && x.AnnualSalary == y.AnnualSalary 
+                && x.IsManager == y.IsManager && x.DepartmentId == y.DepartmentId;
+        }
+
+        public int GetHashCode([DisallowNull] Employee obj)
+        {
+            return obj.Id.GetHashCode();
+        }
+    }
+ 
+Filter Operators
+ -> OfType -- ArrayList filter data base on specific type.
+ -> Where 
+ 
+Element Operators
+ -> ElementAt 
+		employeelist.ElementAt(2) -- give particular index value.; Any throw an error also if index is out of bound
+ -> ElementAtOrDefault
+		var emp = employeelist.ElementAtOrDefault(5);
+        if(emp != null)
+            Console.WriteLine($"{emp.Id,-5} {emp.FirstName} {emp.LastName}");
+ -> First  - Return first element.
+		List<int> integerList = new List<int> { 3, 14, 23, 17, 28, 89 };
+		int result = integerList.First(i => i % 2 == 0);
+		Console.WriteLine(result);
+
+    //Throw an error - System.InvalidOperationException: 'Sequence contains no matching element'
+	List<int> integerList = new List<int> { 3, 143, 23, 17, 283, 89 };
+    int result = integerList.First(i => i % 2 == 0);
+    Console.WriteLine(result);
+			
+ -> FirstOrDefault
+	
+	    List<int> integerList = new List<int> { 3, 143, 23, 17, 283, 89 };
+    int result = integerList.FirstOrDefault(i => i % 2 == 0);
+    if (result != 0)
+    {
+        Console.WriteLine(result);
+    }
+    else
+    {
+        Console.WriteLine("THere are no even numbers in the collection");
+    }
+			
+ -> Last
+ -> LastOrDefault
+ -> Single 
+	
+	- Only one item in the given collection can satisic the collection; System.InvalidOperationException: Sequence contains more than one element'
+	
+	var result = employeelist.Single();
+    Console.WriteLine($"{result.Id,-5} {result.FirstName,-10} {result.LastName,-10}");
+				OR
+	var result = employeelist.Single(x => x.Id == 2);
+    Console.WriteLine($"{result.Id,-5} {result.FirstName,-10} {result.LastName,-10}");
+
+ -> SingleOrDefault
+	var emp = employeelist.SingleOrDefault(x => x.Id == 11);
+    if(emp != null)
+    {
+        Console.WriteLine($"{emp.Id,-5} {emp.FirstName,-10} {emp.LastName,-10}");
+    }
+    else
+    {
+        Console.WriteLine("This employee does not exist within the collection");
+    }
+
+Equality Operator
+ -> SequenceEqual
+
+            //Equality Operator
+            //SequenceEqual
+            var intergerList1 = new List<int> { 1, 2, 3, 4, 5, 6 };
+            var intergerList2 = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+            var result = intergerList1.SequenceEqual(intergerList2);
+            Console.WriteLine(result);
+			
+Concatenation Operator
+ -> Concat
+
+    //Concat
+    var intergerList1 = new List<int> { 1, 2, 3, 4, 5, 6 };
+    var intergerList2 = new List<int> { 7, 8, 9, 10 };
+
+    IEnumerable<int> resut = intergerList1.Concat(intergerList2);
+    var result = intergerList1.SequenceEqual(intergerList2);
+
+    foreach (var item in resut)
+    {
+        Console.WriteLine(item);
+    }
+			
+Aggregate Operators
+ -> Aggregate
+    
+	decimal totalAnnualSalary = employeelist.Aggregate<Employee, decimal>(0, (totalAnnualSalary, e) =>
+    {
+        var bonus = (e.IsManager) ? 0.04m : 0.02m;
+        totalAnnualSalary = (e.AnnualSalary + (e.AnnualSalary * bonus)) + totalAnnualSalary;
+        return totalAnnualSalary;
+    });
+    Console.WriteLine($"Total annual salary of all employees (including bonus) :{totalAnnualSalary}");
+	
+ -> Average
+	employeList.Where(e => e.DepartmentId == 3).Average(e => e.AnnualSalary);
+	
+ -> Count
+	employeelist.Count(e => e.DepartmentId == 3);
+	
+ -> Sum
+	employeelist.Sum(e => e.AnnualSalary);
+	
+ -> Max
+	employeelist.Max(e => e.AnnualSalary); //Highest annual salary
+
+Generation Operator
+ -> DefaultEmpty
+ 
+    List<int> intList = new List<int>();
+    var newList = intList.DefaultIfEmpty();
+    Console.WriteLine(newList.ElementAt(0));
+	
+OR 
+	
+    List<Employee> employee = new List<Employee>();
+    var newList = employee.DefaultIfEmpty(new Employee { Id = 0 });
+    var result = newList.ElementAt(0);
+    if (result.Id == 0)
+    {
+        Console.WriteLine("This list is empty");
+    }
+	
+ -> Empty
+            
+	//Empty
+    //IEnumerable<Employee> emptyEmployeeList = Enumerable.Empty<Employee>();
+    List<Employee> emptyEmployeeList = Enumerable.Empty<Employee>().ToList();
+    emptyEmployeeList.Add(new Employee { Id = 7, FirstName = "A", LastName = "A1" });
+    foreach (var item in emptyEmployeeList)
+    {
+        Console.WriteLine($"{item.FirstName} {item.LastName}");
+    }
+			
+ -> Range - generate the collection of integer value from range
+ 
+    //Range
+    var intCollection = Enumerable.Range(20, 30);
+    foreach (var item in intCollection)
+    {
+        Console.WriteLine(item);
+    }
+ 
+ -> Repeat	
+ 
+	//Repeat
+    var strCollecion = Enumerable.Repeat<string>("Hello World!!", 10);
+    foreach(var item in strCollecion)
+    {
+       Console.WriteLine(item);
+    }
+	
+Set Operator
+
+ -> Distinct 
+ 
+    //Set Operator - Distinct
+
+    List<int> list = new List<int> { 1, 2, 3, 1, 2, 3, 4, 4, 4, 5, 6, 7 };
+    var result = list.Distinct();
+    foreach (var item in result)
+    {
+        Console.WriteLine(item);
+    }
+ 
+ -> Except : - return that items exists in first collection only.
+    
+	////Except
+    IEnumerable<int> collection1 = new List<int> { 1 , 2, 3, 4};
+    IEnumerable<int> collection2 = new List<int> { 3 , 4, 5, 6};
+
+    var result = collection1.Except(collection2);
+    foreach (var item in result)
+    {
+        Console.WriteLine(item);
+    }
+    Output 1 , 2
+ 
+ -> Intersect
+ 
+ -> Union
+
+
+	
+Partitioning Operators
+  -> Skip
+	  employeList.skip(2); // skip 2 items from the top list
+  -> SkipWhile
+      var result = employeList.skipWhile(e => e.AnnualSalary > 50000);
+  -> Take 
+	 var result = employeelist.Take(2); // Take top 2 items from list
+	 
+  -> TakeWhile
+
+Conversion Operators
+ -> ToList
+
+            List<Employee> employees = (from emp in employeelist
+                                       where emp.IsManager == true
+                                       select emp).ToList();
+
+            foreach (var item in employees)
+            {
+                Console.WriteLine($"{item.FirstName} {item.LastName}");
+            }
+ -> ToDictionary
+            
+	//ToDictionary
+    Dictionary<int, Employee> dictionary = (from emp in employeelist
+                                            where emp.IsManager == true
+                                            select emp).ToDictionary<Employee, int>(e => e.Id);
+
+    foreach (var key in dictionary.Keys)
+    {
+        Console.WriteLine($"Key: {key} , value : {dictionary[key].FirstName}  {dictionary[key].LastName} ");
+    }
+			
+ -> ToArray			
+   
+   Employee[] employees = (from emp in employeelist
+                               where emp.IsManager == true
+                               select emp).ToArray();
+
+   foreach (var item in employees)
+   {
+       Console.WriteLine($"{item.FirstName} {item.LastName}");
+   }
+
+ 
+Projection Operators
+
+Projection refers to the operation of transforming an object into a new form that often consists only of those properties subsequently used. 
+By using projection, you can construct a new type that is built from each object. You can project a property and perform a mathematical function on it. 
+You can also project the original object without changing it.
+
+https://learn.microsoft.com/en-us/dotnet/csharp/linq/standard-query-operators/projection-operations
+
+Important
+These samples use an System.Collections.Generic.IEnumerable<T> data source. Data sources based on System.Linq.IQueryProvider use System.Linq.IQueryable<T> 
+data sources and expression trees. Expression trees have limitations on the allowed C# syntax. Furthermore, each IQueryProvider data source, 
+such as EF Core may impose more restrictions. Check the documentation for your data source.
+
+ -> Select
+    
+	Enumerable.Select
+	Queryable.Select
+	Projects values that are based on a transform function.
+
+	List<string> words = ["an", "apple", "a", "day"];
+	
+	var query = from word in words
+				select word.Substring(0, 1);
+	
+	foreach (string s in query)
+	{
+		Console.WriteLine(s);
+	}
+	
+	/* This code produces the following output:
+	
+		a
+		a
+		a
+		d
+	*/
+	
+ -> SelectMany
+	Enumerable.SelectMany
+	Queryable.SelectMany
+	Projects sequences of values that are based on a transform function and then flattens them into one sequence. ---Use multiple from clauses---
+
+~~~~~~~~~~~~~~~~~~~~~~
+Keyword: into, let
+
+let clause :
+In a query expression, it's sometimes useful to store the result of a subexpression in order to use it in subsequent clauses. 
+You can do this with the let keyword, which creates a new range variable and initializes it with the result of the expression you supply. 
+Once initialized with a value, the range variable can't be used to store another value. However, if the range variable holds a queryable type, it can be queried.
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/let-clause
+
+           string[] strings =
+      [
+          "A penny saved is a penny earned.",
+          "The early bird catches the worm.",
+          "The pen is mightier than the sword."
+      ];
+
+           // Split the sentence into an array of words
+           // and select those whose first letter is a vowel.
+           var earlyBirdQuery =
+               from sentence in strings
+               let words = sentence.Split(' ')
+               from word in words
+               let w = word.ToLower()
+               where w[0] == 'a' || w[0] == 'e'
+                   || w[0] == 'i' || w[0] == 'o'
+                   || w[0] == 'u'
+               select word;
+           
+           // Execute the query.
+           foreach (var v in earlyBirdQuery)
+           {
+               Console.WriteLine($"\"{v}\" starts with a vowel");
+           }
+
+into clause
+  
+  The into contextual keyword can be used to create a temporary identifier to store the results of a group, join or select clause into a new identifier. 
+  This identifier can itself be a generator for additional query commands. When used in a group or select clause, the use of the new identifier is sometimes 
+  referred to as a continuation.
+  https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/into
+  
+  // Create a data source.
+  string[] words = ["apples", "blueberries", "oranges", "bananas", "apricots"];
+
+  // Create the query.
+  var wordGroups1 =
+      from w in words
+      group w by w[0] into fruitGroup
+      where fruitGroup.Count() >= 2
+      select new { FirstLetter = fruitGroup.Key, Words = fruitGroup.Count() };
+
+  // Execute the query. Note that we only iterate over the groups,
+  // not the items in each group
+  foreach (var item in wordGroups1)
+  {
+      Console.WriteLine($" {item.FirstLetter} has {item.Words} elements.");
+  }
+
+------------------------------
+Attributes
+Attributes allow the developer to add metadata in a declarative way to program elements in code for example classes methods, properties parameters etc.
+A declared attribute is instantiated into an object at runtime and at compile time we can declare attributes against program elements to provide additional 
+metadata to relevant program elements the developer is also able to declare global attributes against assemblies and in doing so add or modify metadata about the
+relevant assembly. So the developer can use attributes to add or modify metadata about a particular program element or the assembly itself.
+
+- PreDefne Attributes : which are build into .NET base class libraries
+	- General Predefined Attribute Examples
+	  - Conditional
+	  - Obsolete
+	  - AttributeUsage
+	- Predefined Global Attributes 
+	   - AssemblyVersionAttribute
+	   - AssemblyDescriptionAttribute
+	   
+
+	  
+Console.WriteLine($"typeof(Program) : {typeof(Program)}");
+ Assembly assembly = typeof(Program).Assembly;
+ AssemblyName assemblyName = assembly.GetName();
+ Version? version = assemblyName.Version;
+ object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+ var assemblyDescAttribute = attributes[0] as AssemblyDescriptionAttribute;
+ 
+ 
+ Type employeeType = typeof(Employee);
+ 
+ 
+using System.Diagnostics;
+
+namespace LoggingComponent
+{
+    public class Logging
+    {
+        [Conditional("LOG_INFO")]
+        //LOG_INFO - Preprocessor directive and include the LOG_INFO symbol in our code we can use the define preprocessor directive and include the
+        // log LOG_INFO symbol in our code if the LOG_INFO is defined using the preprocessor defined directive within a file containing method calls to
+        // LogToScreen method the code within the log to screen method will be executed at run time however if the predefined processor directive is not
+        // used to define the LOG_INFO info symbol in the file where the LogToScreen method is called its code will not be executed at runtime
+        // because we have used the conditional attributed to declare.
+        //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives
+        [Obsolete("The LogToScreen method has now been deprecated. Please use the 'LogToFile' method instead",true)]
+        public static void LogToScreen(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        public static void LogToFile(string msg)
+        {
+            Console.WriteLine($"Simulating logging text to file, {msg}");
+        }
+    }
+}
+
+ Console.WriteLine($"Assembly Name: {assemblyName}");
+ Console.WriteLine($"Assembly Version: {version}");
+
+ if (assemblyDescAttribute != null)
+     Console.WriteLine($"Assembly Description: {assemblyDescAttribute.Description}");
+	 
+	  
+- Custom Attributes : which allows the developer to implement the developers own attributes by creating a class that inherit from system.Attribute builtin class.
+   - Custom Attribute inherit from system.AttributeUsage
+   - AttributeUsage (PreDefne attribute) - Allows us to provide metadata to the compiler that will tell the compiler which elements are allowed to have our
+      predefined attribute declared against them.
+	   - so we can apply rules or constraints through the use of the attribute usage predefined attribute against our custom attribute at the class level.
+	   [AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Property, AllowMultiple = false)]
+	   
+	        PropertyInfo prop = t.GetProperty(elementName);
+            Attribute[] attributes = prop.GetCustomAttributes().ToArray();
+
+
+reflection is a technology that we can use to read the metadata provided through the use of attributes at runtime.
+
+
+AssemblyVersion - is a part of system.Reflection
+
+Reflection
+"Reflection provides objects(of type Type) that describe assemblies, modules, and types.
+You can use reflection to dynamically create an instance of a type, bind the type to an existing object, or get the type from an existing object and invoke
+its methods or access its fields and properties. if you are using attributes in your code. reflection enables you to access them."
+
+ Assembly assembly = Assembly.LoadFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TargetAssemblyFileName));
+ List<Type> classes = assembly.GetTypes()
+					.Where(t => t.Namespace == TargetNamespace && HasInformationAttribute(t)).ToList();
+ 
+ Type typeChoice = ReturnProgramElementReferenceFromList<Type>(classes);
+ object classInstance = Activator.CreateInstance(typeChoice, null);
+ 
+ List<MethodInfo> methods = typeChoice.GetMethods().Where(m => HasInformationAttribute(m)).ToList();
+ DisplayProgramElementList<MethodInfo>(methods);
+
+        private static string ReturnInformationCustomAttributeDescription(MemberInfo mi)
+        {
+            const string InformationAttributeDescriptionPropertyName = "Description";
+            foreach (var attrib in mi.GetCustomAttributes())
+            {
+                Type typeAttrib = attrib.GetType();
+                if (typeAttrib.ToString().ToUpper() == InformationAttributeTypeName)
+                {
+                    PropertyInfo propertyInfo = typeAttrib.GetProperty(InformationAttributeDescriptionPropertyName);
+                    if (propertyInfo is not null)
+                    {
+                        object s = propertyInfo.GetValue(attrib, null);
+                        if (s != null)
+                        {
+                            return s.ToString();
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+		
+		
+		private static bool HasInformationAttribute(MemberInfo mi)
+        {
+            foreach (var attrib in mi.GetCustomAttributes())
+            {
+                Type typeAttrib = attrib.GetType();
+                if (typeAttrib.ToString().ToUpper() == InformationAttributeTypeName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+		
+		       private static object[] ReturnParameterValueInputAsObjectArray(ParameterInfo[] parameters)
+       {
+           object[] paramValues = new object[parameters.Length];
+           int itemCount = 0;
+
+           foreach (ParameterInfo parameterInfo in parameters)
+           {
+               WritePromptToScreen($"Please enter a value for the parameter name, '{parameterInfo.Name}'");
+               if(parameterInfo.ParameterType == typeof(string))
+               {
+                   string inputString = Console.ReadLine();
+                   paramValues[itemCount] = inputString;
+               }
+               else if(parameterInfo.ParameterType == typeof(int))
+               {
+                   int inputInt = Int32.Parse(Console.ReadLine());
+                   paramValues[itemCount] = inputInt;
+               }
+               else if (parameterInfo.ParameterType == typeof(double))
+               {
+                   double inputDouble = Double.Parse(Console.ReadLine());
+                   paramValues[itemCount] = inputDouble;
+               }
+
+               itemCount++;
+           }
+           return paramValues;
+       }
+       private static object GetResult(object classInstance , MethodInfo methodInfo, ParameterInfo[] parameters)
+       {
+           object result = null;
+           if(parameters.Length == 0)
+           {
+               result = methodInfo.Invoke(classInstance, null);
+           }
+           else
+           {
+               var paramValueArray = ReturnParameterValueInputAsObjectArray(parameters);
+               result = methodInfo.Invoke(classInstance, paramValueArray);
+           }
+           return result;
+       }
+	   
+	           public static T ReturnProgramElementReferenceFromList<T>(List<T> list)
+        {
+            ConsoleKey consoleKey = Console.ReadKey().Key;
+            switch (consoleKey)
+            {
+                case ConsoleKey.D1:
+                    return list[0];
+                case ConsoleKey.D2:
+                    return list[1];
+                case ConsoleKey.D3:
+                    return list[2];
+                case ConsoleKey.D4:
+                    return list[3];
+            }
+            return default;
+        }
+        public static void DisplayProgramElementList<T>(List<T> list)
+        {
+            int count = 0;
+            foreach (var item in list)
+            {
+                count++;
+                Console.WriteLine($"{count}. {item}");
+            }
+        }
+		private static void WriteHeadingToScreen(string heading)
+        {
+            Console.WriteLine(heading);
+            Console.WriteLine(new string('-', heading.Length));
+            Console.WriteLine();
+        }
