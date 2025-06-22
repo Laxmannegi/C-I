@@ -907,3 +907,91 @@ its methods or access its fields and properties. if you are using attributes in 
             Console.WriteLine(new string('-', heading.Length));
             Console.WriteLine();
         }
+
+
+
+
+*************C#*************************************************************************************************************************************
+1. In C#, starting with C# 7.1, you can use the async modifier with the Main method to create an asynchronous entry point for your console application. 
+   This allows you to write asynchronous code directly in the Main method.
+   
+2. Can interface declare with async in c#
+   Interfaces can't use async in a method declaration, simply because there is no need. If an interface requires that a method returns Task , 
+   the implementation may choose to use async , but whether it does or not is a choice for the implementing method.
+   https://www.oreilly.com/library/view/async-in-c/9781449337155/ch04.html#:~:text=Interfaces%20can't%20use%20async,choice%20for%20the%20implementing%20method.
+   
+
+3. 
+****************************************************************************************************************************************************
+
+
+
+***************Angular*********************************
+Generating Angular Items via Angular-CLI
+
+> ng g c components/comp-1 //generates component
+> ng g s services/service-1 // generates service
+> ng g i interfaces/interface-1 // generates interface
+*******************************************************
+
+**************************************Node****************************************
+
+> mkdir RabbitMQConsumerClient
+> cd RabbitMQConsumerClient
+> npm init
+> npm install amqplib express
+> create a .js file ex: rabbitMQConumerService.js
+> node index.js
+
+> Using pm2:
+  Install pm2 globally: 
+  > npm install -g pm2
+  > pm2 start index.js
+  > pm2 status
+  
+  
+> rabbitmq-service.bat start
+> rabbitmq-plugins list
+> rabbitmq-plugins rabbitmq_management
+
+ docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3
+ rabbitmq-plugins.bat list
+ rabbitmq-plugins.bat enable rabbitmq_management 
+ 
+Verify RabbitMQ Ports
+ RabbitMQ uses the following ports by default:
+ > 5672: AMQP (used by amqplib in Node.js)
+ > 15672: Management UI
+ 
+**********************************************************************************
+HLS, DASH, FFmpeg
+
+******************C# Event*************************************************************************************
+consumer.ReceivedAsync += async (m, arge) =>
+{
+    var body = arge.Body.ToArray();
+    var message = Encoding.UTF8.GetString(body);
+    // You might want to handle the message here
+    await Task.CompletedTask; // Ensure you're completing the async delegate properly
+};
+
+Should return a task
+Explanation of the fixes:
+1. await Task.CompletedTask: If the delegate doesn't involve any actual asynchronous operations, 
+it's a good practice to use Task.CompletedTask to signal completion.
+
+2. Structure: Made sure the delegate is properly enclosed and aligns with C# conventions.
+**************************************************************************************************************
+
+******IHostedService*******************************************************************************************
+
+IHostedService: Ensures InitializeAsync is called during the startup phase before the service is used.
+
+Note : With this approach, BusProxy.InitializeAsync() is initialized automatically when the Web API application starts, 
+ensuring that it's ready for use in your controllers.
+
+******************************************************************************************************
+
+`````````````_ Discard````````````````````````````````````````````````````````````````````````````````
+The _ discard is used when you don’t care about the value of something
+``````````````````````````````````````````````````````````````````````````````````````````````````````
